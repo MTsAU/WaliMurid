@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>MTsAU - Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <style>/* Import Google font - Poppins */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins",
+          sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0faff;
+      }
+      .wrapper {
+        position: relative;
+        max-width: 470px;
+        width: 100%;
+        border-radius: 12px;
+        padding: 20px
+          30px
+          120px;
+        background: #4070f4;
+        box-shadow: 0
+          5px
+          10px
+          rgba(
+            0,
+            0,
+            0,
+            0.1
+          );
+        overflow: hidden;
+      }
+      .form.login {
+        position: absolute;
+        left: 50%;
+        bottom: -86%;
+        transform: translateX(
+          -50%
+        );
+        width: calc(
+          100% +
+            220px
+        );
+        padding: 20px
+          140px;
+        border-radius: 50%;
+        height: 100%;
+        background: #fff;
+        transition: all
+          0.6s
+          ease;
+      }
+      .wrapper.active
+        .form.login {
+        bottom: -15%;
+        border-radius: 35%;
+        box-shadow: 0 -5px
+          10px rgba(0, 0, 0, 0.1);
+      }
+      .form
+        header {
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .form.login
+        header {
+        color: #333;
+        opacity: 0.6;
+      }
+      .wrapper.active
+        .form.login
+        header {
+        opacity: 1;
+      }
+      .wrapper.active
+        .signup
+        header {
+        opacity: 0.6;
+      }
+      .wrapper
+        form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 40px;
+      }
+      form
+        input {
+        height: 60px;
+        outline: none;
+        border: none;
+        padding: 0
+          15px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+        border-radius: 8px;
+        background: #fff;
+      }
+      .form.login
+        input {
+        border: 1px
+          solid
+          #aaa;
+      }
+      .form.login
+        input:focus {
+        box-shadow: 0
+          1px 0
+          #ddd;
+      }
+      form
+        .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .checkbox
+        input[type="checkbox"] {
+        height: 16px;
+        width: 16px;
+        accent-color: #fff;
+        cursor: pointer;
+      }
+      form
+        .checkbox
+        label {
+        cursor: pointer;
+        color: #fff;
+      }
+      form a {
+        color: #333;
+        text-decoration: none;
+      }
+      form
+        a:hover {
+        text-decoration: underline;
+      }
+      form
+        input[type="submit"] {
+        margin-top: 15px;
+        padding: none;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .form.login
+        input[type="submit"] {
+        background: #4070f4;
+        color: #fff;
+        border: none;
+      }
+      /* Menyembunyikan ikon tutup secara default */
+      .icon-close {
+        display: none;
+      }
+
+      /* Menampilkan ikon tutup ketika halaman login aktif */
+      .login-active .icon-close {
+        display: block;
+      }
+</style>
+    <section class="wrapper">
+      <div class="form signup">
+        <header><i class="fas fa-times icon-close"></i></header>
+        <header>
+          <img 
+            src="https://github.com/mtsalutsmani/MTsAU/blob/main/LOGO%20MTS%202024.png?raw=true" 
+            alt="Logo MTs. AL-UTSMANI" 
+            style="width: 100px; height: auto; display: block; margin: 0 auto;" />
+          <h1 style="text-align: center; margin-top: 10px; font-size: 1.5rem;">
+            MTs. AL-UTSMANI
+          </h1>
+          <h2 style="text-align: center; font-size: 1.2rem; color: #555;">
+            Beddian Jambesari Darus Sholah Bondowoso
+          </h2>
+        </header>
+        <div class="notification-content" style="text-align: center; margin-top: 20px;">
+          <p style="font-size: 1rem; color: #333; line-height: 1.5;">
+            Selamat Datang di aplikasi Wali Murid MTsAU
+          </p>
+          <p style="font-size: 1rem; color: #333; line-height: 1.5;">
+            Tekan <strong>"Login"</strong> kemudian masukkan NIS Putra Anda
+          </p>
+        </div>
+      </div>
+      <div class="form login">
+        <header>Login</header>
+        <form id="loginForm">
+          <input type="text" id="idInput" placeholder="Tulis NIS Siswa disini..!" required />
+          <input type="submit" value="Masuk" />
+        </form>
+      </div>
+    </section>
+
+    <script>
+      // Add event listener for the login form submission
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        const id = document.getElementById("idInput").value.trim(); // Get the value from the input field
+        
+        if (id) {
+          // Save ID to localStorage and redirect to the student data page
+          localStorage.setItem("userId", id);
+          window.location.href = "data.html"; // Redirect to the student data page
+        } else {
+          alert("Silakan masukkan NIS Anda!"); // Show alert if the ID is not provided
+        }
+      });
+
+      // Handle the visibility of the close icon and toggle classes
+      const wrapper = document.querySelector(".wrapper");
+      const signupHeader = document.querySelector(".signup header");
+      const loginHeader = document.querySelector(".login header");
+      const iconClose = document.querySelector(".fas.fa-times");
+      const loginPage = document.querySelector('.form.login');
+
+      // Toggle the visibility of the login form when clicking headers
+      loginHeader.addEventListener("click", () => {
+        wrapper.classList.add("active");
+      });
+      signupHeader.addEventListener("click", () => {
+        wrapper.classList.remove("active");
+      });
+
+      // Display the close icon and add the event listener for closing
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initially hide the close icon
+        iconClose.style.display = 'none';
+        
+        // Show the close icon when the login page is active
+        loginPage.classList.add('login-active');
+        
+        // Add event listener for showing the close icon
+        loginPage.addEventListener('click', function () {
+          iconClose.style.display = 'block'; // Show close icon
+        });
+        
+        // Add event listener for closing the login page
+        iconClose.addEventListener('click', function () {
+          loginPage.classList.remove('login-active');  // Hide login page
+          iconClose.style.display = 'none'; // Hide close icon
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
