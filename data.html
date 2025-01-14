@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>MTsAU - Dashboard</title>
+  <style>
+/* General Reset and Responsive Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F0F4F8;
+  color: #333;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #0073e6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Sidebar Menu */
+.sidebar {
+  position: fixed;
+  top: 40px; /* Positioned below the header */
+  left: -150px;
+  width: 100px;
+  height: 100%;
+  background-color: #0073e6;
+  padding-top: 30px;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 800;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 5px 10px;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  padding: 5px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  color: #fff;
+  background-color: #000;
+}
+
+.sidebar ul li i {
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+/* Main Content */
+main {
+  margin-top: 40px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+main.active {
+  margin-left: 100px;
+}
+
+/* Menu Icon in Header */
+.menu-icon {
+  font-size: 1.35rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Student Info Section */
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.student-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #007BFF;
+}
+
+.student-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.student-details h2 {
+  font-size: 24px;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+.student-details p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0;
+}
+
+/* Buttons */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  color: #000;
+  padding: 10px 20px;
+  border: 1px solid #0073e6;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+  background-color: #007bff;
+}
+
+.icon {
+  font-size: 1.3em;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-top: 10px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #0073e6;
+}
+
+/* Floating Icons */
+.floating-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-icons a {
+  color: green;
+  font-size: 2em;
+  transition: transform 0.3s ease;
+}
+
+.floating-icons a:hover {
+  transform: scale(1.1);
+}
+
+/* Hidden Class */
+.hidden {
+  display: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .student-info {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .student-details h2 {
+    font-size: 1.2em;
+    margin-left: 10px;
+  }
+
+  .student-details p {
+    font-size: 0.85em;
+    margin-left: 10px;
+  }
+
+  .button-container {
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .button {
+    font-size: 0.9em;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-details p {
+    font-size: 0.85em;
+  }
+
+  .button {
+    font-size: 0.85em;
+    padding: 5px 10px;
+  }
+
+  .icon {
+    font-size: 1.1em;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>  
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebarMenu">
+    <ul>
+      <li class="dashboard"><a class="active">Dashboard</a></li>
+      <li class="keluar"><a href="loginmts.html">Keluar</a></li>      
+    </ul>
+  </div>
+  <main id="mainContent">
+    <div class="container" style="display: flex; align-items: flex-start; gap: 20px;">
+      <!-- Bagian Foto Siswa -->
+      <div class="student-image" style="flex-shrink: 0;">
+        <img src="https://github.com/mtsalutsmani/MTsAU/blob/main/th.jpg?raw=true" 
+             alt="Student Photo" 
+             style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #ddd;" 
+             onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png';" />
+      </div>
+    
+      <!-- Bagian Detail Siswa -->
+      <div class="student-details" style="flex-grow: 1; font-family: Arial, sans-serif;">
+        <h2 id="Name" style="margin-bottom: 10px;">Loading...</h2>
+        <p>NIS : <span id="Id">-</span></p>
+        <p>Kelas : <span id="Kelas">-</span></p>
+  <p>Status: <span id="Status">-</span></p>
+  <p>Angkatan: <span id="Angkatan">-</span></p>
+  <p class="hidden">PPDB: <span id="PPDB">-</span></p>
+  <p class="hidden">LKS_Ga_7: <span id="LKS_Ga_7">-</span></p>
+  <p class="hidden">LKS_Ge_7: <span id="LKS_Ge_7">-</span></p>
+  <p class="hidden">Smst_Ga_7: <span id="Smst_Ga_7">-</span></p>
+  <p class="hidden">Smst_Ge_7: <span id="Smst_Ge_7">-</span></p>
+  <p class="hidden">LKS_Ga_8: <span id="LKS_Ga_8">-</span></p>
+  <p class="hidden">LKS_Ge_8: <span id="LKS_Ge_8">-</span></p>
+  <p class="hidden">Smst_Ga_8: <span id="Smst_Ga_8">-</span></p>
+  <p class="hidden">Smst_Ge_8: <span id="Smst_Ge_8">-</span></p>
+  <p class="hidden">LKS_Ga_9: <span id="LKS_Ga_9">-</span></p>
+  <p class="hidden">LKS_Ge_9: <span id="LKS_Ge_9">-</span></p>
+  <p class="hidden">Smst_Ga_9: <span id="Smst_Ga_9">-</span></p>
+  <p class="hidden">AM: <span id="AM">-</span></p>
+  <p class="hidden">Wisuda: <span id="Wisuda">-</span></p>
+  <p class="hidden">Tambahan: <span id="Tambahan">-</span></p>
+  <p class="hidden">Rincian: <span id="Rincian">-</span></p>
+  <p class="hidden">Bayar: <span id="Bayar">-</span></p>
+  <p class="hidden">Total: <span id="Total">-</span></p>
+  <p class="hidden">Dibayar: <span id="Dibayar">-</span></p>
+  <p class="hidden">Sisa: <span id="Sisa">-</span></p>
+  <p class="hidden">Lunas: <span id="Lunas">-</span></p>
+  <p class="hidden">Dapat_PIP: <span id="Dapat_PIP">-</span></p>
+  <p class="hidden">Saldo_PIP: <span id="Saldo_PIP">-</span></p>
+  <p class="hidden">Sisa_PIP: <span id="Sisa_PIP">-</span></p>
+  <p class="hidden">Keterangan Mutasi: <span id="Ket_Mutasi">-</span></p>
+  <p class="hidden">Pernah Tidak Naik: <span id="Pernah_Tidak_Naik">-</span></p>
+  <p class="hidden">Pemotongan: <span id="Pemotongan">-</span></p>
+  <p class="hidden">Keterangan Pemotongan: <span id="Ket_Pem">-</span></p>
+  <p class="hidden">TPPDB: <span id="TPPDB">-</span></p>
+  <p class="hidden">TLKS_Ga_7: <span id="TLKS_Ga_7">-</span></p>
+  <p class="hidden">TLKS_Ge_7: <span id="TLKS_Ge_7">-</span></p>
+  <p class="hidden">TSmst_Ga_7: <span id="TSmst_Ga_7">-</span></p>
+  <p class="hidden">TSmst_Ge_7: <span id="TSmst_Ge_7">-</span></p>
+  <p class="hidden">TLKS_Ga_8: <span id="TLKS_Ga_8">-</span></p>
+  <p class="hidden">TLKS_Ge_8: <span id="TLKS_Ge_8">-</span></p>
+  <p class="hidden">TSmst_Ga_8: <span id="TSmst_Ga_8">-</span></p>
+  <p class="hidden">TSmst_Ge_8: <span id="TSmst_Ge_8">-</span></p>
+  <p class="hidden">TLKS_Ga_9: <span id="TLKS_Ga_9">-</span></p>
+  <p class="hidden">TLKS_Ge_9: <span id="TLKS_Ge_9">-</span></p>
+  <p class="hidden">TSmst_Ga_9: <span id="TSmst_Ga_9">-</span></p>
+  <p class="hidden">TAM: <span id="TAM">-</span></p>
+  <p class="hidden">TWisuda: <span id="TWisuda">-</span></p>
+  <p class="hidden">KPPDB: <span id="KPPDB">-</span></p>
+  <p class="hidden">KLKS_Ga_7: <span id="KLKS_Ga_7">-</span></p>
+  <p class="hidden">KLKS_Ge_7: <span id="KLKS_Ge_7">-</span></p>
+  <p class="hidden">KSmst_Ga_7: <span id="KSmst_Ga_7">-</span></p>
+  <p class="hidden">KSmst_Ge_7: <span id="KSmst_Ge_7">-</span></p>
+  <p class="hidden">KLKS_Ga_8: <span id="KLKS_Ga_8">-</span></p>
+  <p class="hidden">KLKS_Ge_8: <span id="KLKS_Ge_8">-</span></p>
+  <p class="hidden">KSmst_Ga_8: <span id="KSmst_Ga_8">-</span></p>
+  <p class="hidden">KSmst_Ge_8: <span id="KSmst_Ge_8">-</span></p>
+  <p class="hidden">KLKS_Ga_9: <span id="KLKS_Ga_9">-</span></p>
+  <p class="hidden">KLKS_Ge_9: <span id="KLKS_Ge_9">-</span></p>
+  <p class="hidden">KSmst_Ga_9: <span id="KSmst_Ga_9">-</span></p>
+  <p class="hidden">KAM: <span id="KAM">-</span></p>
+  <p class="hidden">KWisuda: <span id="KWisuda">-</span></p>
+  <p class="hidden">KTT: <span id="KTT">-</span></p>
+</div>
+  </div>
+
+  <div class="button-container">
+    <a onclick="window.location.href='biodata.html?userId=' + localStorage.getItem('userId')" class="button">
+      <span>DATA SISWA</span>
+      <span class="icon" style="color: #FF9800;">&#x1F4C3;</span> <!-- Icon: File Folder (Green for students) -->
+    </a>
+    <a onclick="window.location.href='uang.html?userId=' + localStorage.getItem('userId')" class="button">
+      <span>PEMBAYARAN</span>
+      <span class="icon" style="color: #4CAF50;">&#x1F4B0;</span> <!-- Icon: Money Bag (Orange for payments) -->
+    </a>
+    <a onclick="window.location.href='absen.html?userId=' + localStorage.getItem('userId')" class="button">
+      <span>ABSEN</span>
+      <span class="icon" style="color: #2196F3;">&#x1F4DD;</span> <!-- Icon: Pencil (Blue for attendance) -->
+    </a>
+    <a onclick="window.location.href='raport.html?userId=' + localStorage.getItem('userId')" class="button">
+      <span>RAPORT</span>
+      <span class="icon" style="color: #9C27B0;">&#x1F4D6;</span> <!-- Icon: Open Book (Purple for report) -->
+    </a>
+  </div>
+  
+
+  <div class="footer">
+    <p>Jika ada kesalahan data, mohon segera <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">hubungi kami</a>.</p>
+    <p>&copy; 2025 MTsAU. Semua hak dilindungi.</p>
+  </div>
+</div>
+
+<div class="floating-icons">
+  <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">
+    <i class="fab fa-whatsapp"></i> <!-- Font Awesome WhatsApp Icon -->
+  </a>
+</div>
+</main>
+<script>
+  // Get the user ID from localStorage
+  const userId = localStorage.getItem("userId");
+  if (!userId) {
+    window.location.href = "loginmts.html"; // Redirect to login if no ID found
+  }
+
+  // Fetch data using the exec URL and the user ID
+  const apiUrl = `https://script.google.com/macros/s/AKfycbxz69c9uymK0eFhu6aOEmdUKRk-raWYANyiv9_QhEjr_FRVdFD_dXb4V8P4QUgnORAulg/exec?action=FetchData&userId=${userId}`;
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    if (data && Array.isArray(data)) {
+      // ID dan Nama
+      document.getElementById("Id").textContent = data[0] || '-';         // ID
+      document.getElementById("Name").textContent = data[1] || '-';       // Nama
+      document.getElementById("Kelas").textContent = data[2] || '-';      // Kelas
+
+      // PPDB dan LKS
+      document.getElementById("PPDB").textContent = data[3] || '-';       // PPDB
+      document.getElementById("LKS_Ga_7").textContent = data[4] || '-';   // LKS_Ga_7
+      document.getElementById("LKS_Ge_7").textContent = data[5] || '-';   // LKS_Ge_7
+      document.getElementById("Smst_Ga_7").textContent = data[6] || '-';  // Smst_Ga_7
+      document.getElementById("Smst_Ge_7").textContent = data[7] || '-';  // Smst_Ge_7
+      document.getElementById("LKS_Ga_8").textContent = data[8] || '-';   // LKS_Ga_8
+      document.getElementById("LKS_Ge_8").textContent = data[9] || '-';   // LKS_Ge_8
+      document.getElementById("Smst_Ga_8").textContent = data[10] || '-'; // Smst_Ga_8
+      document.getElementById("Smst_Ge_8").textContent = data[11] || '-'; // Smst_Ge_8
+      document.getElementById("LKS_Ga_9").textContent = data[12] || '-';  // LKS_Ga_9
+      document.getElementById("LKS_Ge_9").textContent = data[13] || '-';  // LKS_Ge_9
+      document.getElementById("Smst_Ga_9").textContent = data[14] || '-'; // Smst_Ga_9
+
+      // Financials and Status
+      document.getElementById("AM").textContent = data[15] || '-';       // AM
+      document.getElementById("Wisuda").textContent = data[16] || '-';    // Wisuda
+      document.getElementById("Tambahan").textContent = data[17] || '-';  // Tambahan
+      document.getElementById("Rincian").textContent = data[18] || '-';   // Rincian
+      document.getElementById("Bayar").textContent = data[19] || '-';     // Bayar
+      document.getElementById("Total").textContent = data[20] || '-';     // Total
+      document.getElementById("Dibayar").textContent = data[21] || '-';   // Dibayar
+      document.getElementById("Sisa").textContent = data[22] || '-';      // Sisa
+      document.getElementById("Lunas").textContent = data[23] || '-';     // Lunas
+
+      // PIP Information
+      document.getElementById("Dapat_PIP").textContent = data[24] || '-';  // Dapat_PIP
+      document.getElementById("Saldo_PIP").textContent = data[25] || '-';  // Saldo_PIP
+      document.getElementById("Sisa_PIP").textContent = data[26] || '-';   // Sisa_PIP
+
+      // Additional Information
+      document.getElementById("Angkatan").textContent = data[27] || '-';  // Angkatan
+      document.getElementById("Status").textContent = data[28] || '-';    // Status
+      document.getElementById("Ket_Mutasi").textContent = data[29] || '-'; // Ket_Mutasi
+      document.getElementById("Pernah_Tidak_Naik").textContent = data[30] || '-'; // Pernah_Tidak_Naik
+
+      // Financial Adjustments
+      document.getElementById("Pemotongan").textContent = data[31] || '-';  // Pemotongan
+      document.getElementById("Ket_Pem").textContent = data[32] || '-';      // Ket_Pem
+      document.getElementById("TPPDB").textContent = data[33] || '-';       // TPPDB
+
+      // TLKS and Smst for various grades
+      document.getElementById("TLKS_Ga_7").textContent = data[34] || '-';   // TLKS_Ga_7
+      document.getElementById("TLKS_Ge_7").textContent = data[35] || '-';   // TLKS_Ge_7
+      document.getElementById("TSmst_Ga_7").textContent = data[36] || '-';  // TSmst_Ga_7
+      document.getElementById("TSmst_Ge_7").textContent = data[37] || '-';  // TSmst_Ge_7
+      document.getElementById("TLKS_Ga_8").textContent = data[38] || '-';   // TLKS_Ga_8
+      document.getElementById("TLKS_Ge_8").textContent = data[39] || '-';   // TLKS_Ge_8
+      document.getElementById("TSmst_Ga_8").textContent = data[40] || '-';  // TSmst_Ga_8
+      document.getElementById("TSmst_Ge_8").textContent = data[41] || '-';  // TSmst_Ge_8
+      document.getElementById("TLKS_Ga_9").textContent = data[42] || '-';   // TLKS_Ga_9
+      document.getElementById("TLKS_Ge_9").textContent = data[43] || '-';   // TLKS_Ge_9
+      document.getElementById("TSmst_Ga_9").textContent = data[44] || '-';  // TSmst_Ga_9
+
+      // Additional Financial Data
+      document.getElementById("TAM").textContent = data[45] || '-';        // TAM
+      document.getElementById("TWisuda").textContent = data[46] || '-';     // TWisuda
+      document.getElementById("KPPDB").textContent = data[47] || '-';       // KPPDB
+
+      // KLKS and KSmst for various grades
+      document.getElementById("KLKS_Ga_7").textContent = data[48] || '-';   // KLKS_Ga_7
+      document.getElementById("KLKS_Ge_7").textContent = data[49] || '-';   // KLKS_Ge_7
+      document.getElementById("KSmst_Ga_7").textContent = data[50] || '-';  // KSmst_Ga_7
+      document.getElementById("KSmst_Ge_7").textContent = data[51] || '-';  // KSmst_Ge_7
+      document.getElementById("KLKS_Ga_8").textContent = data[52] || '-';   // KLKS_Ga_8
+      document.getElementById("KLKS_Ge_8").textContent = data[53] || '-';   // KLKS_Ge_8
+      document.getElementById("KSmst_Ga_8").textContent = data[54] || '-';  // KSmst_Ga_8
+      document.getElementById("KSmst_Ge_8").textContent = data[55] || '-';  // KSmst_Ge_8
+      document.getElementById("KLKS_Ga_9").textContent = data[56] || '-';   // KLKS_Ga_9
+      document.getElementById("KLKS_Ge_9").textContent = data[57] || '-';   // KLKS_Ge_9
+      document.getElementById("KSmst_Ga_9").textContent = data[58] || '-';  // KSmst_Ga_9
+
+      // Additional status and KAM data
+      document.getElementById("KAM").textContent = data[59] || '-';        // KAM
+      document.getElementById("KWisuda").textContent = data[60] || '-';     // KWisuda
+      document.getElementById("KTT").textContent = data[61] || '-';         // KTT
+    } else {
+      alert('Data tidak tersedia!');
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching student data:', error);
+    alert('Terjadi kesalahan saat mengambil data!');
+  });
+  
+// Ambil semua elemen dengan ID yang diinginkan
+const studentData = {};
+document.querySelectorAll('.student-details p').forEach(p => {
+  const id = p.querySelector('span').id;
+  studentData[id] = p.querySelector('span').innerText;
+});
+
+// Simpan data ke localStorage
+localStorage.setItem("studentData", JSON.stringify(studentData));
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebarMenu');
+      const mainContent = document.getElementById('mainContent');
+      sidebar.classList.toggle('active');
+      mainContent.classList.toggle('active');
+    }
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebarMenu');
+  const mainContent = document.getElementById('mainContent');
+  const keluar = document.querySelector('.sidebar ul li.keluar a');
+
+  // Tutup sidebar
+  sidebar.classList.remove('active');
+  mainContent.classList.remove('active');
+
+  // Tambahkan event listener untuk hover pada elemen "Keluar"
+  keluar.addEventListener('mouseover', () => {
+    sidebar.classList.add('hovering-keluar'); // Tambahkan kelas pada sidebar
+  });
+
+  keluar.addEventListener('mouseout', () => {
+    sidebar.classList.remove('hovering-keluar'); // Hapus kelas pada sidebar
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const dashboardLink = document.querySelector(".sidebar ul li.dashboard a");
+  const keluarLink = document.querySelector(".sidebar ul li.keluar a");
+
+  // Tambahkan event listener untuk hover pada elemen "Keluar"
+  keluarLink.addEventListener("mouseover", () => {
+    dashboardLink.classList.remove("active"); // Nonaktifkan gaya aktif Dashboard
+  });
+
+  keluarLink.addEventListener("mouseout", () => {
+    dashboardLink.classList.add("active"); // Aktifkan kembali gaya aktif Dashboard
+  });
+});
+
+</script>
+
+</body>
+</html>
