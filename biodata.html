@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>MTsAU - Profil Siswa</title>
+  <style>
+    /* General Reset and Responsive Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #0073e6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Sidebar Menu */
+.sidebar {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  top: 40px; /* Disesuaikan agar berada di bawah header */
+  left: -150px;
+  background-color: #0073e6;
+  transition: 0.3s;
+  padding-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 800;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  padding: 5px 10px;
+  text-align: left;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  color: #fff;
+  background-color: #000;
+}
+
+/* Main Content */
+main {
+  margin-left: 0;
+  margin-top: 40px; /* Start below the header */
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+main.active {
+  margin-left: 100px;
+}
+
+/* General Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.student-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 0; /* Remove border radius to make the photo square */
+  object-fit: cover;
+  border: 3px solid #007BFF;
+}
+
+.student-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.student-details h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: #007BFF;
+}
+
+.student-details p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.column-left {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column-right {
+  background-color: #fff7e6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  color: #444;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 15px 0;
+}
+
+.payment-details {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.payment-details td {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.payment-details td:first-child {
+  font-weight: bold;
+  color: #000000;
+}
+
+.payment-details td:nth-child(2),
+.payment-details td:nth-child(3),
+.payment-details td:nth-child(4) {
+  text-align: center;
+}
+/* Column Styles */
+.column {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.column-left {
+  flex: 1 1 45%;
+}
+
+.column-right {
+  flex: 1 1 45%;
+}
+
+/* Divider between sections */
+.divider {
+  border-top: 2px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+/* Section headers */
+.section h2 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Paragraphs in sections */
+.section p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Span for data display */
+span {
+  font-weight: bold;
+  color: #007BFF;
+}
+table td {
+  vertical-align: top;
+}
+
+table td span {
+  display: block;  /* Membuat span menjadi block-level element */
+}
+#Tempat_Lahir, #Tanggal_Lahir {
+  display: inline; /* Pastikan keduanya sejajar */
+}
+
+.payment-details {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.payment-details td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.payment-details td:first-child {
+  font-weight: bold;
+  background-color: #f4f4f4;
+}
+
+.payment-details span {
+  font-weight: bold;
+  color: #007BFF;
+}
+.icon {
+      margin-left: 10px;
+      font-size: 1.3em;
+    }
+
+    /* Footer Section */
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    /* Floating Icons (WhatsApp and Gmail) */
+    .floating-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-icons a {
+  background-color: transparent; /* Menghapus background */
+  border-radius: 50%; /* Jika ingin menjaga efek bentuk lingkaran */
+  padding: 0; /* Menghilangkan padding untuk menghapus kotak */
+  box-shadow: none; /* Menghapus bayangan kotak */
+  color: green;
+  font-size: 2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-icons a:hover {
+  transform: scale(1.1);
+  box-shadow: none; /* Tidak ada bayangan pada hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .student-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>  
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebarMenu">
+    <ul>
+      <li class="dashboard"><a class="active">Pembayaran</a></li>
+      <li class="keluar"><a href="data.html">Keluar</a></li>      
+    </ul>
+  </div>
+  <main id="mainContent">
+    <div class="container" style="display: flex; align-items: flex-start; gap: 20px;">
+      <!-- Bagian Foto Siswa -->
+      <div class="student-image" style="flex-shrink: 0;">
+        <img src="https://github.com/mtsalutsmani/MTsAU/blob/main/th.jpg?raw=true" 
+             alt="Student Photo" 
+             style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #ddd;" 
+             onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png';" />
+      </div>
+    
+      <!-- Bagian Detail Siswa -->
+      <div class="student-details" style="flex-grow: 1; font-family: Arial, sans-serif;">
+        <h2 id="Name" style="margin-bottom: 10px;">Loading...</h2>
+        <p>NIS : <span id="Id">-</span></p>
+        <p>No. HP :<span id="Hp">-</span></p>
+      </div>
+    </div>
+    
+  <div class="row">
+    <!-- Left Column -->
+    <div class="column column-left">
+      <div class="divider"></div>
+      <div class="section">
+        <h2>BIODATA SISWA</h2>
+        <table>
+          <tr>
+            <td>No. KK</td><td>:</td><td><span id="Kk">-</span></td>
+          </tr>
+          <tr>
+            <td>NIK</td><td>:</td><td><span id="Nik_Siswa">-</span></td>
+          </tr>
+          <tr>
+            <td>NISN</td><td>:</td><td><span id="Nisn">-</span></td>
+          </tr>
+          <tr>
+            <td>TTL</td><td>:</td><td><span id="Tempat_Lahir"></span>, <span id="Tanggal_Lahir"></span></td>
+
+          </tr>
+          <tr>
+            <td>Anak ke</td><td>:</td><td><span id="Anak_Ke">-</span></td>
+          </tr>
+          <tr>
+            <td>Jumlah Saudara</td><td>:</td><td><span id="Saudara">-</span></td>
+          </tr>
+          <tr>
+            <td>Alamat</td><td>:</td><td><span id="Alamat">-</span></td>
+          </tr>
+          <tr>
+            <td>Kode Pos</td><td>:</td><td><span id="Kode_Pos">-</span></td>
+          </tr>
+        </table>
+      </div>    
+      <div class="divider"></div>
+<div class="section">
+  <h2>SEKOLAH ASAL</h2>
+  <table>
+    <tr>
+      <td>Nama Sekolah</td><td>:</td><td><span id="Sekolah">-</span></td>
+    </tr>
+    <tr>
+      <td>NPSN</td><td>:</td><td><span id="Npsn">-</span></td>
+    </tr>
+    <tr>
+      <td>No. Ijazah</td><td>:</td><td><span id="Nomor_Ijazah">-</span></td>
+    </tr>
+    <tr>
+      <td>Wali Ijazah</td><td>:</td><td><span id="Wali_Ijazah">-</span></td>
+    </tr>
+    <tr>
+      <td>Tahun Lulus</td><td>:</td><td><span id="Tahun_Lulus">-</span></td>
+    </tr>
+    <tr>
+      <td>Alamat Sekolah</td><td>:</td><td><span id="Alamat_Sekolah">-</span></td>
+    </tr>
+  </table>
+</div>
+</div>
+    <!-- Center Column -->
+    <div class="column column-right">
+      <div class="divider"></div>
+      <div class="section">
+        <h2>BIODATA ORANG TUA</h2>
+        <table>
+          <tr>
+            <td>Nama Ayah</td><td>:</td><td><span id="Ayah">-</span></td>
+          </tr>
+          <tr>
+            <td>NIK</td><td>:</td><td><span id="Nik_Ayah">-</span></td>
+          </tr>
+          <tr>
+            <td>Tanggal Lahir</td><td>:</td><td><span id="Tla">-</span></td>
+          </tr>
+          <tr>
+            <td>Pendidikan</td><td>:</td><td><span id="Pendidikana">-</span></td>
+          </tr>
+          <tr>
+            <td>Pekerjaan</td><td>:</td><td><span id="Pekerjaana">-</span></td>
+          </tr>
+          <tr>
+            <td>Nama Ibu</td><td>:</td><td><span id="Ibu">-</span></td>
+          </tr>
+          <tr>
+            <td>NIK</td><td>:</td><td><span id="Nik_Ibu">-</span></td>
+          </tr>
+          <tr>
+            <td>Tanggal Lahir</td><td>:</td><td><span id="Tli">-</span></td>
+          </tr>
+          <tr>
+            <td>Pendidikan</td><td>:</td><td><span id="Pendidikani">-</span></td>
+          </tr>
+          <tr>
+            <td>Pekerjaan</td><td>:</td><td><span id="Pekerjaani">-</span></td>
+          </tr>
+        </table>
+      </div>
+    
+      <div class="divider"></div>
+    
+      <div class="section">
+        <h2>BIODATA WALI</h2>
+        <table>
+          <tr>
+            <td>Nama Wali</td><td>:</td><td><span id="Namaw">-</span></td>
+          </tr>
+          <tr>
+            <td>Alamat</td><td>:</td><td><span id="Alamatw">-</span></td>
+          </tr>
+          <tr>
+            <td>Pendidikan</td><td>:</td><td><span id="Pendidikanw">-</span></td>
+          </tr>
+          <tr>
+            <td>Pekerjaan</td><td>:</td><td><span id="Pekerjaanw">-</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <div class="footer">
+    <p>Jika ada kesalahan data, mohon segera <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">hubungi kami</a>.</p>
+    <p>&copy; 2025 MTsAU. Semua hak dilindungi.</p>
+  </div>
+</div>
+
+<div class="floating-icons">
+  <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">
+    <i class="fab fa-whatsapp"></i> <!-- Font Awesome WhatsApp Icon -->
+  </a>
+</div>
+</main>
+<script>
+// Fungsi untuk memformat tanggal
+function formatDate(date) {
+  if (!date) return '-';
+  let d = new Date(date);
+  let day = String(d.getDate()).padStart(2, '0');
+  let month = String(d.getMonth() + 1).padStart(2, '0'); // bulan mulai dari 0
+  let year = d.getFullYear();
+  return day + '-' + month + '-' + year;
+}
+
+// Get the user ID from URL (passed via query parameter)
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get("userId");
+
+if (userId) {
+  console.log("User ID:", userId);
+
+  // Fetch data using the exec URL and the user ID
+  const apiUrl = `https://script.google.com/macros/s/AKfycbwqm_ToUfIXU70qk4kNCOQuSZIzVEP15EBkYt3lLwDz8mU5ma1n55JydvGEWACMtppsMw/exec?action=FetchData&userId=${userId}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data && Array.isArray(data)) {
+        // ID dan Nama
+        document.getElementById("Id").textContent = data[0] || '-';
+        document.getElementById("Name").textContent = data[1] || '-';
+        document.getElementById("Tempat_Lahir").textContent = data[2] || '-';
+
+        // PPDB dan LKS
+        document.getElementById("Tanggal_Lahir").textContent = formatDate(data[3]) || '-';
+        document.getElementById("Alamat").textContent = data[4] || '-';
+        document.getElementById("Kode_Pos").textContent = data[5] || '-';
+        document.getElementById("Anak_Ke").textContent = data[6] || '-';
+        document.getElementById("Saudara").textContent = data[7] || '-';
+        document.getElementById("Sekolah").textContent = data[8] || '-';
+        document.getElementById("Npsn").textContent = data[9] || '-';
+        document.getElementById("Nisn").textContent = data[10] || '-';
+        document.getElementById("Nomor_Ijazah").textContent = data[11] || '-';
+        document.getElementById("Wali_Ijazah").textContent = data[12] || '-';
+        document.getElementById("Tahun_Lulus").textContent = data[13] || '-';
+        document.getElementById("Alamat_Sekolah").textContent = data[14] || '-';
+
+        // Financials and Status
+        document.getElementById("Kk").textContent = data[15] || '-';
+        document.getElementById("Nik_Siswa").textContent = data[16] || '-';
+        document.getElementById("Nik_Ayah").textContent = data[17] || '-';
+        document.getElementById("Ayah").textContent = data[18] || '-';
+        document.getElementById("Tla").textContent = formatDate(data[19]) || '-';
+        document.getElementById("Pendidikana").textContent = data[20] || '-';
+        document.getElementById("Pekerjaana").textContent = data[21] || '-';
+        document.getElementById("Nik_Ibu").textContent = data[22] || '-';
+        document.getElementById("Ibu").textContent = data[23] || '-';
+
+        // PIP Information
+        document.getElementById("Tli").textContent = formatDate(data[24]) || '-';
+        document.getElementById("Pendidikani").textContent = data[25] || '-';
+        document.getElementById("Pekerjaani").textContent = data[26] || '-';
+
+        // Additional Information
+        document.getElementById("Namaw").textContent = data[27] || '-';
+        document.getElementById("Alamatw").textContent = data[28] || '-';
+        document.getElementById("Pendidikanw").textContent = data[29] || '-';
+        document.getElementById("Pekerjaanw").textContent = data[30] || '-';
+
+        // Financial Adjustments
+        document.getElementById("Hp").textContent = data[31] || '-';
+      } else {
+        alert('Data tidak tersedia!');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching student data:', error);
+      alert('Terjadi kesalahan saat mengambil data!');
+    });
+
+} else {
+  console.log("ID tidak ada.");
+  alert("ID tidak ada!");
+}
+
+
+function toggleSidebar() {
+      const sidebar = document.getElementById('sidebarMenu');
+      const mainContent = document.getElementById('mainContent');
+      sidebar.classList.toggle('active');
+      mainContent.classList.toggle('active');
+    }
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebarMenu');
+  const mainContent = document.getElementById('mainContent');
+  const keluar = document.querySelector('.sidebar ul li.keluar a');
+
+  // Tutup sidebar
+  sidebar.classList.remove('active');
+  mainContent.classList.remove('active');
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.querySelector("#sidebarMenu"); // Select sidebar
+  const dashboardLink = document.querySelector(".sidebar ul li.dashboard a");
+  const keluarLink = document.querySelector(".sidebar ul li.keluar a");
+
+  // Event listener for hover on "Keluar"
+  keluarLink.addEventListener("mouseover", () => {
+    sidebar.classList.add('hovering-keluar'); // Add class on hover
+    dashboardLink.classList.remove("active"); // Deactivate Dashboard active style
+  });
+
+  keluarLink.addEventListener("mouseout", () => {
+    sidebar.classList.remove('hovering-keluar'); // Remove class when hover ends
+    dashboardLink.classList.add("active"); // Reactivate Dashboard active style
+  });
+
+  // Toggle Sidebar function
+  const toggleSidebar = () => {
+    const mainContent = document.getElementById('mainContent');
+    sidebar.classList.toggle('active');
+    mainContent.classList.toggle('active');
+  };
+
+  // Close Sidebar function
+  const closeSidebar = () => {
+    const mainContent = document.getElementById('mainContent');
+    sidebar.classList.remove('active');
+    mainContent.classList.remove('active');
+  };
+
+  // Example: Add an event listener for opening the sidebar (like clicking a button)
+  const sidebarToggleButton = document.getElementById('sidebarToggleButton'); // Assume there's a button to toggle the sidebar
+  if (sidebarToggleButton) {
+    sidebarToggleButton.addEventListener("click", toggleSidebar);
+  }
+
+  // Example: Add an event listener to close the sidebar (e.g., clicking the "Keluar" link)
+  keluarLink.addEventListener("click", closeSidebar);
+});
+
+}
+</script>
+
+</body>
+</html>
