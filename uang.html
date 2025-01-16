@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Tag link untuk favicon -->
+  <link rel="icon" href="https://tse2.mm.bing.net/th?id=OIP.PEzGjWR5KT5_WBfoONYflwHaHZ&pid=Api&P=0&h=180" type="image/x-icon" />
+      <!-- Tag meta untuk gambar ketika dibagikan di media sosial -->
+  <meta property="og:image" content="https://tse2.mm.bing.net/th?id=OIP.PEzGjWR5KT5_WBfoONYflwHaHZ&pid=Api&P=0&h=180" />
   <title>MTsAU - Pembayaran Siswa</title>
   <style>
     /* General Reset and Responsive Styles */
@@ -659,6 +663,15 @@ fetch(apiUrl)
       document.getElementById("KAM").textContent = data[59] || '-';        // KAM
       document.getElementById("KWisuda").textContent = data[60] || '-';     // KWisuda
       document.getElementById("KTT").textContent = data[61] || '-';         // KTT
+      // Now save the updated data to localStorage
+      const studentData = {};
+      document.querySelectorAll('.student-details p').forEach(p => {
+        const id = p.querySelector('span').id;
+        studentData[id] = p.querySelector('span').innerText;
+      });
+
+      // Save to localStorage
+      localStorage.setItem("studentData", JSON.stringify(studentData));
     } else {
       alert('Data tidak tersedia!');
     }
