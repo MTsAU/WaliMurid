@@ -235,71 +235,90 @@ header1 .btn-custom:active {
       .login-active .icon-close {
         display: block;
       }
-      /* Floating Icons (WhatsApp and Gmail) */
-    .floating-icons {
-      position: fixed;
-      bottom: 2px;
-      right: 2px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+     /* Container for Icon and Notification */
+.floating-notification {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
 
-    .floating-icons a {
-  background-color: transparent; /* Menghapus background */
-  border-radius: 50%; /* Jika ingin menjaga efek bentuk lingkaran */
-  padding: 0; /* Menghilangkan padding untuk menghapus kotak */
-  box-shadow: none; /* Menghapus bayangan kotak */
-  color: green;
-  font-size: 2em;
+/* Icon Circle Button */
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* White background */
+  color: rgb(40, 200, 72); /* WhatsApp green */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 24px;
 }
 
-.floating-icons a:hover {
+.icon-circle:hover {
   transform: scale(1.1);
-  box-shadow: none; /* Tidak ada bayangan pada hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Notification Box */
+.notification-box {
+  background-color: #ffffff;
+  color: #333;
+  padding: 12px 18px;
+  border-radius: 15px; /* Rounded rectangle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease, fadeOut 0.5s ease 5s; /* Fade animations */
+  position: relative;
+  display: none; /* Initially hidden */
+}
 
-  .floating-icons i {
-    font-size: 24px;
-  }
+/* Triangle/Arrow for Callout */
+.notification-box::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px; /* Triangle pointing down */
+  border-color: #ffffff transparent transparent transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-  #notification-box {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    background-color: #0073e6; /* Notification background */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    display: none; /* Initially hidden */
-    animation: fadeIn 0.5s ease, fadeOut 0.5s ease 5s; /* Show and fade out */
+/* Keyframes for Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@keyframes fadeOut {
+  from {
+    opacity: 1;
   }
+  to {
+    opacity: 0;
+  }
+}
 
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
       </style>
         <header1>
           <div class="header-title">Aplikasi Wali Murid</div>
@@ -340,14 +359,16 @@ header1 .btn-custom:active {
           <input type="submit" value="Masuk" />
         </form>
       </div>
-      <div class="floating-icons">
-        <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">
-          <i class="fab fa-whatsapp"></i> <!-- Font Awesome WhatsApp Icon -->
+      <div class="floating-notification">
+        <!-- Notification Box -->
+        <div id="notification-box" class="notification-box">
+          Jika terkendala error segera hubungi kami.
+        </div>
+        <!-- WhatsApp Icon -->
+        <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank" class="icon-circle">
+          <i class="fab fa-whatsapp"></i>
         </a>
-      </div>
-      <div id="notification-box" class="notification-box">
-        Jika terkendala segera hubungi kami.
-      </div>
+      </div>      
     </section>
 
     <script>
