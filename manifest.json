@@ -1,13 +1,13 @@
 {
     "name": "MTsAU",
     "short_name": "MTsAU",
-    "start_url": "/",
+    "start_url": "https://mtsau.github.io/WaliMurid/",
     "display": "standalone",
     "background_color": "#ffffff",
     "description": "Aplikasi Wali Murid MTsAU",
     "icons": [
       {
-        "src": "path/to/icon.png",
+        "src": "https://github.com/mtsalutsmani/MTsAU/blob/main/LOGO%20MTS%202024.png?raw=true",
         "sizes": "192x192",
         "type": "image/png"
       }
