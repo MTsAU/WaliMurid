@@ -556,59 +556,64 @@ if (userId) {
     .then(response => response.json())
     .then(data => {
       if (data && Array.isArray(data)) {
-        // Helper function to format numbers as rounded integers or display "-"
-        const formatNumber = value => (isNaN(value) || value === null ? '-' : Math.round(value));
+        const formatNumber = (value, addHari = false) => {
+        if (isNaN(value) || value === null) {
+          return '-';
+        }
+        const formattedValue = Math.round(value);
+        return addHari ? `${formattedValue} Hari` : formattedValue;
+      };
 
-        // Update elements with formatted data
-        document.getElementById("Id").textContent = data[0] || '-';
-        document.getElementById("Name").textContent = data[1] || '-';
-        document.getElementById("JuliA").textContent = formatNumber(data[2]);
-        document.getElementById("JuliS").textContent = formatNumber(data[3]);
-        document.getElementById("JuliI").textContent = formatNumber(data[4]);
-        document.getElementById("AgustusA").textContent = formatNumber(data[5]);
-        document.getElementById("AgustusS").textContent = formatNumber(data[6]);
-        document.getElementById("AgustusI").textContent = formatNumber(data[7]);
-        document.getElementById("SeptemberA").textContent = formatNumber(data[8]);
-        document.getElementById("SeptemberS").textContent = formatNumber(data[9]);
-        document.getElementById("SeptemberI").textContent = formatNumber(data[10]);
-        document.getElementById("OktoberA").textContent = formatNumber(data[11]);
-        document.getElementById("OktoberS").textContent = formatNumber(data[12]);
-        document.getElementById("OktoberI").textContent = formatNumber(data[13]);
-        document.getElementById("NovemberA").textContent = formatNumber(data[14]);
-        document.getElementById("NovemberS").textContent = formatNumber(data[15]);
-        document.getElementById("NovemberI").textContent = formatNumber(data[16]);
-        document.getElementById("DesemberA").textContent = formatNumber(data[17]);
-        document.getElementById("DesemberS").textContent = formatNumber(data[18]);
-        document.getElementById("DesemberI").textContent = formatNumber(data[19]);
-        document.getElementById("JanuariA").textContent = formatNumber(data[20]);
-        document.getElementById("JanuariS").textContent = formatNumber(data[21]);
-        document.getElementById("JanuariI").textContent = formatNumber(data[22]);
-        document.getElementById("FebruariA").textContent = formatNumber(data[23]);
-        document.getElementById("FebruariS").textContent = formatNumber(data[24]);
-        document.getElementById("FebruariI").textContent = formatNumber(data[25]);
-        document.getElementById("MaretA").textContent = formatNumber(data[26]);
-        document.getElementById("MaretS").textContent = formatNumber(data[27]);
-        document.getElementById("MaretI").textContent = formatNumber(data[28]);
-        document.getElementById("AprilA").textContent = formatNumber(data[29]);
-        document.getElementById("AprilS").textContent = formatNumber(data[30]);
-        document.getElementById("AprilI").textContent = formatNumber(data[31]);
-        document.getElementById("MeiA").textContent = formatNumber(data[32]);
-        document.getElementById("MeiS").textContent = formatNumber(data[33]);
-        document.getElementById("MeiI").textContent = formatNumber(data[34]);
-        document.getElementById("JuniA").textContent = formatNumber(data[35]);
-        document.getElementById("JuniS").textContent = formatNumber(data[36]);
-        document.getElementById("JuniI").textContent = formatNumber(data[37]);
-        document.getElementById("GanjilA").textContent = formatNumber(data[38]);
-        document.getElementById("GanjilS").textContent = formatNumber(data[39]);
-        document.getElementById("GanjilI").textContent = formatNumber(data[40]);
-        document.getElementById("GenapA").textContent = `${formatNumber(data[41])} Hari`;
-        document.getElementById("GenapS").textContent = formatNumber(data[42]);
-        document.getElementById("GenapI").textContent = formatNumber(data[43]);
-        document.getElementById("Kosong").textContent = data[44];
-        document.getElementById("Kelas").textContent = data[45] || '-';
-        document.getElementById("JumlahA").textContent = formatNumber(data[46]);
-        document.getElementById("JumlahS").textContent = formatNumber(data[47]);
-        document.getElementById("JumlahI").textContent = formatNumber(data[48]);
+      // Update elements with formatted data
+      document.getElementById("Id").textContent = data[0] || '-';
+      document.getElementById("Name").textContent = data[1] || '-';
+      document.getElementById("JuliA").textContent = formatNumber(data[2], true);
+      document.getElementById("JuliS").textContent = formatNumber(data[3], true);
+      document.getElementById("JuliI").textContent = formatNumber(data[4], true);
+      document.getElementById("AgustusA").textContent = formatNumber(data[5], true);
+      document.getElementById("AgustusS").textContent = formatNumber(data[6], true);
+      document.getElementById("AgustusI").textContent = formatNumber(data[7], true);
+      document.getElementById("SeptemberA").textContent = formatNumber(data[8], true);
+      document.getElementById("SeptemberS").textContent = formatNumber(data[9], true);
+      document.getElementById("SeptemberI").textContent = formatNumber(data[10], true);
+      document.getElementById("OktoberA").textContent = formatNumber(data[11], true);
+      document.getElementById("OktoberS").textContent = formatNumber(data[12], true);
+      document.getElementById("OktoberI").textContent = formatNumber(data[13], true);
+      document.getElementById("NovemberA").textContent = formatNumber(data[14], true);
+      document.getElementById("NovemberS").textContent = formatNumber(data[15], true);
+      document.getElementById("NovemberI").textContent = formatNumber(data[16], true);
+      document.getElementById("DesemberA").textContent = formatNumber(data[17], true);
+      document.getElementById("DesemberS").textContent = formatNumber(data[18], true);
+      document.getElementById("DesemberI").textContent = formatNumber(data[19], true);
+      document.getElementById("JanuariA").textContent = formatNumber(data[20], true);
+      document.getElementById("JanuariS").textContent = formatNumber(data[21], true);
+      document.getElementById("JanuariI").textContent = formatNumber(data[22], true);
+      document.getElementById("FebruariA").textContent = formatNumber(data[23], true);
+      document.getElementById("FebruariS").textContent = formatNumber(data[24], true);
+      document.getElementById("FebruariI").textContent = formatNumber(data[25], true);
+      document.getElementById("MaretA").textContent = formatNumber(data[26], true);
+      document.getElementById("MaretS").textContent = formatNumber(data[27], true);
+      document.getElementById("MaretI").textContent = formatNumber(data[28], true);
+      document.getElementById("AprilA").textContent = formatNumber(data[29], true);
+      document.getElementById("AprilS").textContent = formatNumber(data[30], true);
+      document.getElementById("AprilI").textContent = formatNumber(data[31], true);
+      document.getElementById("MeiA").textContent = formatNumber(data[32], true);
+      document.getElementById("MeiS").textContent = formatNumber(data[33], true);
+      document.getElementById("MeiI").textContent = formatNumber(data[34], true);
+      document.getElementById("JuniA").textContent = formatNumber(data[35], true);
+      document.getElementById("JuniS").textContent = formatNumber(data[36], true);
+      document.getElementById("JuniI").textContent = formatNumber(data[37], true);
+      document.getElementById("GanjilA").textContent = formatNumber(data[38], true);
+      document.getElementById("GanjilS").textContent = formatNumber(data[39], true);
+      document.getElementById("GanjilI").textContent = formatNumber(data[40], true);
+      document.getElementById("GenapA").textContent = formatNumber(data[41], true); // Add "Hari" for column 41
+      document.getElementById("GenapS").textContent = formatNumber(data[42], true);
+      document.getElementById("GenapI").textContent = formatNumber(data[43], true);
+      document.getElementById("Kosong").textContent = data[44];
+      document.getElementById("Kelas").textContent = data[45] || '-';
+      document.getElementById("JumlahA").textContent = formatNumber(data[46], true);
+      document.getElementById("JumlahS").textContent = formatNumber(data[47], true);
+      document.getElementById("JumlahI").textContent = formatNumber(data[48], true);
       } else {
         alert('Data tidak tersedia!');
       }
