@@ -238,12 +238,11 @@ header1 .btn-custom:active {
      /* Container for Icon and Notification */
 .floating-notification {
   position: fixed;
-  bottom: 80px;
-  right: 30px;
+  bottom: 140px;
+  right: 10px; /* Position container to the right */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: center; /* Vertically align icon and notification */
+  gap: 10px; /* Space between notification and icon */
   z-index: 1000;
 }
 
@@ -254,8 +253,8 @@ header1 .btn-custom:active {
   justify-content: center;
   background-color: #ffffff; /* White background */
   color: rgb(40, 200, 72); /* WhatsApp green */
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   text-decoration: none;
@@ -281,20 +280,21 @@ header1 .btn-custom:active {
   animation: fadeIn 0.5s ease, fadeOut 0.5s ease 5s; /* Fade animations */
   position: relative;
   display: none; /* Initially hidden */
+  order: -1; /* Ensure notification appears to the left of the icon */
 }
 
 /* Triangle/Arrow for Callout */
-.notification-box::before {
+.notification-box::after {
   content: '';
   position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: -10px; /* Triangle pointing to the icon */
+  top: 50%;
+  transform: translateY(-50%);
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 10px 10px 0 10px; /* Triangle pointing down */
-  border-color: #ffffff transparent transparent transparent;
+  border-width: 10px 10px 10px 0; /* Triangle pointing left */
+  border-color: transparent #ffffff transparent transparent; /* Color for the triangle */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -319,6 +319,7 @@ header1 .btn-custom:active {
   }
 }
 
+
       </style>
         <header1>
           <div class="header-title">Aplikasi Wali Murid</div>
@@ -339,15 +340,15 @@ header1 .btn-custom:active {
             MTs. AL-UTSMANI
           </h1>
           <h2 style="text-align: center; font-size: 1rem; color: #555;">
-            Beddian Jambesari Darus Sholah Bondowoso
+            Beddian Jambesari DS Bondowoso
           </h2>
         </header>
         <div class="notification-content" style="text-align: center; margin-top: 20px;">
-          <p style="font-size: 1rem; color: #333; line-height: 1.5;">
+          <p style="font-size: 1rem; color: #ffffff; line-height: 1.5;">
             Tekan <strong>"Login"</strong>
           </p>
-          <p style="font-size: 1rem; color: #333; line-height: 1.5;">
-             Masukkan <strong>NIS</strong> (Nomor Induk Sekolah) Putra Anda
+          <p style="font-size: 1rem; color: #ffffff; line-height: 1.5;">
+             Masukkan <strong>NIS</strong> (Nomor Induk Sekolah) Siswa
           </p>
         </div>
 
