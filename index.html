@@ -3,8 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="manifest" href="manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <!-- Tag link untuk favicon -->
+    <link rel="icon" href="https://tse2.mm.bing.net/th?id=OIP.PEzGjWR5KT5_WBfoONYflwHaHZ&pid=Api&P=0&h=180" type="image/x-icon" />
+        <!-- Tag meta untuk gambar ketika dibagikan di media sosial -->
+    <meta property="og:image" content="https://tse2.mm.bing.net/th?id=OIP.PEzGjWR5KT5_WBfoONYflwHaHZ&pid=Api&P=0&h=180" />
     <title>MTsAU - Login</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -172,17 +177,21 @@
       .icon-close {
         display: none;
       }
-
+      
       /* Menampilkan ikon tutup ketika halaman login aktif */
       .login-active .icon-close {
         display: block;
       }
       
-</style>
+      </style>
     <section class="wrapper">
       <div class="form signup">
+        <header>          <button id="installButton" class="btn-custom">
+          Install Aplikasi
+        </button></header>
         <header><i class="fas fa-times icon-close"></i></header>
         <header>
+
           <img 
             src="https://github.com/mtsalutsmani/MTsAU/blob/main/LOGO%20MTS%202024.png?raw=true" 
             alt="Logo MTs. AL-UTSMANI" 
@@ -210,6 +219,8 @@
           <input type="submit" value="Masuk" />
         </form>
       </div>
+
+      
     </section>
 
     <script>
@@ -261,6 +272,36 @@
           iconClose.style.display = 'none'; // Hide close icon
         });
       });
+      if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(function (registration) {
+        console.log("Service Worker terdaftar dengan sukses:", registration);
+      })
+      .catch(function (error) {
+        console.log("Service Worker pendaftaran gagal:", error);
+      });
+  });
+}
+// Menampilkan tombol install tanpa menunggu event 'beforeinstallprompt'
+document.getElementById("installButton").style.display = 'block';
+
+// Menangani klik pada tombol install
+const installButton = document.getElementById('installButton');
+
+installButton.addEventListener('click', () => {
+  if ('serviceWorker' in navigator && 'beforeinstallprompt' in window) {
+    // Jika event install ada, tampilkan prompt pemasangan
+    let installPromptEvent;
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault(); // Memblokir prompt default
+      installPromptEvent = event;
+      installPromptEvent.prompt(); // Menampilkan prompt install
+    });
+  }
+});
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
