@@ -1,0 +1,16 @@
+{
+    "name": "MTsAU",
+    "short_name": "MTsAU",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "Aplikasi Wali Murid MTsAU",
+    "icons": [
+      {
+        "src": "path/to/icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
+  
