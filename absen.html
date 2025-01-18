@@ -557,13 +557,15 @@ if (userId) {
     .then(data => {
       if (data && Array.isArray(data)) {
         const formatNumber = (value, addHari = false) => {
-        if (isNaN(value) || value === null) {
-          return '-';
-        }
-        const formattedValue = Math.round(value);
-        return addHari ? `${formattedValue} Hari` : formattedValue;
-      };
-
+  if (isNaN(value) || value === null) {
+    return '-';
+  }
+  const formattedValue = Math.round(value);
+  if (formattedValue === 0) {
+    return formattedValue;
+  }
+  return addHari ? `${formattedValue} Hari` : formattedValue;
+};
       // Update elements with formatted data
       document.getElementById("Id").textContent = data[0] || '-';
       document.getElementById("Name").textContent = data[1] || '-';
