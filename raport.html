@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Tag link untuk favicon -->
+  <link rel="icon" href="https://tse2.mm.bing.net/th?id=OIP.PEzGjWR5KT5_WBfoONYflwHaHZ&pid=Api&P=0&h=180" type="image/x-icon" />
+      <!-- Tag meta untuk gambar ketika dibagikan di media sosial -->
+  <meta property="og:image" content="https://tse2.mm.bing.net/th?id=OIP.PEzGjWR5KT5_WBfoONYflwHaHZ&pid=Api&P=0&h=180" />
+  <title>MTsAU - Pembayaran Siswa</title>
+  <style>
+    /* General Reset and Responsive Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #0073e6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Sidebar Menu */
+.sidebar {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  top: 40px; /* Disesuaikan agar berada di bawah header */
+  left: -150px;
+  background-color: #0073e6;
+  transition: 0.3s;
+  padding-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 800;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  padding: 5px 10px;
+  text-align: left;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  color: #fff;
+  background-color: #000;
+}
+
+/* Main Content */
+main {
+  margin-left: 0;
+  margin-top: 40px; /* Start below the header */
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+main.active {
+  margin-left: 100px;
+}
+
+/* General Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.student-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 0; /* Remove border radius to make the photo square */
+  object-fit: cover;
+  border: 3px solid #007BFF;
+}
+
+.student-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.student-details h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: #007BFF;
+}
+
+.student-details p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.column-left {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column-right {
+  background-color: #fff7e6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  color: #444;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 15px 0;
+}
+
+.payment-details {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.payment-details td {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.payment-details td:first-child {
+  font-weight: bold;
+  color: #000000;
+}
+
+.payment-details td:nth-child(2),
+.payment-details td:nth-child(3),
+.payment-details td:nth-child(4) {
+  text-align: center;
+}
+/* Column Styles */
+.column {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.column-left {
+  flex: 1 1 45%;
+}
+
+.column-right {
+  flex: 1 1 45%;
+}
+
+/* Divider between sections */
+.divider {
+  border-top: 2px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+/* Section headers */
+.section h2 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Paragraphs in sections */
+.section p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Span for data display */
+span {
+  font-weight: bold;
+  color: #007BFF;
+}
+table td {
+  vertical-align: top;
+}
+
+table td span {
+  display: block;  /* Membuat span menjadi block-level element */
+}
+
+.payment-details {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.payment-details td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.payment-details td:first-child {
+  font-weight: bold;
+  background-color: #f4f4f4;
+}
+
+.payment-details span {
+  font-weight: bold;
+  color: #007BFF;
+}
+.icon {
+      margin-left: 10px;
+      font-size: 1.3em;
+    }
+
+    /* Footer Section */
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    /* Floating Icons (WhatsApp and Gmail) */
+    .floating-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-icons a {
+  background-color: transparent; /* Menghapus background */
+  border-radius: 50%; /* Jika ingin menjaga efek bentuk lingkaran */
+  padding: 0; /* Menghilangkan padding untuk menghapus kotak */
+  box-shadow: none; /* Menghapus bayangan kotak */
+  color: green;
+  font-size: 2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-icons a:hover {
+  transform: scale(1.1);
+  box-shadow: none; /* Tidak ada bayangan pada hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .student-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>  
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebarMenu">
+    <ul>
+      <li class="dashboard"><a class="active">Pembayaran</a></li>
+      <li class="keluar"><a href="data.html">Keluar</a></li>      
+    </ul>
+  </div>
+  <main id="mainContent">
+    <div class="container" style="display: flex; align-items: flex-start; gap: 20px;">
+      <!-- Bagian Foto Siswa -->
+      <div class="student-image" style="flex-shrink: 0;">
+        <img src="https://github.com/mtsalutsmani/MTsAU/blob/main/th.jpg?raw=true" 
+             alt="Student Photo" 
+             style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #ddd;" 
+             onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png';" />
+      </div>
+    
+      <!-- Bagian Detail Siswa -->
+      <div class="student-details" style="flex-grow: 1; font-family: Arial, sans-serif;">
+        <h2 id="Name" style="margin-bottom: 10px;">Loading...</h2>
+        <p>NIS : <span id="Id">-</span></p>
+        <p>Kelas : <span id="Kelas">-</span></p>
+      </div>
+    </div>
+    
+  <div class="row">
+    <!-- Left Column -->
+    <div class="column column-left">
+      <div class="divider"></div>
+      <div class="section">
+        <h2>STATUS</h2>
+        <table>
+          <tr>
+            <td>Status</td><td>:</td><td><span id="NISN">-</span></td>
+          </tr>
+          <tr>
+            <td>Angkatan</td><td>:</td><td><span id="Angkatan">-</span></td>
+          </tr>
+          <tr>
+            <td>Keterangan Mutasi</td><td>:</td><td><span id="Ket_Mutasi">-</span></td>
+          </tr>
+          <tr>
+            <td>Pernah Tidak Naik</td><td>:</td><td><span id="Pernah_Tidak_Naik">-</span></td>
+          </tr>
+          <tr>
+            <td>Dapat PIP</td><td>:</td><td><span id="Dapat_PIP">-</span></td>
+          </tr>
+          <tr>
+            <td>Saldo PIP</td><td>:</td><td><span id="Saldo_PIP">-</span></td>
+          </tr>
+          <tr>
+            <td>Sisa PIP</td><td>:</td><td><span id="Sisa_PIP">-</span></td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="section">
+        <h2>TANGGUNGAN</h2>
+        <table>
+          <tr>
+            <td>Total</td><td>:</td><td><span id="Total">-</span></td>
+          </tr>
+          <tr>
+            <td>Pemotongan</td><td>:</td><td><span id="Pemotongan">-</span></td>
+          </tr>
+          <tr>
+            <td>Dibayar</td><td>:</td><td><span id="Dibayar">-</span></td>
+          </tr>
+          <tr>
+            <td>Sisa</td><td>:</td><td><span id="Sisa">-</span></td>
+          </tr>
+          <tr>
+            <td>Lunas</td><td>:</td><td><span id="Lunas">-</span></td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="section">
+        <h2>KETERANGAN</h2>
+        <table>
+          <tr>
+            <td>Tambahan Tanggungan</td><td>:</td><td><span id="Rincian">-</span></td>
+          </tr>
+          <tr>
+            <td>Rincian Pemotongan</td><td>:</td><td><span id="Ket_Pem">-</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Center Column -->
+<div class="column column-right">
+  <div class="section">
+    <h2>RINCIAN PEMBAYARAN</h2>
+    <table class="payment-details">
+      <tbody>
+      <thead>
+        <tr>
+          <td style="font-size: 13px; text-align: center; color: #0188ff;  font-weight: bold; background-color: #e0e0e0;">RINCIAN</td>
+          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">TANGGUNGAN</td>
+          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">BAYAR</td>
+          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">KURANG</td>
+        </tr>
+      </thead>
+      <tr>
+        <td style="font-size: 11px;">PPDB</td>
+        <td><span id="TPPDB">-</span></td>
+        <td><span id="PPDB">-</span></td>
+        <td><span id="KPPDB">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">LKS Ganjil 7</td>
+        <td><span id="TLKS_Ga_7">-</span></td>
+        <td><span id="LKS_Ga_7">-</span></td>
+        <td><span id="KLKS_Ga_7">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">LKS Genap 7</td>
+        <td><span id="TLKS_Ge_7">-</span></td>
+        <td><span id="LKS_Ge_7">-</span></td>
+        <td><span id="KLKS_Ge_7">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Semester 1</td>
+        <td><span id="TSmst_Ga_7">-</span></td>
+        <td><span id="Smst_Ga_7">-</span></td>
+        <td><span id="KSmst_Ga_7">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Semester 2</td>
+        <td><span id="TSmst_Ge_7">-</span></td>
+        <td><span id="Smst_Ge_7">-</span></td>
+        <td><span id="KSmst_Ge_7">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">LKS Ganjil 8</td>
+        <td><span id="TLKS_Ga_8">-</span></td>
+        <td><span id="LKS_Ga_8">-</span></td>
+        <td><span id="KLKS_Ga_8">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">LKS Genap 8</td>
+        <td><span id="TLKS_Ge_8">-</span></td>
+        <td><span id="LKS_Ge_8">-</span></td>
+        <td><span id="KLKS_Ge_8">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Semester 3</td>
+        <td><span id="TSmst_Ga_8">-</span></td>
+        <td><span id="Smst_Ga_8">-</span></td>
+        <td><span id="KSmst_Ga_8">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Semester 4</td>
+        <td><span id="TSmst_Ge_8">-</span></td>
+        <td><span id="Smst_Ge_8">-</span></td>
+        <td><span id="KSmst_Ge_8">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">LKS Ganjil 9</td>
+        <td><span id="TLKS_Ga_9">-</span></td>
+        <td><span id="LKS_Ga_9">-</span></td>
+        <td><span id="KLKS_Ga_9">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">LKS Genap 9</td>
+        <td><span id="TLKS_Ge_9">-</span></td>
+        <td><span id="LKS_Ge_9">-</span></td>
+        <td><span id="KLKS_Ge_9">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Semester 5</td>
+        <td><span id="TSmst_Ga_9">-</span></td>
+        <td><span id="Smst_Ga_9">-</span></td>
+        <td><span id="KSmst_Ga_9">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">AM</td>
+        <td><span id="TAM">-</span></td>
+        <td><span id="AM">-</span></td>
+        <td><span id="KAM">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Wisuda</td>
+        <td><span id="TWisuda">-</span></td>
+        <td><span id="Wisuda">-</span></td>
+        <td><span id="KWisuda">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">Tambahan</td>
+        <td><span id="Tambahan">-</span></td>
+        <td><span id="Bayar">-</span></td>
+        <td><span id="KTT">-</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+  <div class="footer">
+    <p>Jika ada kesalahan data, mohon segera <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">hubungi kami</a>.</p>
+    <p>&copy; 2025 MTsAU. Semua hak dilindungi.</p>
+  </div>
+</div>
+
+<div class="floating-icons">
+  <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">
+    <i class="fab fa-whatsapp"></i> <!-- Font Awesome WhatsApp Icon -->
+  </a>
+</div>
+</main>
+<script>
+  // Get the user ID from localStorage
+  const userId = localStorage.getItem("userId");
+  if (!userId) {
+    window.location.href = "index.html"; // Redirect to login if no ID found
+  }
+
+  // Fetch data using the exec URL and the user ID
+  const apiUrl = `https://script.google.com/macros/s/AKfycbxsuTmOToxMq_bfu4iItAYeYV_M2BdFN9M0dRCcFhMBqaRuazrzraLAW9O55AQi0ncI5A/exec?action=FetchData&userId=${userId}`;
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    if (data && Array.isArray(data)) {
+      // ID dan Nama
+      document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';         // ID
+      document.getElementById("NISN").textContent = data[1] || '-';       // Nama
+      document.getElementById("Name").textContent = data[2] || '-';      // Kelas
+
+      // PPDB dan LKS
+      document.getElementById("Kelas").textContent = data[3] || '-';       // PPDB
+      document.getElementById("LKS_Ga_7").textContent = data[4] || '-';   // LKS_Ga_7
+      document.getElementById("LKS_Ge_7").textContent = data[5] || '-';   // LKS_Ge_7
+      document.getElementById("Smst_Ga_7").textContent = data[6] || '-';  // Smst_Ga_7
+      document.getElementById("Smst_Ge_7").textContent = data[7] || '-';  // Smst_Ge_7
+      document.getElementById("LKS_Ga_8").textContent = data[8] || '-';   // LKS_Ga_8
+      document.getElementById("LKS_Ge_8").textContent = data[9] || '-';   // LKS_Ge_8
+      document.getElementById("Smst_Ga_8").textContent = data[10] || '-'; // Smst_Ga_8
+      document.getElementById("Smst_Ge_8").textContent = data[11] || '-'; // Smst_Ge_8
+      document.getElementById("LKS_Ga_9").textContent = data[12] || '-';  // LKS_Ga_9
+      document.getElementById("LKS_Ge_9").textContent = data[13] || '-';  // LKS_Ge_9
+      document.getElementById("Smst_Ga_9").textContent = data[14] || '-'; // Smst_Ga_9
+
+      // Financials and Status
+      document.getElementById("AM").textContent = data[15] || '-';       // AM
+      document.getElementById("Wisuda").textContent = data[16] || '-';    // Wisuda
+      document.getElementById("Tambahan").textContent = data[17] || '-';  // Tambahan
+      document.getElementById("Rincian").textContent = data[18] || '-';   // Rincian
+      document.getElementById("Bayar").textContent = data[19] || '-';     // Bayar
+      document.getElementById("Total").textContent = data[20] || '-';     // Total
+      document.getElementById("Dibayar").textContent = data[21] || '-';   // Dibayar
+      document.getElementById("Sisa").textContent = data[22] || '-';      // Sisa
+      document.getElementById("Lunas").textContent = data[23] || '-';     // Lunas
+
+      // PIP Information
+      document.getElementById("Dapat_PIP").textContent = data[24] || '-';  // Dapat_PIP
+      document.getElementById("Saldo_PIP").textContent = data[25] || '-';  // Saldo_PIP
+      document.getElementById("Sisa_PIP").textContent = data[26] || '-';   // Sisa_PIP
+
+      // Additional Information
+      document.getElementById("Angkatan").textContent = data[27] || '-';  // Angkatan
+      document.getElementById("Status").textContent = data[28] || '-';    // Status
+      document.getElementById("Ket_Mutasi").textContent = data[29] || '-'; // Ket_Mutasi
+      document.getElementById("Pernah_Tidak_Naik").textContent = data[30] || '-'; // Pernah_Tidak_Naik
+
+      // Financial Adjustments
+      document.getElementById("Pemotongan").textContent = data[31] || '-';  // Pemotongan
+      document.getElementById("Ket_Pem").textContent = data[32] || '-';      // Ket_Pem
+      document.getElementById("TPPDB").textContent = data[33] || '-';       // TPPDB
+
+      // TLKS and Smst for various grades
+      document.getElementById("TLKS_Ga_7").textContent = data[34] || '-';   // TLKS_Ga_7
+      document.getElementById("TLKS_Ge_7").textContent = data[35] || '-';   // TLKS_Ge_7
+      document.getElementById("TSmst_Ga_7").textContent = data[36] || '-';  // TSmst_Ga_7
+      document.getElementById("TSmst_Ge_7").textContent = data[37] || '-';  // TSmst_Ge_7
+      document.getElementById("TLKS_Ga_8").textContent = data[38] || '-';   // TLKS_Ga_8
+      document.getElementById("TLKS_Ge_8").textContent = data[39] || '-';   // TLKS_Ge_8
+      document.getElementById("TSmst_Ga_8").textContent = data[40] || '-';  // TSmst_Ga_8
+      document.getElementById("TSmst_Ge_8").textContent = data[41] || '-';  // TSmst_Ge_8
+      document.getElementById("TLKS_Ga_9").textContent = data[42] || '-';   // TLKS_Ga_9
+      document.getElementById("TLKS_Ge_9").textContent = data[43] || '-';   // TLKS_Ge_9
+      document.getElementById("TSmst_Ga_9").textContent = data[44] || '-';  // TSmst_Ga_9
+
+      // Additional Financial Data
+      document.getElementById("TAM").textContent = data[45] || '-';        // TAM
+      document.getElementById("TWisuda").textContent = data[46] || '-';     // TWisuda
+      document.getElementById("KPPDB").textContent = data[47] || '-';       // KPPDB
+
+      // KLKS and KSmst for various grades
+      document.getElementById("KLKS_Ga_7").textContent = data[48] || '-';   // KLKS_Ga_7
+      document.getElementById("KLKS_Ge_7").textContent = data[49] || '-';   // KLKS_Ge_7
+      document.getElementById("KSmst_Ga_7").textContent = data[50] || '-';  // KSmst_Ga_7
+      document.getElementById("KSmst_Ge_7").textContent = data[51] || '-';  // KSmst_Ge_7
+      document.getElementById("KLKS_Ga_8").textContent = data[52] || '-';   // KLKS_Ga_8
+      document.getElementById("KLKS_Ge_8").textContent = data[53] || '-';   // KLKS_Ge_8
+      document.getElementById("KSmst_Ga_8").textContent = data[54] || '-';  // KSmst_Ga_8
+      document.getElementById("KSmst_Ge_8").textContent = data[55] || '-';  // KSmst_Ge_8
+      document.getElementById("KLKS_Ga_9").textContent = data[56] || '-';   // KLKS_Ga_9
+      document.getElementById("KLKS_Ge_9").textContent = data[57] || '-';   // KLKS_Ge_9
+      document.getElementById("KSmst_Ga_9").textContent = data[58] || '-';  // KSmst_Ga_9
+
+      // Additional status and KAM data
+      document.getElementById("KAM").textContent = data[59] || '-';        // KAM
+      document.getElementById("KWisuda").textContent = data[60] || '-';     // KWisuda
+      document.getElementById("KTT").textContent = data[61] || '-';         // KTT
+      // Now save the updated data to localStorage
+      const studentData = {};
+      document.querySelectorAll('.student-details p').forEach(p => {
+        const id = p.querySelector('span').id;
+        studentData[id] = p.querySelector('span').innerText;
+      });
+
+      // Save to localStorage
+      localStorage.setItem("studentData", JSON.stringify(studentData));
+    } else {
+      alert('Data tidak tersedia!');
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching student data:', error);
+    alert('Terjadi kesalahan saat mengambil data!');
+  });
+// Ambil semua elemen dengan ID yang diinginkan
+const studentData = {};
+document.querySelectorAll('.student-details p').forEach(p => {
+  const id = p.querySelector('span').id;
+  studentData[id] = p.querySelector('span').innerText;
+});
+
+// Simpan data ke localStorage
+localStorage.setItem("studentData", JSON.stringify(studentData));
+
+function toggleSidebar() {
+      const sidebar = document.getElementById('sidebarMenu');
+      const mainContent = document.getElementById('mainContent');
+      sidebar.classList.toggle('active');
+      mainContent.classList.toggle('active');
+    }
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebarMenu');
+  const mainContent = document.getElementById('mainContent');
+  const keluar = document.querySelector('.sidebar ul li.keluar a');
+
+  // Tutup sidebar
+  sidebar.classList.remove('active');
+  mainContent.classList.remove('active');
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.querySelector("#sidebarMenu"); // Select sidebar
+  const dashboardLink = document.querySelector(".sidebar ul li.dashboard a");
+  const keluarLink = document.querySelector(".sidebar ul li.keluar a");
+
+  // Event listener for hover on "Keluar"
+  keluarLink.addEventListener("mouseover", () => {
+    sidebar.classList.add('hovering-keluar'); // Add class on hover
+    dashboardLink.classList.remove("active"); // Deactivate Dashboard active style
+  });
+
+  keluarLink.addEventListener("mouseout", () => {
+    sidebar.classList.remove('hovering-keluar'); // Remove class when hover ends
+    dashboardLink.classList.add("active"); // Reactivate Dashboard active style
+  });
+
+  // Toggle Sidebar function
+  const toggleSidebar = () => {
+    const mainContent = document.getElementById('mainContent');
+    sidebar.classList.toggle('active');
+    mainContent.classList.toggle('active');
+  };
+
+  // Close Sidebar function
+  const closeSidebar = () => {
+    const mainContent = document.getElementById('mainContent');
+    sidebar.classList.remove('active');
+    mainContent.classList.remove('active');
+  };
+
+  // Example: Add an event listener for opening the sidebar (like clicking a button)
+  const sidebarToggleButton = document.getElementById('sidebarToggleButton'); // Assume there's a button to toggle the sidebar
+  if (sidebarToggleButton) {
+    sidebarToggleButton.addEventListener("click", toggleSidebar);
+  }
+
+  // Example: Add an event listener to close the sidebar (e.g., clicking the "Keluar" link)
+  keluarLink.addEventListener("click", closeSidebar);
+});
+
+}
+</script>
+
+</body>
+</html>
