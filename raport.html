@@ -226,7 +226,9 @@ body {
 .column-left {
   flex: 1 1 45%;
 }
-
+.column-center {
+  flex: 1 1 45%;
+}
 .column-right {
   flex: 1 1 45%;
 }
@@ -243,6 +245,7 @@ body {
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: 600;
+  text-align: center;
 }
 
 /* Paragraphs in sections */
@@ -297,6 +300,7 @@ table td span {
       font-size: 14px;
       color: #777;
       margin-top: 10px;
+      margin-bottom: 20px;
     }
 
     .footer a {
@@ -308,7 +312,7 @@ table td span {
     .floating-icons {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      right: 2px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -328,7 +332,44 @@ table td span {
   transform: scale(1.1);
   box-shadow: none; /* Tidak ada bayangan pada hover */
 }
+.semester-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
+.semester-buttons button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.semester-buttons button:hover {
+  background-color: #45a049;
+}
+.semester-content {
+  text-align: center;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.semester-content h2 {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .student-info {
@@ -372,189 +413,738 @@ table td span {
       <div class="student-details" style="flex-grow: 1; font-family: Arial, sans-serif;">
         <h2 id="Name" style="margin-bottom: 10px;">Loading...</h2>
         <p>NIS : <span id="Id">-</span></p>
+        <p>NISN : <span id="NISN">-</span></p>
         <p>Kelas : <span id="Kelas">-</span></p>
       </div>
     </div>
-    
-  <div class="row">
-    <!-- Left Column -->
-    <div class="column column-left">
-      <div class="divider"></div>
-      <div class="section">
-        <h2>STATUS</h2>
-        <table>
-          <tr>
-            <td>Status</td><td>:</td><td><span id="NISN">-</span></td>
-          </tr>
-          <tr>
-            <td>Angkatan</td><td>:</td><td><span id="Angkatan">-</span></td>
-          </tr>
-          <tr>
-            <td>Keterangan Mutasi</td><td>:</td><td><span id="Ket_Mutasi">-</span></td>
-          </tr>
-          <tr>
-            <td>Pernah Tidak Naik</td><td>:</td><td><span id="Pernah_Tidak_Naik">-</span></td>
-          </tr>
-          <tr>
-            <td>Dapat PIP</td><td>:</td><td><span id="Dapat_PIP">-</span></td>
-          </tr>
-          <tr>
-            <td>Saldo PIP</td><td>:</td><td><span id="Saldo_PIP">-</span></td>
-          </tr>
-          <tr>
-            <td>Sisa PIP</td><td>:</td><td><span id="Sisa_PIP">-</span></td>
-          </tr>
-        </table>
-      </div>
+    <h2 style="text-align: center; font-size: 24px; font-weight: bold; color: #333; margin-top: 20px; margin-bottom: 20px; padding: 7px; border: 2px solid #333; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    RAPORT SISWA
+</h2>
+  <div class="semester-container">
+    <h3>PILIH NILAI SEMESTER</h3>
+    <div class="semester-buttons">
+      <button onclick="showSemester('semester1')">1</button>
+      <button onclick="showSemester('semester2')">2</button>
+      <button onclick="showSemester('semester3')">3</button>
+      <button onclick="showSemester('semester4')">4</button>
+      <button onclick="showSemester('semester5')">5</button>
+      <button onclick="showSemester('semesterAM')">Ujian Kelulusan</button>
+    </div>
+  </div>
+  <div id="semester1" class="semester-content hidden">
+<div class="row">
+  <!-- Left Column -->
+  <div class="column column-left">
+    <div class="section">
       
-      <div class="divider"></div>
-      
-      <div class="section">
-        <h2>TANGGUNGAN</h2>
-        <table>
-          <tr>
-            <td>Total</td><td>:</td><td><span id="Total">-</span></td>
-          </tr>
-          <tr>
-            <td>Pemotongan</td><td>:</td><td><span id="Pemotongan">-</span></td>
-          </tr>
-          <tr>
-            <td>Dibayar</td><td>:</td><td><span id="Dibayar">-</span></td>
-          </tr>
-          <tr>
-            <td>Sisa</td><td>:</td><td><span id="Sisa">-</span></td>
-          </tr>
-          <tr>
-            <td>Lunas</td><td>:</td><td><span id="Lunas">-</span></td>
-          </tr>
-        </table>
-      </div>
-      
-      <div class="divider"></div>
-      
-      <div class="section">
-        <h2>KETERANGAN</h2>
-        <table>
-          <tr>
-            <td>Tambahan Tanggungan</td><td>:</td><td><span id="Rincian">-</span></td>
-          </tr>
-          <tr>
-            <td>Rincian Pemotongan</td><td>:</td><td><span id="Ket_Pem">-</span></td>
-          </tr>
-        </table>
-      </div>
     </div>
     
-    <!-- Center Column -->
-<div class="column column-right">
-  <div class="section">
-    <h2>RINCIAN PEMBAYARAN</h2>
-    <table class="payment-details">
+    <div class="section">
+      <h2>SEMESTER 1</h2>
+      <div class="section"> <!-- Added this section -->
+        <table class="payment-details">
       <tbody>
       <thead>
-        <tr>
-          <td style="font-size: 13px; text-align: center; color: #0188ff;  font-weight: bold; background-color: #e0e0e0;">RINCIAN</td>
-          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">TANGGUNGAN</td>
-          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">BAYAR</td>
-          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">KURANG</td>
-        </tr>
+<tr>
+  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+</tr>
+<tr>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+</tr>
+
       </thead>
       <tr>
-        <td style="font-size: 11px;">PPDB</td>
+        <td style="font-size: 11px;">AL-QURAN HADITS</td>
         <td><span id="TPPDB">-</span></td>
         <td><span id="PPDB">-</span></td>
-        <td><span id="KPPDB">-</span></td>
       </tr>
       <tr>
-        <td style="font-size: 11px;">LKS Ganjil 7</td>
+        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
         <td><span id="TLKS_Ga_7">-</span></td>
         <td><span id="LKS_Ga_7">-</span></td>
-        <td><span id="KLKS_Ga_7">-</span></td>
+    
       </tr>
       <tr>
-        <td style="font-size: 11px;">LKS Genap 7</td>
+        <td style="font-size: 11px;">FIKIH</td>
         <td><span id="TLKS_Ge_7">-</span></td>
         <td><span id="LKS_Ge_7">-</span></td>
-        <td><span id="KLKS_Ge_7">-</span></td>
+      
       </tr>
       <tr>
-        <td style="font-size: 11px;">Semester 1</td>
+        <td style="font-size: 11px;">SKI</td>
         <td><span id="TSmst_Ga_7">-</span></td>
         <td><span id="Smst_Ga_7">-</span></td>
-        <td><span id="KSmst_Ga_7">-</span></td>
+      
       </tr>
       <tr>
-        <td style="font-size: 11px;">Semester 2</td>
+        <td style="font-size: 11px;">PPKn</td>
         <td><span id="TSmst_Ge_7">-</span></td>
         <td><span id="Smst_Ge_7">-</span></td>
-        <td><span id="KSmst_Ge_7">-</span></td>
+       
       </tr>
       <tr>
-        <td style="font-size: 11px;">LKS Ganjil 8</td>
+        <td style="font-size: 11px;">BHS. INDONESIA</td>
         <td><span id="TLKS_Ga_8">-</span></td>
         <td><span id="LKS_Ga_8">-</span></td>
-        <td><span id="KLKS_Ga_8">-</span></td>
+       
       </tr>
       <tr>
-        <td style="font-size: 11px;">LKS Genap 8</td>
+        <td style="font-size: 11px;">BHS. ARAB</td>
         <td><span id="TLKS_Ge_8">-</span></td>
         <td><span id="LKS_Ge_8">-</span></td>
-        <td><span id="KLKS_Ge_8">-</span></td>
+        
       </tr>
       <tr>
-        <td style="font-size: 11px;">Semester 3</td>
+        <td style="font-size: 11px;">MATEMATIKA</td>
         <td><span id="TSmst_Ga_8">-</span></td>
         <td><span id="Smst_Ga_8">-</span></td>
-        <td><span id="KSmst_Ga_8">-</span></td>
+       
       </tr>
       <tr>
-        <td style="font-size: 11px;">Semester 4</td>
+        <td style="font-size: 11px;">IPA</td>
         <td><span id="TSmst_Ge_8">-</span></td>
         <td><span id="Smst_Ge_8">-</span></td>
-        <td><span id="KSmst_Ge_8">-</span></td>
+        
       </tr>
       <tr>
-        <td style="font-size: 11px;">LKS Ganjil 9</td>
+        <td style="font-size: 11px;">IPS</td>
         <td><span id="TLKS_Ga_9">-</span></td>
         <td><span id="LKS_Ga_9">-</span></td>
-        <td><span id="KLKS_Ga_9">-</span></td>
+       
       </tr>
       <tr>
-        <td style="font-size: 11px;">LKS Genap 9</td>
+        <td style="font-size: 11px;">BHS. INGGRIS</td>
         <td><span id="TLKS_Ge_9">-</span></td>
         <td><span id="LKS_Ge_9">-</span></td>
-        <td><span id="KLKS_Ge_9">-</span></td>
+      
       </tr>
       <tr>
-        <td style="font-size: 11px;">Semester 5</td>
+        <td style="font-size: 11px;">SENI BUDAYA</td>
         <td><span id="TSmst_Ga_9">-</span></td>
         <td><span id="Smst_Ga_9">-</span></td>
-        <td><span id="KSmst_Ga_9">-</span></td>
+       
       </tr>
       <tr>
-        <td style="font-size: 11px;">AM</td>
+        <td style="font-size: 11px;">PJOK</td>
         <td><span id="TAM">-</span></td>
         <td><span id="AM">-</span></td>
-        <td><span id="KAM">-</span></td>
+      
       </tr>
       <tr>
-        <td style="font-size: 11px;">Wisuda</td>
+        <td style="font-size: 11px;">INFORMATIKA</td>
         <td><span id="TWisuda">-</span></td>
         <td><span id="Wisuda">-</span></td>
-        <td><span id="KWisuda">-</span></td>
+     
       </tr>
       <tr>
-        <td style="font-size: 11px;">Tambahan</td>
+        <td style="font-size: 11px;">ASWAJA</td>
         <td><span id="Tambahan">-</span></td>
         <td><span id="Bayar">-</span></td>
-        <td><span id="KTT">-</span></td>
+     
       </tr>
       </tbody>
     </table>
   </div>
 </div>
 </div>
+</div>
+<div id="semester2" class="semester-content hidden">
+<div class="row">
+  <!-- Left Column -->
+  <div class="column column-left">
+    <div class="section">
+      
+    </div>
+    
+    <div class="section">
+      <h2>SEMESTER 2</h2>
+      <div class="section"> <!-- Added this section -->
+        <table class="payment-details">
+      <tbody>
+      <thead>
+<tr>
+  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+</tr>
+<tr>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+</tr>
 
+      </thead>
+      <tr>
+        <td style="font-size: 11px;">AL-QURAN HADITS</td>
+        <td><span id="TPPDB">-</span></td>
+        <td><span id="PPDB">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+        <td><span id="TLKS_Ga_7">-</span></td>
+        <td><span id="LKS_Ga_7">-</span></td>
+    
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">FIKIH</td>
+        <td><span id="TLKS_Ge_7">-</span></td>
+        <td><span id="LKS_Ge_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SKI</td>
+        <td><span id="TSmst_Ga_7">-</span></td>
+        <td><span id="Smst_Ga_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PPKn</td>
+        <td><span id="TSmst_Ge_7">-</span></td>
+        <td><span id="Smst_Ge_7">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INDONESIA</td>
+        <td><span id="TLKS_Ga_8">-</span></td>
+        <td><span id="LKS_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. ARAB</td>
+        <td><span id="TLKS_Ge_8">-</span></td>
+        <td><span id="LKS_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">MATEMATIKA</td>
+        <td><span id="TSmst_Ga_8">-</span></td>
+        <td><span id="Smst_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPA</td>
+        <td><span id="TSmst_Ge_8">-</span></td>
+        <td><span id="Smst_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPS</td>
+        <td><span id="TLKS_Ga_9">-</span></td>
+        <td><span id="LKS_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INGGRIS</td>
+        <td><span id="TLKS_Ge_9">-</span></td>
+        <td><span id="LKS_Ge_9">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SENI BUDAYA</td>
+        <td><span id="TSmst_Ga_9">-</span></td>
+        <td><span id="Smst_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PJOK</td>
+        <td><span id="TAM">-</span></td>
+        <td><span id="AM">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">INFORMATIKA</td>
+        <td><span id="TWisuda">-</span></td>
+        <td><span id="Wisuda">-</span></td>
+     
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">ASWAJA</td>
+        <td><span id="Tambahan">-</span></td>
+        <td><span id="Bayar">-</span></td>
+     
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+<div id="semester3" class="semester-content hidden">
+   <div class="row">
+  <!-- Left Column -->
+  <div class="column column-center">
+    <div class="section">
+      
+    </div>
+    
+    <div class="section">
+      <h2>SEMESTER 3</h2>
+      <div class="section"> <!-- Added this section -->
+        <table class="payment-details">
+      <tbody>
+      <thead>
+<tr>
+  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+</tr>
+<tr>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+</tr>
+
+      </thead>
+      <tr>
+        <td style="font-size: 11px;">AL-QURAN HADITS</td>
+        <td><span id="TPPDB">-</span></td>
+        <td><span id="PPDB">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+        <td><span id="TLKS_Ga_7">-</span></td>
+        <td><span id="LKS_Ga_7">-</span></td>
+    
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">FIKIH</td>
+        <td><span id="TLKS_Ge_7">-</span></td>
+        <td><span id="LKS_Ge_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SKI</td>
+        <td><span id="TSmst_Ga_7">-</span></td>
+        <td><span id="Smst_Ga_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PPKn</td>
+        <td><span id="TSmst_Ge_7">-</span></td>
+        <td><span id="Smst_Ge_7">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INDONESIA</td>
+        <td><span id="TLKS_Ga_8">-</span></td>
+        <td><span id="LKS_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. ARAB</td>
+        <td><span id="TLKS_Ge_8">-</span></td>
+        <td><span id="LKS_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">MATEMATIKA</td>
+        <td><span id="TSmst_Ga_8">-</span></td>
+        <td><span id="Smst_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPA</td>
+        <td><span id="TSmst_Ge_8">-</span></td>
+        <td><span id="Smst_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPS</td>
+        <td><span id="TLKS_Ga_9">-</span></td>
+        <td><span id="LKS_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INGGRIS</td>
+        <td><span id="TLKS_Ge_9">-</span></td>
+        <td><span id="LKS_Ge_9">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SENI BUDAYA</td>
+        <td><span id="TSmst_Ga_9">-</span></td>
+        <td><span id="Smst_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PJOK</td>
+        <td><span id="TAM">-</span></td>
+        <td><span id="AM">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">INFORMATIKA</td>
+        <td><span id="TWisuda">-</span></td>
+        <td><span id="Wisuda">-</span></td>
+     
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">ASWAJA</td>
+        <td><span id="Tambahan">-</span></td>
+        <td><span id="Bayar">-</span></td>
+     
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div> 
+</div>
+<div id="semester4" class="semester-content hidden">
+<div class="row">
+  <!-- Left Column -->
+  <div class="column column-center">
+    <div class="section">
+      
+    </div>
+    
+    <div class="section">
+      <h2>SEMESTER 4</h2>
+      <div class="section"> <!-- Added this section -->
+        <table class="payment-details">
+      <tbody>
+      <thead>
+<tr>
+  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+</tr>
+<tr>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+</tr>
+
+      </thead>
+      <tr>
+        <td style="font-size: 11px;">AL-QURAN HADITS</td>
+        <td><span id="TPPDB">-</span></td>
+        <td><span id="PPDB">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+        <td><span id="TLKS_Ga_7">-</span></td>
+        <td><span id="LKS_Ga_7">-</span></td>
+    
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">FIKIH</td>
+        <td><span id="TLKS_Ge_7">-</span></td>
+        <td><span id="LKS_Ge_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SKI</td>
+        <td><span id="TSmst_Ga_7">-</span></td>
+        <td><span id="Smst_Ga_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PPKn</td>
+        <td><span id="TSmst_Ge_7">-</span></td>
+        <td><span id="Smst_Ge_7">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INDONESIA</td>
+        <td><span id="TLKS_Ga_8">-</span></td>
+        <td><span id="LKS_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. ARAB</td>
+        <td><span id="TLKS_Ge_8">-</span></td>
+        <td><span id="LKS_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">MATEMATIKA</td>
+        <td><span id="TSmst_Ga_8">-</span></td>
+        <td><span id="Smst_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPA</td>
+        <td><span id="TSmst_Ge_8">-</span></td>
+        <td><span id="Smst_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPS</td>
+        <td><span id="TLKS_Ga_9">-</span></td>
+        <td><span id="LKS_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INGGRIS</td>
+        <td><span id="TLKS_Ge_9">-</span></td>
+        <td><span id="LKS_Ge_9">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SENI BUDAYA</td>
+        <td><span id="TSmst_Ga_9">-</span></td>
+        <td><span id="Smst_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PJOK</td>
+        <td><span id="TAM">-</span></td>
+        <td><span id="AM">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">INFORMATIKA</td>
+        <td><span id="TWisuda">-</span></td>
+        <td><span id="Wisuda">-</span></td>
+     
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">ASWAJA</td>
+        <td><span id="Tambahan">-</span></td>
+        <td><span id="Bayar">-</span></td>
+     
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+<div id="semester5" class="semester-content hidden">
+<div class="row">
+  <!-- Left Column -->
+  <div class="column column-right">
+    <div class="section">
+    </div>
+    
+    <div class="section">
+      <h2>SEMESTER 5</h2>
+      <div class="section"> <!-- Added this section -->
+        <table class="payment-details">
+      <tbody>
+      <thead>
+<tr>
+  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+</tr>
+<tr>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+</tr>
+
+      </thead>
+      <tr>
+        <td style="font-size: 11px;">AL-QURAN HADITS</td>
+        <td><span id="TPPDB">-</span></td>
+        <td><span id="PPDB">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+        <td><span id="TLKS_Ga_7">-</span></td>
+        <td><span id="LKS_Ga_7">-</span></td>
+    
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">FIKIH</td>
+        <td><span id="TLKS_Ge_7">-</span></td>
+        <td><span id="LKS_Ge_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SKI</td>
+        <td><span id="TSmst_Ga_7">-</span></td>
+        <td><span id="Smst_Ga_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PPKn</td>
+        <td><span id="TSmst_Ge_7">-</span></td>
+        <td><span id="Smst_Ge_7">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INDONESIA</td>
+        <td><span id="TLKS_Ga_8">-</span></td>
+        <td><span id="LKS_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. ARAB</td>
+        <td><span id="TLKS_Ge_8">-</span></td>
+        <td><span id="LKS_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">MATEMATIKA</td>
+        <td><span id="TSmst_Ga_8">-</span></td>
+        <td><span id="Smst_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPA</td>
+        <td><span id="TSmst_Ge_8">-</span></td>
+        <td><span id="Smst_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPS</td>
+        <td><span id="TLKS_Ga_9">-</span></td>
+        <td><span id="LKS_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INGGRIS</td>
+        <td><span id="TLKS_Ge_9">-</span></td>
+        <td><span id="LKS_Ge_9">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SENI BUDAYA</td>
+        <td><span id="TSmst_Ga_9">-</span></td>
+        <td><span id="Smst_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PJOK</td>
+        <td><span id="TAM">-</span></td>
+        <td><span id="AM">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">INFORMATIKA</td>
+        <td><span id="TWisuda">-</span></td>
+        <td><span id="Wisuda">-</span></td>
+     
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">ASWAJA</td>
+        <td><span id="Tambahan">-</span></td>
+        <td><span id="Bayar">-</span></td>
+     
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+<div id="semesterAM" class="semester-content hidden">
+<div class="row">
+  <!-- Left Column -->
+  <div class="column column-right">
+    <div class="section">
+      
+    </div>
+    
+    <div class="section">
+      <h2>AM</h2>
+      <div class="section"> <!-- Added this section -->
+        <table class="payment-details">
+      <tbody>
+      <thead>
+<tr>
+  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+</tr>
+<tr>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+</tr>
+
+      </thead>
+      <tr>
+        <td style="font-size: 11px;">AL-QURAN HADITS</td>
+        <td><span id="TPPDB">-</span></td>
+        <td><span id="PPDB">-</span></td>
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+        <td><span id="TLKS_Ga_7">-</span></td>
+        <td><span id="LKS_Ga_7">-</span></td>
+    
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">FIKIH</td>
+        <td><span id="TLKS_Ge_7">-</span></td>
+        <td><span id="LKS_Ge_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SKI</td>
+        <td><span id="TSmst_Ga_7">-</span></td>
+        <td><span id="Smst_Ga_7">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PPKn</td>
+        <td><span id="TSmst_Ge_7">-</span></td>
+        <td><span id="Smst_Ge_7">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INDONESIA</td>
+        <td><span id="TLKS_Ga_8">-</span></td>
+        <td><span id="LKS_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. ARAB</td>
+        <td><span id="TLKS_Ge_8">-</span></td>
+        <td><span id="LKS_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">MATEMATIKA</td>
+        <td><span id="TSmst_Ga_8">-</span></td>
+        <td><span id="Smst_Ga_8">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPA</td>
+        <td><span id="TSmst_Ge_8">-</span></td>
+        <td><span id="Smst_Ge_8">-</span></td>
+        
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">IPS</td>
+        <td><span id="TLKS_Ga_9">-</span></td>
+        <td><span id="LKS_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">BHS. INGGRIS</td>
+        <td><span id="TLKS_Ge_9">-</span></td>
+        <td><span id="LKS_Ge_9">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">SENI BUDAYA</td>
+        <td><span id="TSmst_Ga_9">-</span></td>
+        <td><span id="Smst_Ga_9">-</span></td>
+       
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">PJOK</td>
+        <td><span id="TAM">-</span></td>
+        <td><span id="AM">-</span></td>
+      
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">INFORMATIKA</td>
+        <td><span id="TWisuda">-</span></td>
+        <td><span id="Wisuda">-</span></td>
+     
+      </tr>
+      <tr>
+        <td style="font-size: 11px;">ASWAJA</td>
+        <td><span id="Tambahan">-</span></td>
+        <td><span id="Bayar">-</span></td>
+     
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</main>
   <div class="footer">
     <p>Jika ada kesalahan data, mohon segera <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">hubungi kami</a>.</p>
     <p>&copy; 2025 MTsAU. Semua hak dilindungi.</p>
@@ -566,7 +1156,6 @@ table td span {
     <i class="fab fa-whatsapp"></i> <!-- Font Awesome WhatsApp Icon -->
   </a>
 </div>
-</main>
 <script>
   // Get the user ID from localStorage
   const userId = localStorage.getItem("userId");
@@ -584,85 +1173,195 @@ fetch(apiUrl)
     if (data && Array.isArray(data)) {
       // ID dan Nama
       document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';         // ID
-      document.getElementById("NISN").textContent = data[1] || '-';       // Nama
-      document.getElementById("Name").textContent = data[2] || '-';      // Kelas
+      document.getElementById("NISN").textContent = data[1] || '-';       
+      document.getElementById("Name").textContent = data[2] || '-';     
+      document.getElementById("Kelas").textContent = data[3] || '-';       
 
-      // PPDB dan LKS
-      document.getElementById("Kelas").textContent = data[3] || '-';       // PPDB
-      document.getElementById("LKS_Ga_7").textContent = data[4] || '-';   // LKS_Ga_7
-      document.getElementById("LKS_Ge_7").textContent = data[5] || '-';   // LKS_Ge_7
-      document.getElementById("Smst_Ga_7").textContent = data[6] || '-';  // Smst_Ga_7
-      document.getElementById("Smst_Ge_7").textContent = data[7] || '-';  // Smst_Ge_7
-      document.getElementById("LKS_Ga_8").textContent = data[8] || '-';   // LKS_Ga_8
-      document.getElementById("LKS_Ge_8").textContent = data[9] || '-';   // LKS_Ge_8
-      document.getElementById("Smst_Ga_8").textContent = data[10] || '-'; // Smst_Ga_8
-      document.getElementById("Smst_Ge_8").textContent = data[11] || '-'; // Smst_Ge_8
-      document.getElementById("LKS_Ga_9").textContent = data[12] || '-';  // LKS_Ga_9
-      document.getElementById("LKS_Ge_9").textContent = data[13] || '-';  // LKS_Ge_9
-      document.getElementById("Smst_Ga_9").textContent = data[14] || '-'; // Smst_Ga_9
+        // Semester 1
+        document.getElementById("qhgp1").textContent = data[4] || '-'; 
+        document.getElementById("aagp1").textContent = data[5] || '-'; 
+        document.getElementById("fikgp1").textContent = data[6] || '-'; 
+        document.getElementById("skigp1").textContent = data[7] || '-'; 
+        document.getElementById("ppkngp1").textContent = data[8] || '-'; 
+        document.getElementById("bingp1").textContent = data[9] || '-'; 
+        document.getElementById("bargp1").textContent = data[10] || '-'; 
+        document.getElementById("mtkgp1").textContent = data[11] || '-'; 
+        document.getElementById("ipagp1").textContent = data[12] || '-'; 
+        document.getElementById("ipsgp1").textContent = data[13] || '-'; 
+        document.getElementById("biggp1").textContent = data[14] || '-'; 
+        document.getElementById("sbkgp1").textContent = data[15] || '-'; 
+        document.getElementById("pjokgp1").textContent = data[16] || '-'; 
+        document.getElementById("tikgp1").textContent = data[17] || '-'; 
+        document.getElementById("aswjgp1").textContent = data[18] || '-'; 
 
-      // Financials and Status
-      document.getElementById("AM").textContent = data[15] || '-';       // AM
-      document.getElementById("Wisuda").textContent = data[16] || '-';    // Wisuda
-      document.getElementById("Tambahan").textContent = data[17] || '-';  // Tambahan
-      document.getElementById("Rincian").textContent = data[18] || '-';   // Rincian
-      document.getElementById("Bayar").textContent = data[19] || '-';     // Bayar
-      document.getElementById("Total").textContent = data[20] || '-';     // Total
-      document.getElementById("Dibayar").textContent = data[21] || '-';   // Dibayar
-      document.getElementById("Sisa").textContent = data[22] || '-';      // Sisa
-      document.getElementById("Lunas").textContent = data[23] || '-';     // Lunas
+        document.getElementById("qhgk1").textContent = data[19] || '-'; 
+        document.getElementById("aagk1").textContent = data[20] || '-'; 
+        document.getElementById("fikgk1").textContent = data[21] || '-'; 
+        document.getElementById("skigk1").textContent = data[22] || '-'; 
+        document.getElementById("ppkngk1").textContent = data[23] || '-'; 
+        document.getElementById("bingk1").textContent = data[24] || '-'; 
+        document.getElementById("bargk1").textContent = data[25] || '-'; 
+        document.getElementById("mtkgk1").textContent = data[26] || '-'; 
+        document.getElementById("ipagk1").textContent = data[27] || '-'; 
+        document.getElementById("ipsgk1").textContent = data[28] || '-'; 
+        document.getElementById("biggk1").textContent = data[29] || '-'; 
+        document.getElementById("sbkgk1").textContent = data[30] || '-'; 
+        document.getElementById("pjokgk1").textContent = data[31] || '-'; 
+        document.getElementById("tikgk1").textContent = data[32] || '-'; 
+        document.getElementById("aswjgk1").textContent = data[33] || '-'; 
 
-      // PIP Information
-      document.getElementById("Dapat_PIP").textContent = data[24] || '-';  // Dapat_PIP
-      document.getElementById("Saldo_PIP").textContent = data[25] || '-';  // Saldo_PIP
-      document.getElementById("Sisa_PIP").textContent = data[26] || '-';   // Sisa_PIP
+        // Semester 2
+        document.getElementById("qhgp2").textContent = data[34] || '-'; 
+        document.getElementById("aagp2").textContent = data[35] || '-'; 
+        document.getElementById("fikgp2").textContent = data[36] || '-'; 
+        document.getElementById("skigp2").textContent = data[37] || '-'; 
+        document.getElementById("ppkngp2").textContent = data[38] || '-'; 
+        document.getElementById("bingp2").textContent = data[39] || '-'; 
+        document.getElementById("bargp2").textContent = data[40] || '-'; 
+        document.getElementById("mtkgp2").textContent = data[41] || '-'; 
+        document.getElementById("ipagp2").textContent = data[42] || '-'; 
+        document.getElementById("ipsgp2").textContent = data[43] || '-'; 
+        document.getElementById("biggp2").textContent = data[44] || '-'; 
+        document.getElementById("sbkgp2").textContent = data[45] || '-'; 
+        document.getElementById("pjokgp2").textContent = data[46] || '-'; 
+        document.getElementById("tikgp2").textContent = data[47] || '-'; 
+        document.getElementById("aswjgp2").textContent = data[48] || '-'; 
 
-      // Additional Information
-      document.getElementById("Angkatan").textContent = data[27] || '-';  // Angkatan
-      document.getElementById("Status").textContent = data[28] || '-';    // Status
-      document.getElementById("Ket_Mutasi").textContent = data[29] || '-'; // Ket_Mutasi
-      document.getElementById("Pernah_Tidak_Naik").textContent = data[30] || '-'; // Pernah_Tidak_Naik
+        document.getElementById("qhgk2").textContent = data[49] || '-'; 
+        document.getElementById("aagk2").textContent = data[50] || '-'; 
+        document.getElementById("fikgk2").textContent = data[51] || '-'; 
+        document.getElementById("skigk2").textContent = data[52] || '-'; 
+        document.getElementById("ppkngk2").textContent = data[53] || '-'; 
+        document.getElementById("bingk2").textContent = data[54] || '-'; 
+        document.getElementById("bargk2").textContent = data[55] || '-'; 
+        document.getElementById("mtkgk2").textContent = data[56] || '-'; 
+        document.getElementById("ipagk2").textContent = data[57] || '-'; 
+        document.getElementById("ipsgk2").textContent = data[58] || '-'; 
+        document.getElementById("biggk2").textContent = data[59] || '-'; 
+        document.getElementById("sbkgk2").textContent = data[60] || '-'; 
+        document.getElementById("pjokgk2").textContent = data[61] || '-'; 
+        document.getElementById("tikgk2").textContent = data[62] || '-'; 
+        document.getElementById("aswjgk2").textContent = data[63] || '-';
 
-      // Financial Adjustments
-      document.getElementById("Pemotongan").textContent = data[31] || '-';  // Pemotongan
-      document.getElementById("Ket_Pem").textContent = data[32] || '-';      // Ket_Pem
-      document.getElementById("TPPDB").textContent = data[33] || '-';       // TPPDB
+        // Semester 3
+        document.getElementById("qhgp3").textContent = data[64] || '-'; 
+        document.getElementById("aagp3").textContent = data[65] || '-'; 
+        document.getElementById("fikgp3").textContent = data[66] || '-'; 
+        document.getElementById("skigp3").textContent = data[67] || '-'; 
+        document.getElementById("ppkngp3").textContent = data[68] || '-'; 
+        document.getElementById("bingp3").textContent = data[69] || '-'; 
+        document.getElementById("bargp3").textContent = data[70] || '-'; 
+        document.getElementById("mtkgp3").textContent = data[71] || '-'; 
+        document.getElementById("ipagp3").textContent = data[72] || '-'; 
+        document.getElementById("ipsgp3").textContent = data[73] || '-'; 
+        document.getElementById("biggp3").textContent = data[74] || '-'; 
+        document.getElementById("sbkgp3").textContent = data[75] || '-'; 
+        document.getElementById("pjokgp3").textContent = data[76] || '-'; 
+        document.getElementById("tikgp3").textContent = data[77] || '-'; 
+        document.getElementById("aswjgp3").textContent = data[78] || '-'; 
 
-      // TLKS and Smst for various grades
-      document.getElementById("TLKS_Ga_7").textContent = data[34] || '-';   // TLKS_Ga_7
-      document.getElementById("TLKS_Ge_7").textContent = data[35] || '-';   // TLKS_Ge_7
-      document.getElementById("TSmst_Ga_7").textContent = data[36] || '-';  // TSmst_Ga_7
-      document.getElementById("TSmst_Ge_7").textContent = data[37] || '-';  // TSmst_Ge_7
-      document.getElementById("TLKS_Ga_8").textContent = data[38] || '-';   // TLKS_Ga_8
-      document.getElementById("TLKS_Ge_8").textContent = data[39] || '-';   // TLKS_Ge_8
-      document.getElementById("TSmst_Ga_8").textContent = data[40] || '-';  // TSmst_Ga_8
-      document.getElementById("TSmst_Ge_8").textContent = data[41] || '-';  // TSmst_Ge_8
-      document.getElementById("TLKS_Ga_9").textContent = data[42] || '-';   // TLKS_Ga_9
-      document.getElementById("TLKS_Ge_9").textContent = data[43] || '-';   // TLKS_Ge_9
-      document.getElementById("TSmst_Ga_9").textContent = data[44] || '-';  // TSmst_Ga_9
+        document.getElementById("qhgk3").textContent = data[79] || '-'; 
+        document.getElementById("aagk3").textContent = data[80] || '-'; 
+        document.getElementById("fikgk3").textContent = data[81] || '-'; 
+        document.getElementById("skigk3").textContent = data[82] || '-'; 
+        document.getElementById("ppkngk3").textContent = data[83] || '-'; 
+        document.getElementById("bingk3").textContent = data[84] || '-'; 
+        document.getElementById("bargk3").textContent = data[85] || '-'; 
+        document.getElementById("mtkgk3").textContent = data[86] || '-'; 
+        document.getElementById("ipagk3").textContent = data[87] || '-'; 
+        document.getElementById("ipsgk3").textContent = data[88] || '-'; 
+        document.getElementById("biggk3").textContent = data[89] || '-'; 
+        document.getElementById("sbkgk3").textContent = data[90] || '-'; 
+        document.getElementById("pjokgk3").textContent = data[91] || '-'; 
+        document.getElementById("tikgk3").textContent = data[92] || '-'; 
+        document.getElementById("aswjgk3").textContent = data[93] || '-'; 
 
-      // Additional Financial Data
-      document.getElementById("TAM").textContent = data[45] || '-';        // TAM
-      document.getElementById("TWisuda").textContent = data[46] || '-';     // TWisuda
-      document.getElementById("KPPDB").textContent = data[47] || '-';       // KPPDB
+        // Semester 4
+        document.getElementById("qhgp4").textContent = data[94] || '-'; 
+        document.getElementById("aagp4").textContent = data[95] || '-'; 
+        document.getElementById("fikgp4").textContent = data[96] || '-'; 
+        document.getElementById("skigp4").textContent = data[97] || '-'; 
+        document.getElementById("ppkngp4").textContent = data[98] || '-'; 
+        document.getElementById("bingp4").textContent = data[99] || '-'; 
+        document.getElementById("bargp4").textContent = data[100] || '-'; 
+        document.getElementById("mtkgp4").textContent = data[101] || '-'; 
+        document.getElementById("ipagp4").textContent = data[102] || '-'; 
+        document.getElementById("ipsgp4").textContent = data[103] || '-'; 
+        document.getElementById("biggp4").textContent = data[104] || '-'; 
+        document.getElementById("sbkgp4").textContent = data[105] || '-'; 
+        document.getElementById("pjokgp4").textContent = data[106] || '-'; 
+        document.getElementById("tikgp4").textContent = data[107] || '-'; 
+        document.getElementById("aswjgp4").textContent = data[108] || '-'; 
 
-      // KLKS and KSmst for various grades
-      document.getElementById("KLKS_Ga_7").textContent = data[48] || '-';   // KLKS_Ga_7
-      document.getElementById("KLKS_Ge_7").textContent = data[49] || '-';   // KLKS_Ge_7
-      document.getElementById("KSmst_Ga_7").textContent = data[50] || '-';  // KSmst_Ga_7
-      document.getElementById("KSmst_Ge_7").textContent = data[51] || '-';  // KSmst_Ge_7
-      document.getElementById("KLKS_Ga_8").textContent = data[52] || '-';   // KLKS_Ga_8
-      document.getElementById("KLKS_Ge_8").textContent = data[53] || '-';   // KLKS_Ge_8
-      document.getElementById("KSmst_Ga_8").textContent = data[54] || '-';  // KSmst_Ga_8
-      document.getElementById("KSmst_Ge_8").textContent = data[55] || '-';  // KSmst_Ge_8
-      document.getElementById("KLKS_Ga_9").textContent = data[56] || '-';   // KLKS_Ga_9
-      document.getElementById("KLKS_Ge_9").textContent = data[57] || '-';   // KLKS_Ge_9
-      document.getElementById("KSmst_Ga_9").textContent = data[58] || '-';  // KSmst_Ga_9
+        document.getElementById("qhgk4").textContent = data[109] || '-'; 
+        document.getElementById("aagk4").textContent = data[110] || '-'; 
+        document.getElementById("fikgk4").textContent = data[111] || '-'; 
+        document.getElementById("skigk4").textContent = data[112] || '-'; 
+        document.getElementById("ppkngk4").textContent = data[113] || '-'; 
+        document.getElementById("bingk4").textContent = data[114] || '-'; 
+        document.getElementById("bargk4").textContent = data[115] || '-'; 
+        document.getElementById("mtkgk4").textContent = data[116] || '-'; 
+        document.getElementById("ipagk4").textContent = data[117] || '-'; 
+        document.getElementById("ipsgk4").textContent = data[118] || '-'; 
+        document.getElementById("biggk4").textContent = data[119] || '-'; 
+        document.getElementById("sbkgk4").textContent = data[120] || '-'; 
+        document.getElementById("pjokgk4").textContent = data[121] || '-'; 
+        document.getElementById("tikgk4").textContent = data[122] || '-'; 
+        document.getElementById("aswjgk4").textContent = data[123] || '-'; 
 
-      // Additional status and KAM data
-      document.getElementById("KAM").textContent = data[59] || '-';        // KAM
-      document.getElementById("KWisuda").textContent = data[60] || '-';     // KWisuda
-      document.getElementById("KTT").textContent = data[61] || '-';         // KTT
+        // Semester 5
+        document.getElementById("qhgp5").textContent = data[124] || '-'; 
+        document.getElementById("aagp5").textContent = data[125] || '-'; 
+        document.getElementById("fikgp5").textContent = data[126] || '-'; 
+        document.getElementById("skigp5").textContent = data[127] || '-'; 
+        document.getElementById("ppkngp5").textContent = data[128] || '-'; 
+        document.getElementById("bingp5").textContent = data[129] || '-'; 
+        document.getElementById("bargp5").textContent = data[130] || '-'; 
+        document.getElementById("mtkgp5").textContent = data[131] || '-'; 
+        document.getElementById("ipagp5").textContent = data[132] || '-'; 
+        document.getElementById("ipsgp5").textContent = data[133] || '-'; 
+        document.getElementById("biggp5").textContent = data[134] || '-'; 
+        document.getElementById("sbkgp5").textContent = data[135] || '-'; 
+        document.getElementById("pjokgp5").textContent = data[136] || '-'; 
+        document.getElementById("tikgp5").textContent = data[137] || '-'; 
+        document.getElementById("aswjgp5").textContent = data[138] || '-'; 
+
+        document.getElementById("qhgk5").textContent = data[139] || '-'; 
+        document.getElementById("aagk5").textContent = data[140] || '-'; 
+        document.getElementById("fikgk5").textContent = data[141] || '-'; 
+        document.getElementById("skigk5").textContent = data[142] || '-'; 
+        document.getElementById("ppkngk5").textContent = data[143] || '-'; 
+        document.getElementById("bingk5").textContent = data[144] || '-'; 
+        document.getElementById("bargk5").textContent = data[145] || '-'; 
+        document.getElementById("mtkgk5").textContent = data[146] || '-'; 
+        document.getElementById("ipagk5").textContent = data[147] || '-'; 
+        document.getElementById("ipsgk5").textContent = data[148] || '-'; 
+        document.getElementById("biggk5").textContent = data[149] || '-'; 
+        document.getElementById("sbkgk5").textContent = data[150] || '-'; 
+        document.getElementById("pjokgk5").textContent = data[151] || '-'; 
+        document.getElementById("tikgk5").textContent = data[152] || '-'; 
+        document.getElementById("aswjgk5").textContent = data[153] || '-';
+
+        // am
+        document.getElementById("qham1").textContent = data[154] || '-'; 
+        document.getElementById("aam1").textContent = data[155] || '-'; 
+        document.getElementById("fikam1").textContent = data[156] || '-'; 
+        document.getElementById("skiam1").textContent = data[157] || '-'; 
+        document.getElementById("ppknam1").textContent = data[158] || '-'; 
+        document.getElementById("binam1").textContent = data[159] || '-'; 
+        document.getElementById("baram1").textContent = data[160] || '-'; 
+        document.getElementById("mtkam1").textContent = data[161] || '-'; 
+        document.getElementById("ipaam1").textContent = data[162] || '-'; 
+        document.getElementById("ipsam1").textContent = data[163] || '-'; 
+        document.getElementById("bigam1").textContent = data[164] || '-'; 
+        document.getElementById("sbkam1").textContent = data[165] || '-'; 
+        document.getElementById("pjokam1").textContent = data[166] || '-'; 
+        document.getElementById("tikam1").textContent = data[167] || '-'; 
+        document.getElementById("aswjam1").textContent = data[168] || '-'; 
+        // Prestasi
+        document.getElementById("prestasi").textContent = data[169] || '-'; 
+
+
       // Now save the updated data to localStorage
       const studentData = {};
       document.querySelectorAll('.student-details p').forEach(p => {
@@ -747,6 +1446,18 @@ function closeSidebar() {
 });
 
 }
+function showSemester(semesterId) {
+  // Hide all semester contents
+  const allSemesters = document.querySelectorAll('.semester-content');
+  allSemesters.forEach(semester => semester.classList.add('hidden'));
+
+  // Show the selected semester content
+  const selectedSemester = document.getElementById(semesterId);
+  if (selectedSemester) {
+    selectedSemester.classList.remove('hidden');
+  }
+}
+
 </script>
 
 </body>
