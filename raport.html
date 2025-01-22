@@ -332,14 +332,24 @@ table td span {
   transform: scale(1.1);
   box-shadow: none; /* Tidak ada bayangan pada hover */
 }
+/* Kontainer untuk tombol dan heading */
 .semester-container {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
+/* Heading */
+.semester-container h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1px;
+  color: #333;
+}
+
+/* Tombol semester */
 .semester-buttons button {
   margin: 5px;
-  padding: 10px 15px;
+  padding: 10px 20px;
   background-color: #0073e6;
   color: white;
   border: none;
@@ -347,29 +357,74 @@ table td span {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
+/* Hover efek untuk tombol */
 .semester-buttons button:hover {
-  background-color: #45a049;
+  background-color: #005bb5;
+  transform: scale(1.05);
 }
+
+/* Efek tombol saat diklik */
+.semester-buttons button:active {
+  background-color: #003f7f;
+  transform: scale(0.95);
+}
+
+/* Kontainer untuk konten semester */
 .semester-content {
   text-align: center;
   margin: 20px auto;
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: none;
+  display: none; /* Default: tidak ditampilkan */
+  max-width: 800px; /* Atur lebar maksimal */
+  color: #333; /* Warna teks */
 }
 
+/* Judul dalam konten semester */
 .semester-content h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #040404;
 }
 
-.hidden {
-  display: none;
+/* Paragraf dalam konten semester */
+.semester-content p {
+  font-size: 16px;
+  line-height: 1.5;
 }
+
+/* Tambahkan transisi untuk menampilkan konten */
+.semester-content.hidden {
+  display: none; /* Sembunyikan konten */
+}
+
+.semester-content:not(.hidden) {
+  display: block; /* Tampilkan konten yang aktif */
+}
+
+/* Responsive design: Untuk layar kecil */
+@media (max-width: 768px) {
+  .semester-buttons button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .semester-content {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .semester-content h2 {
+    font-size: 20px;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .student-info {
@@ -421,7 +476,7 @@ table td span {
     RAPORT SISWA
 </h2>
   <div class="semester-container">
-    <h3>PILIH NILAI SEMESTER</h3>
+    <h3>-PILIH NILAI SEMESTER-</h3>
     <div class="semester-buttons">
       <button onclick="showSemester('semester1')">1</button>
       <button onclick="showSemester('semester2')">2</button>
@@ -431,720 +486,616 @@ table td span {
       <button onclick="showSemester('semesterAM')">Ujian Kelulusan</button>
     </div>
   </div>
-  <div id="semester1" class="semester-content hidden">
-<div class="row">
-  <!-- Left Column -->
-  <div class="column column-left">
-    <div class="section">
-      
+  <div id="semester1" class="semester-content">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="column column-left">
+        <div class="section">
+          <h2>SEMESTER 1</h2>
+          <div class="section">
+            <table class="payment-details">
+              <thead>
+                <tr>
+                  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+                  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td style="font-size: 11px;">AL-QURAN HADITS</td>
+                    <td><span id="qhgp1">-</span></td>
+                    <td><span id="qhgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+                    <td><span id="aagp1">-</span></td>
+                    <td><span id="aagk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">FIKIH</td>
+                    <td><span id="fikgp1">-</span></td>
+                    <td><span id="fikgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SKI</td>
+                    <td><span id="skigp1">-</span></td>
+                    <td><span id="skigk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PPKn</td>
+                    <td><span id="ppkngp1">-</span></td>
+                    <td><span id="ppkngk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INDONESIA</td>
+                    <td><span id="bingp1">-</span></td>
+                    <td><span id="bingk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. ARAB</td>
+                    <td><span id="bargp1">-</span></td>
+                    <td><span id="bargk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">MATEMATIKA</td>
+                    <td><span id="mtkgp1">-</span></td>
+                    <td><span id="mtkgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPA</td>
+                    <td><span id="ipagp1">-</span></td>
+                    <td><span id="ipagk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPS</td>
+                    <td><span id="ipsgp1">-</span></td>
+                    <td><span id="ipsgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INGGRIS</td>
+                    <td><span id="biggp1">-</span></td>
+                    <td><span id="biggk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SENI BUDAYA</td>
+                    <td><span id="sbkgp1">-</span></td>
+                    <td><span id="sbkgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PJOK</td>
+                    <td><span id="pjokgp1">-</span></td>
+                    <td><span id="pjokgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">INFORMATIKA</td>
+                    <td><span id="tikgp1">-</span></td>
+                    <td><span id="tikgk1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">ASWAJA</td>
+                    <td><span id="aswjgp1">-</span></td>
+                    <td><span id="aswjgk1">-</span></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="section">
-      <h2>SEMESTER 1</h2>
-      <div class="section"> <!-- Added this section -->
-        <table class="payment-details">
-      <tbody>
-      <thead>
-<tr>
-  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
-  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
-</tr>
-<tr>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
-</tr>
-
-      </thead>
-      <tr>
-        <td style="font-size: 11px;">AL-QURAN HADITS</td>
-        <td><span id="TPPDB">-</span></td>
-        <td><span id="PPDB">-</span></td>
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-        <td><span id="TLKS_Ga_7">-</span></td>
-        <td><span id="LKS_Ga_7">-</span></td>
-    
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">FIKIH</td>
-        <td><span id="TLKS_Ge_7">-</span></td>
-        <td><span id="LKS_Ge_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SKI</td>
-        <td><span id="TSmst_Ga_7">-</span></td>
-        <td><span id="Smst_Ga_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PPKn</td>
-        <td><span id="TSmst_Ge_7">-</span></td>
-        <td><span id="Smst_Ge_7">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INDONESIA</td>
-        <td><span id="TLKS_Ga_8">-</span></td>
-        <td><span id="LKS_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. ARAB</td>
-        <td><span id="TLKS_Ge_8">-</span></td>
-        <td><span id="LKS_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">MATEMATIKA</td>
-        <td><span id="TSmst_Ga_8">-</span></td>
-        <td><span id="Smst_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPA</td>
-        <td><span id="TSmst_Ge_8">-</span></td>
-        <td><span id="Smst_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPS</td>
-        <td><span id="TLKS_Ga_9">-</span></td>
-        <td><span id="LKS_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INGGRIS</td>
-        <td><span id="TLKS_Ge_9">-</span></td>
-        <td><span id="LKS_Ge_9">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SENI BUDAYA</td>
-        <td><span id="TSmst_Ga_9">-</span></td>
-        <td><span id="Smst_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PJOK</td>
-        <td><span id="TAM">-</span></td>
-        <td><span id="AM">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">INFORMATIKA</td>
-        <td><span id="TWisuda">-</span></td>
-        <td><span id="Wisuda">-</span></td>
-     
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">ASWAJA</td>
-        <td><span id="Tambahan">-</span></td>
-        <td><span id="Bayar">-</span></td>
-     
-      </tr>
-      </tbody>
-    </table>
   </div>
-</div>
-</div>
-</div>
-<div id="semester2" class="semester-content hidden">
-<div class="row">
-  <!-- Left Column -->
-  <div class="column column-left">
-    <div class="section">
-      
+  <div id="semester2" class="semester-content hidden">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="column column-left">
+        <div class="section">
+          <h2>SEMESTER 2</h2>
+          <div class="section">
+            <table class="payment-details">
+              <thead>
+                <tr>
+                  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+                  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td style="font-size: 11px;">AL-QURAN HADITS</td>
+                    <td><span id="qhgp2">-</span></td>
+                    <td><span id="qhgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+                    <td><span id="aagp2">-</span></td>
+                    <td><span id="aagk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">FIKIH</td>
+                    <td><span id="fikgp2">-</span></td>
+                    <td><span id="fikgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SKI</td>
+                    <td><span id="skigp2">-</span></td>
+                    <td><span id="skigk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PPKn</td>
+                    <td><span id="ppkngp2">-</span></td>
+                    <td><span id="ppkngk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INDONESIA</td>
+                    <td><span id="bingp2">-</span></td>
+                    <td><span id="bingk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. ARAB</td>
+                    <td><span id="bargp2">-</span></td>
+                    <td><span id="bargk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">MATEMATIKA</td>
+                    <td><span id="mtkgp2">-</span></td>
+                    <td><span id="mtkgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPA</td>
+                    <td><span id="ipagp2">-</span></td>
+                    <td><span id="ipagk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPS</td>
+                    <td><span id="ipsgp2">-</span></td>
+                    <td><span id="ipsgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INGGRIS</td>
+                    <td><span id="biggp2">-</span></td>
+                    <td><span id="biggk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SENI BUDAYA</td>
+                    <td><span id="sbkgp2">-</span></td>
+                    <td><span id="sbkgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PJOK</td>
+                    <td><span id="pjokgp2">-</span></td>
+                    <td><span id="pjokgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">INFORMATIKA</td>
+                    <td><span id="tikgp2">-</span></td>
+                    <td><span id="tikgk2">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">ASWAJA</td>
+                    <td><span id="aswjgp2">-</span></td>
+                    <td><span id="aswjgk2">-</span></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="section">
-      <h2>SEMESTER 2</h2>
-      <div class="section"> <!-- Added this section -->
-        <table class="payment-details">
-      <tbody>
-      <thead>
-<tr>
-  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
-  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
-</tr>
-<tr>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
-</tr>
-
-      </thead>
-      <tr>
-        <td style="font-size: 11px;">AL-QURAN HADITS</td>
-        <td><span id="TPPDB">-</span></td>
-        <td><span id="PPDB">-</span></td>
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-        <td><span id="TLKS_Ga_7">-</span></td>
-        <td><span id="LKS_Ga_7">-</span></td>
-    
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">FIKIH</td>
-        <td><span id="TLKS_Ge_7">-</span></td>
-        <td><span id="LKS_Ge_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SKI</td>
-        <td><span id="TSmst_Ga_7">-</span></td>
-        <td><span id="Smst_Ga_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PPKn</td>
-        <td><span id="TSmst_Ge_7">-</span></td>
-        <td><span id="Smst_Ge_7">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INDONESIA</td>
-        <td><span id="TLKS_Ga_8">-</span></td>
-        <td><span id="LKS_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. ARAB</td>
-        <td><span id="TLKS_Ge_8">-</span></td>
-        <td><span id="LKS_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">MATEMATIKA</td>
-        <td><span id="TSmst_Ga_8">-</span></td>
-        <td><span id="Smst_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPA</td>
-        <td><span id="TSmst_Ge_8">-</span></td>
-        <td><span id="Smst_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPS</td>
-        <td><span id="TLKS_Ga_9">-</span></td>
-        <td><span id="LKS_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INGGRIS</td>
-        <td><span id="TLKS_Ge_9">-</span></td>
-        <td><span id="LKS_Ge_9">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SENI BUDAYA</td>
-        <td><span id="TSmst_Ga_9">-</span></td>
-        <td><span id="Smst_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PJOK</td>
-        <td><span id="TAM">-</span></td>
-        <td><span id="AM">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">INFORMATIKA</td>
-        <td><span id="TWisuda">-</span></td>
-        <td><span id="Wisuda">-</span></td>
-     
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">ASWAJA</td>
-        <td><span id="Tambahan">-</span></td>
-        <td><span id="Bayar">-</span></td>
-     
-      </tr>
-      </tbody>
-    </table>
   </div>
-</div>
-</div>
-</div>
-<div id="semester3" class="semester-content hidden">
-   <div class="row">
-  <!-- Left Column -->
-  <div class="column column-center">
-    <div class="section">
-      
+  <div id="semester3" class="semester-content hidden">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="column column-center">
+        <div class="section">
+          <h2>SEMESTER 3</h2>
+          <div class="section">
+            <table class="payment-details">
+              <thead>
+                <tr>
+                  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+                  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td style="font-size: 11px;">AL-QURAN HADITS</td>
+                    <td><span id="qhgp3">-</span></td>
+                    <td><span id="qhgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+                    <td><span id="aagp3">-</span></td>
+                    <td><span id="aagk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">FIKIH</td>
+                    <td><span id="fikgp3">-</span></td>
+                    <td><span id="fikgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SKI</td>
+                    <td><span id="skigp3">-</span></td>
+                    <td><span id="skigk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PPKn</td>
+                    <td><span id="ppkngp3">-</span></td>
+                    <td><span id="ppkngk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INDONESIA</td>
+                    <td><span id="bingp3">-</span></td>
+                    <td><span id="bingk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. ARAB</td>
+                    <td><span id="bargp3">-</span></td>
+                    <td><span id="bargk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">MATEMATIKA</td>
+                    <td><span id="mtkgp3">-</span></td>
+                    <td><span id="mtkgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPA</td>
+                    <td><span id="ipagp3">-</span></td>
+                    <td><span id="ipagk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPS</td>
+                    <td><span id="ipsgp3">-</span></td>
+                    <td><span id="ipsgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INGGRIS</td>
+                    <td><span id="biggp3">-</span></td>
+                    <td><span id="biggk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SENI BUDAYA</td>
+                    <td><span id="sbkgp3">-</span></td>
+                    <td><span id="sbkgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PJOK</td>
+                    <td><span id="pjokgp3">-</span></td>
+                    <td><span id="pjokgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">INFORMATIKA</td>
+                    <td><span id="tikgp3">-</span></td>
+                    <td><span id="tikgk3">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">ASWAJA</td>
+                    <td><span id="aswjgp3">-</span></td>
+                    <td><span id="aswjgk3">-</span></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="section">
-      <h2>SEMESTER 3</h2>
-      <div class="section"> <!-- Added this section -->
-        <table class="payment-details">
-      <tbody>
-      <thead>
-<tr>
-  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
-  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
-</tr>
-<tr>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
-</tr>
-
-      </thead>
-      <tr>
-        <td style="font-size: 11px;">AL-QURAN HADITS</td>
-        <td><span id="TPPDB">-</span></td>
-        <td><span id="PPDB">-</span></td>
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-        <td><span id="TLKS_Ga_7">-</span></td>
-        <td><span id="LKS_Ga_7">-</span></td>
-    
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">FIKIH</td>
-        <td><span id="TLKS_Ge_7">-</span></td>
-        <td><span id="LKS_Ge_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SKI</td>
-        <td><span id="TSmst_Ga_7">-</span></td>
-        <td><span id="Smst_Ga_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PPKn</td>
-        <td><span id="TSmst_Ge_7">-</span></td>
-        <td><span id="Smst_Ge_7">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INDONESIA</td>
-        <td><span id="TLKS_Ga_8">-</span></td>
-        <td><span id="LKS_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. ARAB</td>
-        <td><span id="TLKS_Ge_8">-</span></td>
-        <td><span id="LKS_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">MATEMATIKA</td>
-        <td><span id="TSmst_Ga_8">-</span></td>
-        <td><span id="Smst_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPA</td>
-        <td><span id="TSmst_Ge_8">-</span></td>
-        <td><span id="Smst_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPS</td>
-        <td><span id="TLKS_Ga_9">-</span></td>
-        <td><span id="LKS_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INGGRIS</td>
-        <td><span id="TLKS_Ge_9">-</span></td>
-        <td><span id="LKS_Ge_9">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SENI BUDAYA</td>
-        <td><span id="TSmst_Ga_9">-</span></td>
-        <td><span id="Smst_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PJOK</td>
-        <td><span id="TAM">-</span></td>
-        <td><span id="AM">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">INFORMATIKA</td>
-        <td><span id="TWisuda">-</span></td>
-        <td><span id="Wisuda">-</span></td>
-     
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">ASWAJA</td>
-        <td><span id="Tambahan">-</span></td>
-        <td><span id="Bayar">-</span></td>
-     
-      </tr>
-      </tbody>
-    </table>
   </div>
-</div>
-</div> 
-</div>
-<div id="semester4" class="semester-content hidden">
-<div class="row">
-  <!-- Left Column -->
-  <div class="column column-center">
-    <div class="section">
-      
+  <div id="semester4" class="semester-content hidden">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="column column-center">
+        <div class="section">
+          <h2>SEMESTER 4</h2>
+          <div class="section">
+            <table class="payment-details">
+              <thead>
+                <tr>
+                  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+                  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td style="font-size: 11px;">AL-QURAN HADITS</td>
+                    <td><span id="qhgp4">-</span></td>
+                    <td><span id="qhgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+                    <td><span id="aagp4">-</span></td>
+                    <td><span id="aagk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">FIKIH</td>
+                    <td><span id="fikgp4">-</span></td>
+                    <td><span id="fikgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SKI</td>
+                    <td><span id="skigp4">-</span></td>
+                    <td><span id="skigk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PPKn</td>
+                    <td><span id="ppkngp4">-</span></td>
+                    <td><span id="ppkngk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INDONESIA</td>
+                    <td><span id="bingp4">-</span></td>
+                    <td><span id="bingk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. ARAB</td>
+                    <td><span id="bargp4">-</span></td>
+                    <td><span id="bargk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">MATEMATIKA</td>
+                    <td><span id="mtkgp4">-</span></td>
+                    <td><span id="mtkgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPA</td>
+                    <td><span id="ipagp4">-</span></td>
+                    <td><span id="ipagk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPS</td>
+                    <td><span id="ipsgp4">-</span></td>
+                    <td><span id="ipsgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INGGRIS</td>
+                    <td><span id="biggp4">-</span></td>
+                    <td><span id="biggk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SENI BUDAYA</td>
+                    <td><span id="sbkgp4">-</span></td>
+                    <td><span id="sbkgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PJOK</td>
+                    <td><span id="pjokgp4">-</span></td>
+                    <td><span id="pjokgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">INFORMATIKA</td>
+                    <td><span id="tikgp4">-</span></td>
+                    <td><span id="tikgk4">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">ASWAJA</td>
+                    <td><span id="aswjgp4">-</span></td>
+                    <td><span id="aswjgk4">-</span></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="section">
-      <h2>SEMESTER 4</h2>
-      <div class="section"> <!-- Added this section -->
-        <table class="payment-details">
-      <tbody>
-      <thead>
-<tr>
-  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
-  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
-</tr>
-<tr>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
-</tr>
-
-      </thead>
-      <tr>
-        <td style="font-size: 11px;">AL-QURAN HADITS</td>
-        <td><span id="TPPDB">-</span></td>
-        <td><span id="PPDB">-</span></td>
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-        <td><span id="TLKS_Ga_7">-</span></td>
-        <td><span id="LKS_Ga_7">-</span></td>
-    
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">FIKIH</td>
-        <td><span id="TLKS_Ge_7">-</span></td>
-        <td><span id="LKS_Ge_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SKI</td>
-        <td><span id="TSmst_Ga_7">-</span></td>
-        <td><span id="Smst_Ga_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PPKn</td>
-        <td><span id="TSmst_Ge_7">-</span></td>
-        <td><span id="Smst_Ge_7">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INDONESIA</td>
-        <td><span id="TLKS_Ga_8">-</span></td>
-        <td><span id="LKS_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. ARAB</td>
-        <td><span id="TLKS_Ge_8">-</span></td>
-        <td><span id="LKS_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">MATEMATIKA</td>
-        <td><span id="TSmst_Ga_8">-</span></td>
-        <td><span id="Smst_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPA</td>
-        <td><span id="TSmst_Ge_8">-</span></td>
-        <td><span id="Smst_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPS</td>
-        <td><span id="TLKS_Ga_9">-</span></td>
-        <td><span id="LKS_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INGGRIS</td>
-        <td><span id="TLKS_Ge_9">-</span></td>
-        <td><span id="LKS_Ge_9">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SENI BUDAYA</td>
-        <td><span id="TSmst_Ga_9">-</span></td>
-        <td><span id="Smst_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PJOK</td>
-        <td><span id="TAM">-</span></td>
-        <td><span id="AM">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">INFORMATIKA</td>
-        <td><span id="TWisuda">-</span></td>
-        <td><span id="Wisuda">-</span></td>
-     
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">ASWAJA</td>
-        <td><span id="Tambahan">-</span></td>
-        <td><span id="Bayar">-</span></td>
-     
-      </tr>
-      </tbody>
-    </table>
   </div>
-</div>
-</div>
-</div>
-<div id="semester5" class="semester-content hidden">
-<div class="row">
-  <!-- Left Column -->
-  <div class="column column-right">
-    <div class="section">
+  <div id="semester5" class="semester-content hidden">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="column column-right">
+        <div class="section">
+          <h2>SEMESTER 5</h2>
+          <div class="section">
+            <table class="payment-details">
+              <thead>
+                <tr>
+                  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+                  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td style="font-size: 11px;">AL-QURAN HADITS</td>
+                    <td><span id="qhgp5">-</span></td>
+                    <td><span id="qhgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+                    <td><span id="aagp5">-</span></td>
+                    <td><span id="aagk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">FIKIH</td>
+                    <td><span id="fikgp5">-</span></td>
+                    <td><span id="fikgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SKI</td>
+                    <td><span id="skigp5">-</span></td>
+                    <td><span id="skigk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PPKn</td>
+                    <td><span id="ppkngp5">-</span></td>
+                    <td><span id="ppkngk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INDONESIA</td>
+                    <td><span id="bingp5">-</span></td>
+                    <td><span id="bingk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. ARAB</td>
+                    <td><span id="bargp5">-</span></td>
+                    <td><span id="bargk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">MATEMATIKA</td>
+                    <td><span id="mtkgp5">-</span></td>
+                    <td><span id="mtkgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPA</td>
+                    <td><span id="ipagp5">-</span></td>
+                    <td><span id="ipagk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPS</td>
+                    <td><span id="ipsgp5">-</span></td>
+                    <td><span id="ipsgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INGGRIS</td>
+                    <td><span id="biggp5">-</span></td>
+                    <td><span id="biggk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SENI BUDAYA</td>
+                    <td><span id="sbkgp5">-</span></td>
+                    <td><span id="sbkgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PJOK</td>
+                    <td><span id="pjokgp5">-</span></td>
+                    <td><span id="pjokgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">INFORMATIKA</td>
+                    <td><span id="tikgp5">-</span></td>
+                    <td><span id="tikgk5">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">ASWAJA</td>
+                    <td><span id="aswjgp5">-</span></td>
+                    <td><span id="aswjgk5">-</span></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="section">
-      <h2>SEMESTER 5</h2>
-      <div class="section"> <!-- Added this section -->
-        <table class="payment-details">
-      <tbody>
-      <thead>
-<tr>
-  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
-  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
-</tr>
-<tr>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
-</tr>
-
-      </thead>
-      <tr>
-        <td style="font-size: 11px;">AL-QURAN HADITS</td>
-        <td><span id="TPPDB">-</span></td>
-        <td><span id="PPDB">-</span></td>
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-        <td><span id="TLKS_Ga_7">-</span></td>
-        <td><span id="LKS_Ga_7">-</span></td>
-    
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">FIKIH</td>
-        <td><span id="TLKS_Ge_7">-</span></td>
-        <td><span id="LKS_Ge_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SKI</td>
-        <td><span id="TSmst_Ga_7">-</span></td>
-        <td><span id="Smst_Ga_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PPKn</td>
-        <td><span id="TSmst_Ge_7">-</span></td>
-        <td><span id="Smst_Ge_7">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INDONESIA</td>
-        <td><span id="TLKS_Ga_8">-</span></td>
-        <td><span id="LKS_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. ARAB</td>
-        <td><span id="TLKS_Ge_8">-</span></td>
-        <td><span id="LKS_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">MATEMATIKA</td>
-        <td><span id="TSmst_Ga_8">-</span></td>
-        <td><span id="Smst_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPA</td>
-        <td><span id="TSmst_Ge_8">-</span></td>
-        <td><span id="Smst_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPS</td>
-        <td><span id="TLKS_Ga_9">-</span></td>
-        <td><span id="LKS_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INGGRIS</td>
-        <td><span id="TLKS_Ge_9">-</span></td>
-        <td><span id="LKS_Ge_9">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SENI BUDAYA</td>
-        <td><span id="TSmst_Ga_9">-</span></td>
-        <td><span id="Smst_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PJOK</td>
-        <td><span id="TAM">-</span></td>
-        <td><span id="AM">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">INFORMATIKA</td>
-        <td><span id="TWisuda">-</span></td>
-        <td><span id="Wisuda">-</span></td>
-     
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">ASWAJA</td>
-        <td><span id="Tambahan">-</span></td>
-        <td><span id="Bayar">-</span></td>
-     
-      </tr>
-      </tbody>
-    </table>
   </div>
-</div>
-</div>
-</div>
-<div id="semesterAM" class="semester-content hidden">
-<div class="row">
-  <!-- Left Column -->
-  <div class="column column-right">
-    <div class="section">
-      
+  <div id="semesterAM" class="semester-content hidden">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="column column-right">
+        <div class="section">
+          <h2>Ujian Kelulusan</h2>
+          <div class="section">
+            <table class="payment-details">
+              <thead>
+                <tr>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
+                  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td style="font-size: 11px;">AL-QURAN HADITS</td>
+                    <td><span id="qham1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">AKIDAH AKHLAK</td>
+                    <td><span id="aam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">FIKIH</td>
+                    <td><span id="fikam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SKI</td>
+                    <td><span id="skiam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PPKn</td>
+                    <td><span id="ppknam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INDONESIA</td>
+                    <td><span id="binam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. ARAB</td>
+                    <td><span id="baram1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">MATEMATIKA</td>
+                    <td><span id="mtkam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPA</td>
+                    <td><span id="ipaam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">IPS</td>
+                    <td><span id="ipsam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">BHS. INGGRIS</td>
+                    <td><span id="bigam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">SENI BUDAYA</td>
+                    <td><span id="sbkam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">PJOK</td>
+                    <td><span id="pjokam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">INFORMATIKA</td>
+                    <td><span id="tikam1">-</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 11px;">ASWAJA</td>
+                    <td><span id="aswjam1">-</span></td>
+                  </tr>                  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="section">
-      <h2>AM</h2>
-      <div class="section"> <!-- Added this section -->
-        <table class="payment-details">
-      <tbody>
-      <thead>
-<tr>
-  <td rowspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">MAPEL</td>
-  <td colspan="2" style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">NILAI</td>
-</tr>
-<tr>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">PENGETAHUAN</td>
-  <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; border: 1px solid black;">KETERAMPILAN</td>
-</tr>
-
-      </thead>
-      <tr>
-        <td style="font-size: 11px;">AL-QURAN HADITS</td>
-        <td><span id="TPPDB">-</span></td>
-        <td><span id="PPDB">-</span></td>
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-        <td><span id="TLKS_Ga_7">-</span></td>
-        <td><span id="LKS_Ga_7">-</span></td>
-    
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">FIKIH</td>
-        <td><span id="TLKS_Ge_7">-</span></td>
-        <td><span id="LKS_Ge_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SKI</td>
-        <td><span id="TSmst_Ga_7">-</span></td>
-        <td><span id="Smst_Ga_7">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PPKn</td>
-        <td><span id="TSmst_Ge_7">-</span></td>
-        <td><span id="Smst_Ge_7">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INDONESIA</td>
-        <td><span id="TLKS_Ga_8">-</span></td>
-        <td><span id="LKS_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. ARAB</td>
-        <td><span id="TLKS_Ge_8">-</span></td>
-        <td><span id="LKS_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">MATEMATIKA</td>
-        <td><span id="TSmst_Ga_8">-</span></td>
-        <td><span id="Smst_Ga_8">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPA</td>
-        <td><span id="TSmst_Ge_8">-</span></td>
-        <td><span id="Smst_Ge_8">-</span></td>
-        
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">IPS</td>
-        <td><span id="TLKS_Ga_9">-</span></td>
-        <td><span id="LKS_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">BHS. INGGRIS</td>
-        <td><span id="TLKS_Ge_9">-</span></td>
-        <td><span id="LKS_Ge_9">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">SENI BUDAYA</td>
-        <td><span id="TSmst_Ga_9">-</span></td>
-        <td><span id="Smst_Ga_9">-</span></td>
-       
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">PJOK</td>
-        <td><span id="TAM">-</span></td>
-        <td><span id="AM">-</span></td>
-      
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">INFORMATIKA</td>
-        <td><span id="TWisuda">-</span></td>
-        <td><span id="Wisuda">-</span></td>
-     
-      </tr>
-      <tr>
-        <td style="font-size: 11px;">ASWAJA</td>
-        <td><span id="Tambahan">-</span></td>
-        <td><span id="Bayar">-</span></td>
-     
-      </tr>
-      </tbody>
-    </table>
   </div>
+  <div class="row">
+    <!-- Left Column -->
+    <div class="column column">
+      <div class="section">
+        <h2>PRESTASI</h2>
+        <div class="section">
+          <table class="payment-details">
+            <thead>
+              <tr>
+                <td style="font-size: 13px; text-align: center; color: black; font-weight: bold; background-color: #87CEFA; vertical-align: middle; border: 1px solid black;">PRESTASI</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td><span id="prestasi">-</span></td>
+                </tr>                  
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 </div>
-</div>
-</div>
-</main>
+  </main>
   <div class="footer">
     <p>Jika ada kesalahan data, mohon segera <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank">hubungi kami</a>.</p>
     <p>&copy; 2025 MTsAU. Semua hak dilindungi.</p>
@@ -1157,20 +1108,20 @@ table td span {
   </a>
 </div>
 <script>
-  // Get the user ID from localStorage
-  const userId = localStorage.getItem("userId");
-  if (!userId) {
-    window.location.href = "index.html"; // Redirect to login if no ID found
-  }
+// Get the user ID from URL (passed via query parameter)
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get("userId");
+
+if (userId) {
+  console.log("User ID:", userId);
 
   // Fetch data using the exec URL and the user ID
   const apiUrl = `https://script.google.com/macros/s/AKfycbxsuTmOToxMq_bfu4iItAYeYV_M2BdFN9M0dRCcFhMBqaRuazrzraLAW9O55AQi0ncI5A/exec?action=FetchData&userId=${userId}`;
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    if (data && Array.isArray(data)) {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data && Array.isArray(data)) {
       // ID dan Nama
       document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';         // ID
       document.getElementById("NISN").textContent = data[1] || '-';       
@@ -1360,34 +1311,19 @@ fetch(apiUrl)
         document.getElementById("aswjam1").textContent = data[168] || '-'; 
         // Prestasi
         document.getElementById("prestasi").textContent = data[169] || '-'; 
-
-
-      // Now save the updated data to localStorage
-      const studentData = {};
-      document.querySelectorAll('.student-details p').forEach(p => {
-        const id = p.querySelector('span').id;
-        studentData[id] = p.querySelector('span').innerText;
-      });
-
-      // Save to localStorage
-      localStorage.setItem("studentData", JSON.stringify(studentData));
     } else {
-      alert('Data tidak tersedia!');
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching student data:', error);
-    alert('Terjadi kesalahan saat mengambil data!');
-  });
-// Ambil semua elemen dengan ID yang diinginkan
-const studentData = {};
-document.querySelectorAll('.student-details p').forEach(p => {
-  const id = p.querySelector('span').id;
-  studentData[id] = p.querySelector('span').innerText;
-});
+        alert('Data tidak tersedia!');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching student data:', error);
+      alert('Terjadi kesalahan saat mengambil data!');
+    });
 
-// Simpan data ke localStorage
-localStorage.setItem("studentData", JSON.stringify(studentData));
+} else {
+  console.log("ID tidak ada.");
+  alert("ID tidak ada!");
+}
 
 function toggleSidebar() {
       const sidebar = document.getElementById('sidebarMenu');
@@ -1447,17 +1383,22 @@ function closeSidebar() {
 
 }
 function showSemester(semesterId) {
-  // Hide all semester contents
+  // Ambil semua elemen dengan class 'semester-content'
   const allSemesters = document.querySelectorAll('.semester-content');
-  allSemesters.forEach(semester => semester.classList.add('hidden'));
 
-  // Show the selected semester content
+  // Sembunyikan semua elemen semester
+  allSemesters.forEach(semester => {
+    semester.classList.add('hidden');
+  });
+
+  // Tampilkan elemen semester yang dipilih berdasarkan ID
   const selectedSemester = document.getElementById(semesterId);
   if (selectedSemester) {
     selectedSemester.classList.remove('hidden');
+  } else {
+    console.error(`Semester dengan ID "${semesterId}" tidak ditemukan.`);
   }
 }
-
 </script>
 
 </body>
