@@ -194,7 +194,7 @@ body {
 .payment-details {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .payment-details td {
@@ -258,7 +258,7 @@ span {
   color: #007BFF;
 }
 table td {
-  vertical-align: top;
+  vertical-align: center;
 }
 
 table td span {
@@ -273,13 +273,13 @@ table td span {
 
 .payment-details td {
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #000000;
   text-align: left;
 }
 
 .payment-details td:first-child {
   font-weight: bold;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
 
 .payment-details span {
@@ -328,7 +328,7 @@ table td span {
   transform: scale(1.1);
   box-shadow: none; /* Tidak ada bayangan pada hover */
 }
-
+.hidden {display: none;}
 /* Responsive Design */
 @media (max-width: 768px) {
   .student-info {
@@ -399,10 +399,7 @@ table td span {
             <td>Dapat PIP</td><td>:</td><td><span id="Dapat_PIP">-</span></td>
           </tr>
           <tr>
-            <td>Saldo PIP</td><td>:</td><td><span id="Saldo_PIP">-</span></td>
-          </tr>
-          <tr>
-            <td>Sisa PIP</td><td>:</td><td><span id="Sisa_PIP">-</span></td>
+            <td class="hidden">Sisa PIP</td><td class="hidden">:</td><td class="hidden"><span id="Sisa_PIP">-</span></td>
           </tr>
         </table>
       </div>
@@ -417,6 +414,9 @@ table td span {
           </tr>
           <tr>
             <td>Pemotongan</td><td>:</td><td><span id="Pemotongan">-</span></td>
+          </tr>
+          <tr>
+            <td>Uang PIP</td><td>:</td><td><span id="Saldo_PIP">-</span></td>
           </tr>
           <tr>
             <td>Dibayar</td><td>:</td><td><span id="Dibayar">-</span></td>
@@ -453,10 +453,10 @@ table td span {
       <tbody>
       <thead>
         <tr>
-          <td style="font-size: 13px; text-align: center; color: #0188ff;  font-weight: bold; background-color: #e0e0e0;">RINCIAN</td>
-          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">TANGGUNGAN</td>
-          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">BAYAR</td>
-          <td style="font-size: 13px; text-align: center; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">KURANG</td>
+          <td style="font-size: 13px; text-align: center; color: #000000;  font-weight: bold; background-color: #0fd4f7;">RINCIAN</td>
+          <td style="font-size: 13px; text-align: center; color: #000000; font-weight: bold; background-color: #0fd4f7;">TANGGUNGAN</td>
+          <td style="font-size: 13px; text-align: center; color: #000000; font-weight: bold; background-color: #0fd4f7;">BAYAR</td>
+          <td style="font-size: 13px; text-align: center; color: #000000; font-weight: bold; background-color: #0fd4f7;">KURANG</td>
         </tr>
       </thead>
       <tr>
@@ -568,6 +568,13 @@ table td span {
 </div>
 </main>
 <script>
+  function formatCurrency(value) {
+  return new Intl.NumberFormat('id-ID', { 
+    style: 'decimal',
+    minimumFractionDigits: 0, // Ensure no decimals are displayed
+    maximumFractionDigits: 0  // Ensure no decimals are displayed
+  }).format(value);
+}
   // Get the user ID from localStorage
   const userId = localStorage.getItem("userId");
   if (!userId) {
@@ -587,34 +594,34 @@ fetch(apiUrl)
       document.getElementById("Name").textContent = data[1] || '-';       // Nama
       document.getElementById("Kelas").textContent = data[2] || '-';      // Kelas
 
-      // PPDB dan LKS
-      document.getElementById("PPDB").textContent = data[3] || '-';       // PPDB
-      document.getElementById("LKS_Ga_7").textContent = data[4] || '-';   // LKS_Ga_7
-      document.getElementById("LKS_Ge_7").textContent = data[5] || '-';   // LKS_Ge_7
-      document.getElementById("Smst_Ga_7").textContent = data[6] || '-';  // Smst_Ga_7
-      document.getElementById("Smst_Ge_7").textContent = data[7] || '-';  // Smst_Ge_7
-      document.getElementById("LKS_Ga_8").textContent = data[8] || '-';   // LKS_Ga_8
-      document.getElementById("LKS_Ge_8").textContent = data[9] || '-';   // LKS_Ge_8
-      document.getElementById("Smst_Ga_8").textContent = data[10] || '-'; // Smst_Ga_8
-      document.getElementById("Smst_Ge_8").textContent = data[11] || '-'; // Smst_Ge_8
-      document.getElementById("LKS_Ga_9").textContent = data[12] || '-';  // LKS_Ga_9
-      document.getElementById("LKS_Ge_9").textContent = data[13] || '-';  // LKS_Ge_9
-      document.getElementById("Smst_Ga_9").textContent = data[14] || '-'; // Smst_Ga_9
+      // PPDB dan LKS (format as currency)
+      document.getElementById("PPDB").textContent = formatCurrency(data[3]);       // PPDB
+      document.getElementById("LKS_Ga_7").textContent = formatCurrency(data[4]);   // LKS_Ga_7
+      document.getElementById("LKS_Ge_7").textContent = formatCurrency(data[5]);   // LKS_Ge_7
+      document.getElementById("Smst_Ga_7").textContent = formatCurrency(data[6]);  // Smst_Ga_7
+      document.getElementById("Smst_Ge_7").textContent = formatCurrency(data[7]);  // Smst_Ge_7
+      document.getElementById("LKS_Ga_8").textContent = formatCurrency(data[8]);   // LKS_Ga_8
+      document.getElementById("LKS_Ge_8").textContent = formatCurrency(data[9]);   // LKS_Ge_8
+      document.getElementById("Smst_Ga_8").textContent = formatCurrency(data[10]); // Smst_Ga_8
+      document.getElementById("Smst_Ge_8").textContent = formatCurrency(data[11]); // Smst_Ge_8
+      document.getElementById("LKS_Ga_9").textContent = formatCurrency(data[12]);  // LKS_Ga_9
+      document.getElementById("LKS_Ge_9").textContent = formatCurrency(data[13]);  // LKS_Ge_9
+      document.getElementById("Smst_Ga_9").textContent = formatCurrency(data[14]); // Smst_Ga_9
 
       // Financials and Status
-      document.getElementById("AM").textContent = data[15] || '-';       // AM
-      document.getElementById("Wisuda").textContent = data[16] || '-';    // Wisuda
-      document.getElementById("Tambahan").textContent = data[17] || '-';  // Tambahan
+      document.getElementById("AM").textContent = formatCurrency(data[15]);       // AM
+      document.getElementById("Wisuda").textContent = formatCurrency(data[16]);    // Wisuda
+      document.getElementById("Tambahan").textContent = formatCurrency(data[17]);  // Tambahan
       document.getElementById("Rincian").textContent = data[18] || '-';   // Rincian
-      document.getElementById("Bayar").textContent = data[19] || '-';     // Bayar
-      document.getElementById("Total").textContent = data[20] || '-';     // Total
-      document.getElementById("Dibayar").textContent = data[21] || '-';   // Dibayar
-      document.getElementById("Sisa").textContent = data[22] || '-';      // Sisa
+      document.getElementById("Bayar").textContent = formatCurrency(data[19]);     // Bayar
+      document.getElementById("Total").textContent = formatCurrency(data[20]);     // Total
+      document.getElementById("Dibayar").textContent = formatCurrency(data[21]);   // Dibayar
+      document.getElementById("Sisa").textContent = formatCurrency(data[22]);      // Sisa
       document.getElementById("Lunas").textContent = data[23] || '-';     // Lunas
 
       // PIP Information
       document.getElementById("Dapat_PIP").textContent = data[24] || '-';  // Dapat_PIP
-      document.getElementById("Saldo_PIP").textContent = data[25] || '-';  // Saldo_PIP
+      document.getElementById("Saldo_PIP").textContent = formatCurrency(data[25]);  // Saldo_PIP
       document.getElementById("Sisa_PIP").textContent = data[26] || '-';   // Sisa_PIP
 
       // Additional Information
@@ -624,45 +631,45 @@ fetch(apiUrl)
       document.getElementById("Pernah_Tidak_Naik").textContent = data[30] || '-'; // Pernah_Tidak_Naik
 
       // Financial Adjustments
-      document.getElementById("Pemotongan").textContent = data[31] || '-';  // Pemotongan
+      document.getElementById("Pemotongan").textContent = formatCurrency(data[31]);  // Pemotongan
       document.getElementById("Ket_Pem").textContent = data[32] || '-';      // Ket_Pem
-      document.getElementById("TPPDB").textContent = data[33] || '-';       // TPPDB
+      document.getElementById("TPPDB").textContent = formatCurrency(data[33]);       // TPPDB
 
       // TLKS and Smst for various grades
-      document.getElementById("TLKS_Ga_7").textContent = data[34] || '-';   // TLKS_Ga_7
-      document.getElementById("TLKS_Ge_7").textContent = data[35] || '-';   // TLKS_Ge_7
-      document.getElementById("TSmst_Ga_7").textContent = data[36] || '-';  // TSmst_Ga_7
-      document.getElementById("TSmst_Ge_7").textContent = data[37] || '-';  // TSmst_Ge_7
-      document.getElementById("TLKS_Ga_8").textContent = data[38] || '-';   // TLKS_Ga_8
-      document.getElementById("TLKS_Ge_8").textContent = data[39] || '-';   // TLKS_Ge_8
-      document.getElementById("TSmst_Ga_8").textContent = data[40] || '-';  // TSmst_Ga_8
-      document.getElementById("TSmst_Ge_8").textContent = data[41] || '-';  // TSmst_Ge_8
-      document.getElementById("TLKS_Ga_9").textContent = data[42] || '-';   // TLKS_Ga_9
-      document.getElementById("TLKS_Ge_9").textContent = data[43] || '-';   // TLKS_Ge_9
-      document.getElementById("TSmst_Ga_9").textContent = data[44] || '-';  // TSmst_Ga_9
+      document.getElementById("TLKS_Ga_7").textContent = formatCurrency(data[34]);   // TLKS_Ga_7
+      document.getElementById("TLKS_Ge_7").textContent = formatCurrency(data[35]);   // TLKS_Ge_7
+      document.getElementById("TSmst_Ga_7").textContent = formatCurrency(data[36]);  // TSmst_Ga_7
+      document.getElementById("TSmst_Ge_7").textContent = formatCurrency(data[37]);  // TSmst_Ge_7
+      document.getElementById("TLKS_Ga_8").textContent = formatCurrency(data[38]);   // TLKS_Ga_8
+      document.getElementById("TLKS_Ge_8").textContent = formatCurrency(data[39]);   // TLKS_Ge_8
+      document.getElementById("TSmst_Ga_8").textContent = formatCurrency(data[40]);  // TSmst_Ga_8
+      document.getElementById("TSmst_Ge_8").textContent = formatCurrency(data[41]);  // TSmst_Ge_8
+      document.getElementById("TLKS_Ga_9").textContent = formatCurrency(data[42]);   // TLKS_Ga_9
+      document.getElementById("TLKS_Ge_9").textContent = formatCurrency(data[43]);   // TLKS_Ge_9
+      document.getElementById("TSmst_Ga_9").textContent = formatCurrency(data[44]);  // TSmst_Ga_9
 
       // Additional Financial Data
-      document.getElementById("TAM").textContent = data[45] || '-';        // TAM
-      document.getElementById("TWisuda").textContent = data[46] || '-';     // TWisuda
-      document.getElementById("KPPDB").textContent = data[47] || '-';       // KPPDB
+      document.getElementById("TAM").textContent = formatCurrency(data[45]);        // TAM
+      document.getElementById("TWisuda").textContent = formatCurrency(data[46]);     // TWisuda
+      document.getElementById("KPPDB").textContent = formatCurrency(data[47]);       // KPPDB
 
       // KLKS and KSmst for various grades
-      document.getElementById("KLKS_Ga_7").textContent = data[48] || '-';   // KLKS_Ga_7
-      document.getElementById("KLKS_Ge_7").textContent = data[49] || '-';   // KLKS_Ge_7
-      document.getElementById("KSmst_Ga_7").textContent = data[50] || '-';  // KSmst_Ga_7
-      document.getElementById("KSmst_Ge_7").textContent = data[51] || '-';  // KSmst_Ge_7
-      document.getElementById("KLKS_Ga_8").textContent = data[52] || '-';   // KLKS_Ga_8
-      document.getElementById("KLKS_Ge_8").textContent = data[53] || '-';   // KLKS_Ge_8
-      document.getElementById("KSmst_Ga_8").textContent = data[54] || '-';  // KSmst_Ga_8
-      document.getElementById("KSmst_Ge_8").textContent = data[55] || '-';  // KSmst_Ge_8
-      document.getElementById("KLKS_Ga_9").textContent = data[56] || '-';   // KLKS_Ga_9
-      document.getElementById("KLKS_Ge_9").textContent = data[57] || '-';   // KLKS_Ge_9
-      document.getElementById("KSmst_Ga_9").textContent = data[58] || '-';  // KSmst_Ga_9
+      document.getElementById("KLKS_Ga_7").textContent = formatCurrency(data[48]);   // KLKS_Ga_7
+      document.getElementById("KLKS_Ge_7").textContent = formatCurrency(data[49]);   // KLKS_Ge_7
+      document.getElementById("KSmst_Ga_7").textContent = formatCurrency(data[50]);  // KSmst_Ga_7
+      document.getElementById("KSmst_Ge_7").textContent = formatCurrency(data[51]);  // KSmst_Ge_7
+      document.getElementById("KLKS_Ga_8").textContent = formatCurrency(data[52]);   // KLKS_Ga_8
+      document.getElementById("KLKS_Ge_8").textContent = formatCurrency(data[53]);   // KLKS_Ge_8
+      document.getElementById("KSmst_Ga_8").textContent = formatCurrency(data[54]);  // KSmst_Ga_8
+      document.getElementById("KSmst_Ge_8").textContent = formatCurrency(data[55]);  // KSmst_Ge_8
+      document.getElementById("KLKS_Ga_9").textContent = formatCurrency(data[56]);   // KLKS_Ga_9
+      document.getElementById("KLKS_Ge_9").textContent = formatCurrency(data[57]);   // KLKS_Ge_9
+      document.getElementById("KSmst_Ga_9").textContent = formatCurrency(data[58]);  // KSmst_Ga_9
 
       // Additional status and KAM data
-      document.getElementById("KAM").textContent = data[59] || '-';        // KAM
-      document.getElementById("KWisuda").textContent = data[60] || '-';     // KWisuda
-      document.getElementById("KTT").textContent = data[61] || '-';         // KTT
+      document.getElementById("KAM").textContent = formatCurrency(data[59]);        // KAM
+      document.getElementById("KWisuda").textContent = formatCurrency(data[60]);     // KWisuda
+      document.getElementById("KTT").textContent = formatCurrency(data[61]);         // KTT
       // Now save the updated data to localStorage
       const studentData = {};
       document.querySelectorAll('.student-details p').forEach(p => {
