@@ -255,7 +255,7 @@ body {
 /* Span for data display */
 span {
   font-weight: bold;
-  color: #007BFF;
+  color: #000000;
 }
 table td {
   vertical-align: center;
@@ -285,14 +285,45 @@ table td span {
   background-color: #fcfcfc;
 }
 
-.payment-details span {
-  font-weight: bold;
-  color: #000000;
-}
+
 .gray-style {
   color: rgb(0, 0, 0);
-  background-color: #e0e0e0; /* Untuk warna abu-abu terang pada latar belakang */
+  background-color: #ffffff; /* Untuk warna abu-abu terang pada latar belakang */
 }
+.black-text {
+    color: black;
+}
+
+.green-text {
+    color: green;
+}
+
+.yellow-text {
+    color: yellow;
+}
+
+.red-text {
+    color: red;
+}
+.box {
+    border: 2px solid #ccc; /* Border untuk box */
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f9f9f9; /* Warna latar belakang box */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    display: flex; /* Membuat elemen sejajar */
+    align-items: center; /* Vertikal center */
+}
+
+h4 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px; /* Jarak antara judul dan data */
+}
+
 
 .icon {
       margin-left: 10px;
@@ -412,13 +443,17 @@ table td span {
           <td><span id="GenapI">-</span></td>
         </tr>
         <tr>
-          <td class="gray-style" style="font-size: 11px; color: #0188ff; font-weight: bold; background-color: #e0e0e0;">JUMLAH</td>
-          <td class="gray-style"><span class="gray-style" id="JumlahA">-</span></td>
-          <td class="gray-style"><span class="gray-style" id="JumlahS">-</span></td>
-          <td class="gray-style"><span class="gray-style" id="JumlahI">-</span></td>
+          <td class="gray-style" style="font-size: 13px; color: #0188ff; font-weight: bold; background-color: #ffffff;">JUMLAH</td>
+          <td class="gray-style"><span class="gray-style" style="font-size: 15px;" id="JumlahA">-</span></td>
+          <td class="gray-style"><span class="gray-style" style="font-size: 15px;" id="JumlahS">-</span></td>
+          <td class="gray-style"><span class="gray-style" style="font-size: 15px;" id="JumlahI">-</span></td>
         </tr>
       </tbody>
     </table>
+    <div id="keterangan-box" class="box">
+      <h4>Keterangan Absensi:</h4>
+      <span id="keterangan"></span>
+  </div>  
   </div>
 </div>
 </div>
@@ -542,6 +577,49 @@ table td span {
 </div>
 </main>
 <script>
+  function checkAndChangeColor() {
+    // Array of elements with IDs related to the value
+    const nilaiIds = [
+        "JumlahA"
+    ];
+
+    nilaiIds.forEach(id => {
+        const element = document.getElementById(id);
+        const keteranganElement = document.getElementById("keterangan"); // Element untuk menampilkan keterangan
+        if (element && keteranganElement) {
+            const nilai = parseFloat(element.innerText);
+
+            // Check the value ranges and change the text color accordingly
+            if (isNaN(nilai) || (nilai >= 0 && nilai <= 4)) {
+                element.classList.add('black-text');
+                element.classList.remove('green-text', 'yellow-text', 'red-text');
+                keteranganElement.innerText = "Kehadiran Aman";
+                keteranganElement.classList.add('black-text'); // Menambahkan warna hitam untuk keterangan
+                keteranganElement.classList.remove('green-text', 'yellow-text', 'red-text');
+            } else if (nilai >= 5 && nilai <= 9) {
+                element.classList.add('green-text');
+                element.classList.remove('black-text', 'yellow-text', 'red-text');
+                keteranganElement.innerText = "Siswa dipanggil ke Kantor untuk menghadap Guru BK";
+                keteranganElement.classList.add('green-text'); // Menambahkan warna hijau untuk keterangan
+                keteranganElement.classList.remove('black-text', 'yellow-text', 'red-text');
+            } else if (nilai >= 10 && nilai <= 20) {
+                element.classList.add('yellow-text');
+                element.classList.remove('black-text', 'green-text', 'red-text');
+                keteranganElement.innerText = "Wali / Orang Tua segera menghadap Guru BK di Kantor";
+                keteranganElement.classList.add('yellow-text'); // Menambahkan warna kuning untuk keterangan
+                keteranganElement.classList.remove('black-text', 'green-text', 'red-text');
+            } else if (nilai >= 21) {
+                element.classList.add('red-text');
+                element.classList.remove('black-text', 'green-text', 'yellow-text');
+                keteranganElement.innerText = "Terindikasi Tidak Naik kelas / Tidak Lulus";
+                keteranganElement.classList.add('red-text'); // Menambahkan warna merah untuk keterangan
+                keteranganElement.classList.remove('black-text', 'green-text', 'yellow-text');
+            }
+        }
+    });
+}
+
+
 // Get the user ID from URL (passed via query parameter)
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("userId");
@@ -616,6 +694,7 @@ if (userId) {
       document.getElementById("JumlahA").textContent = formatNumber(data[46], true);
       document.getElementById("JumlahS").textContent = formatNumber(data[47], true);
       document.getElementById("JumlahI").textContent = formatNumber(data[48], true);
+      checkAndChangeColor();
       } else {
         alert('Data tidak tersedia!');
       }
