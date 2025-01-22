@@ -96,7 +96,48 @@ main {
 main.active {
   margin-left: 100px;
 }
+    /* Footer Section */
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
 
+    .footer a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    /* Floating Icons (WhatsApp and Gmail) */
+    .floating-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-icons a {
+  background-color: transparent; /* Menghapus background */
+  border-radius: 50%; /* Jika ingin menjaga efek bentuk lingkaran */
+  padding: 0; /* Menghilangkan padding untuk menghapus kotak */
+  box-shadow: none; /* Menghapus bayangan kotak */
+  color: green;
+  font-size: 2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-icons a:hover {
+  transform: scale(1.1);
+  box-shadow: none; /* Tidak ada bayangan pada hover */
+}
+.icon {
+      margin-left: 10px;
+      font-size: 1.3em;
+    }
 /* General Reset */
 body {
   margin: 0;
@@ -199,7 +240,7 @@ body {
 
 .payment-details td {
   padding: 8px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffffff;
   text-align: left;
 }
 
@@ -256,12 +297,9 @@ body {
 }
 
 /* Span for data display */
-span {
-  font-weight: bold;
-  color: #007BFF;
-}
+
 table td {
-  vertical-align: top;
+  vertical-align: center;
 }
 
 table td span {
@@ -276,62 +314,16 @@ table td span {
 
 .payment-details td {
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #080808;
   text-align: left;
 }
 
 .payment-details td:first-child {
   font-weight: bold;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
 
-.payment-details span {
-  font-weight: bold;
-  color: #007BFF;
-}
-.icon {
-      margin-left: 10px;
-      font-size: 1.3em;
-    }
 
-    /* Footer Section */
-    .footer {
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-      margin-top: 10px;
-      margin-bottom: 20px;
-    }
-
-    .footer a {
-      text-decoration: none;
-      color: #0073e6;
-    }
-
-    /* Floating Icons (WhatsApp and Gmail) */
-    .floating-icons {
-      position: fixed;
-      bottom: 20px;
-      right: 2px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .floating-icons a {
-  background-color: transparent; /* Menghapus background */
-  border-radius: 50%; /* Jika ingin menjaga efek bentuk lingkaran */
-  padding: 0; /* Menghilangkan padding untuk menghapus kotak */
-  box-shadow: none; /* Menghapus bayangan kotak */
-  color: green;
-  font-size: 2em;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.floating-icons a:hover {
-  transform: scale(1.1);
-  box-shadow: none; /* Tidak ada bayangan pada hover */
-}
 /* Kontainer untuk tombol dan heading */
 .semester-container {
   text-align: center;
@@ -362,13 +354,13 @@ table td span {
 
 /* Hover efek untuk tombol */
 .semester-buttons button:hover {
-  background-color: #005bb5;
+  background-color: #06b500;
   transform: scale(1.05);
 }
 
 /* Efek tombol saat diklik */
 .semester-buttons button:active {
-  background-color: #003f7f;
+  background-color: #05b233;
   transform: scale(0.95);
 }
 
@@ -407,7 +399,12 @@ table td span {
 .semester-content:not(.hidden) {
   display: block; /* Tampilkan konten yang aktif */
 }
-
+.red-text {
+            color: red;
+        }
+        .blue-text {
+            color: rgb(13, 13, 13);
+        }
 /* Responsive design: Untuk layar kecil */
 @media (max-width: 768px) {
   .semester-buttons button {
@@ -507,78 +504,78 @@ table td span {
               <tbody>
                 <tr>
                     <td style="font-size: 11px;">AL-QURAN HADITS</td>
-                    <td><span id="qhgp1">-</span></td>
-                    <td><span id="qhgk1">-</span></td>
+                    <td><span class="nilai" id="qhgp1">0</span></td>
+                    <td><span class="nilai" id="qhgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-                    <td><span id="aagp1">-</span></td>
-                    <td><span id="aagk1">-</span></td>
+                    <td><span class="nilai" id="aagp1">0</span></td>
+                    <td><span class="nilai" id="aagk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">FIKIH</td>
-                    <td><span id="fikgp1">-</span></td>
-                    <td><span id="fikgk1">-</span></td>
+                    <td><span class="nilai" id="fikgp1">0</span></td>
+                    <td><span class="nilai" id="fikgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SKI</td>
-                    <td><span id="skigp1">-</span></td>
-                    <td><span id="skigk1">-</span></td>
+                    <td><span class="nilai" id="skigp1">0</span></td>
+                    <td><span class="nilai" id="skigk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PPKn</td>
-                    <td><span id="ppkngp1">-</span></td>
-                    <td><span id="ppkngk1">-</span></td>
+                    <td><span class="nilai" id="ppkngp1">0</span></td>
+                    <td><span class="nilai" id="ppkngk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INDONESIA</td>
-                    <td><span id="bingp1">-</span></td>
-                    <td><span id="bingk1">-</span></td>
+                    <td><span class="nilai" id="bingp1">0</span></td>
+                    <td><span class="nilai" id="bingk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. ARAB</td>
-                    <td><span id="bargp1">-</span></td>
-                    <td><span id="bargk1">-</span></td>
+                    <td><span class="nilai" id="bargp1">0</span></td>
+                    <td><span class="nilai" id="bargk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">MATEMATIKA</td>
-                    <td><span id="mtkgp1">-</span></td>
-                    <td><span id="mtkgk1">-</span></td>
+                    <td><span class="nilai" id="mtkgp1">0</span></td>
+                    <td><span class="nilai" id="mtkgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPA</td>
-                    <td><span id="ipagp1">-</span></td>
-                    <td><span id="ipagk1">-</span></td>
+                    <td><span class="nilai" id="ipagp1">0</span></td>
+                    <td><span class="nilai" id="ipagk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPS</td>
-                    <td><span id="ipsgp1">-</span></td>
-                    <td><span id="ipsgk1">-</span></td>
+                    <td><span class="nilai" id="ipsgp1">0</span></td>
+                    <td><span class="nilai" id="ipsgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INGGRIS</td>
-                    <td><span id="biggp1">-</span></td>
-                    <td><span id="biggk1">-</span></td>
+                    <td><span class="nilai" id="biggp1">0</span></td>
+                    <td><span class="nilai" id="biggk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SENI BUDAYA</td>
-                    <td><span id="sbkgp1">-</span></td>
-                    <td><span id="sbkgk1">-</span></td>
+                    <td><span class="nilai" id="sbkgp1">0</span></td>
+                    <td><span class="nilai" id="sbkgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PJOK</td>
-                    <td><span id="pjokgp1">-</span></td>
-                    <td><span id="pjokgk1">-</span></td>
+                    <td><span class="nilai" id="pjokgp1">0</span></td>
+                    <td><span class="nilai" id="pjokgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">INFORMATIKA</td>
-                    <td><span id="tikgp1">-</span></td>
-                    <td><span id="tikgk1">-</span></td>
+                    <td><span class="nilai" id="tikgp1">0</span></td>
+                    <td><span class="nilai" id="tikgk1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">ASWAJA</td>
-                    <td><span id="aswjgp1">-</span></td>
-                    <td><span id="aswjgk1">-</span></td>
+                    <td><span class="nilai" id="aswjgp1">0</span></td>
+                    <td><span class="nilai" id="aswjgk1">0</span></td>
                   </tr>
               </tbody>
             </table>
@@ -608,78 +605,78 @@ table td span {
               <tbody>
                 <tr>
                     <td style="font-size: 11px;">AL-QURAN HADITS</td>
-                    <td><span id="qhgp2">-</span></td>
-                    <td><span id="qhgk2">-</span></td>
+                    <td><span id="qhgp2">0</span></td>
+                    <td><span id="qhgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-                    <td><span id="aagp2">-</span></td>
-                    <td><span id="aagk2">-</span></td>
+                    <td><span id="aagp2">0</span></td>
+                    <td><span id="aagk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">FIKIH</td>
-                    <td><span id="fikgp2">-</span></td>
-                    <td><span id="fikgk2">-</span></td>
+                    <td><span id="fikgp2">0</span></td>
+                    <td><span id="fikgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SKI</td>
-                    <td><span id="skigp2">-</span></td>
-                    <td><span id="skigk2">-</span></td>
+                    <td><span id="skigp2">0</span></td>
+                    <td><span id="skigk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PPKn</td>
-                    <td><span id="ppkngp2">-</span></td>
-                    <td><span id="ppkngk2">-</span></td>
+                    <td><span id="ppkngp2">0</span></td>
+                    <td><span id="ppkngk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INDONESIA</td>
-                    <td><span id="bingp2">-</span></td>
-                    <td><span id="bingk2">-</span></td>
+                    <td><span id="bingp2">0</span></td>
+                    <td><span id="bingk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. ARAB</td>
-                    <td><span id="bargp2">-</span></td>
-                    <td><span id="bargk2">-</span></td>
+                    <td><span id="bargp2">0</span></td>
+                    <td><span id="bargk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">MATEMATIKA</td>
-                    <td><span id="mtkgp2">-</span></td>
-                    <td><span id="mtkgk2">-</span></td>
+                    <td><span id="mtkgp2">0</span></td>
+                    <td><span id="mtkgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPA</td>
-                    <td><span id="ipagp2">-</span></td>
-                    <td><span id="ipagk2">-</span></td>
+                    <td><span id="ipagp2">0</span></td>
+                    <td><span id="ipagk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPS</td>
-                    <td><span id="ipsgp2">-</span></td>
-                    <td><span id="ipsgk2">-</span></td>
+                    <td><span id="ipsgp2">0</span></td>
+                    <td><span id="ipsgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INGGRIS</td>
-                    <td><span id="biggp2">-</span></td>
-                    <td><span id="biggk2">-</span></td>
+                    <td><span id="biggp2">0</span></td>
+                    <td><span id="biggk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SENI BUDAYA</td>
-                    <td><span id="sbkgp2">-</span></td>
-                    <td><span id="sbkgk2">-</span></td>
+                    <td><span id="sbkgp2">0</span></td>
+                    <td><span id="sbkgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PJOK</td>
-                    <td><span id="pjokgp2">-</span></td>
-                    <td><span id="pjokgk2">-</span></td>
+                    <td><span id="pjokgp2">0</span></td>
+                    <td><span id="pjokgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">INFORMATIKA</td>
-                    <td><span id="tikgp2">-</span></td>
-                    <td><span id="tikgk2">-</span></td>
+                    <td><span id="tikgp2">0</span></td>
+                    <td><span id="tikgk2">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">ASWAJA</td>
-                    <td><span id="aswjgp2">-</span></td>
-                    <td><span id="aswjgk2">-</span></td>
+                    <td><span id="aswjgp2">0</span></td>
+                    <td><span id="aswjgk2">0</span></td>
                   </tr>
               </tbody>
             </table>
@@ -709,78 +706,78 @@ table td span {
               <tbody>
                 <tr>
                     <td style="font-size: 11px;">AL-QURAN HADITS</td>
-                    <td><span id="qhgp3">-</span></td>
-                    <td><span id="qhgk3">-</span></td>
+                    <td><span id="qhgp3">0</span></td>
+                    <td><span id="qhgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-                    <td><span id="aagp3">-</span></td>
-                    <td><span id="aagk3">-</span></td>
+                    <td><span id="aagp3">0</span></td>
+                    <td><span id="aagk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">FIKIH</td>
-                    <td><span id="fikgp3">-</span></td>
-                    <td><span id="fikgk3">-</span></td>
+                    <td><span id="fikgp3">0</span></td>
+                    <td><span id="fikgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SKI</td>
-                    <td><span id="skigp3">-</span></td>
-                    <td><span id="skigk3">-</span></td>
+                    <td><span id="skigp3">0</span></td>
+                    <td><span id="skigk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PPKn</td>
-                    <td><span id="ppkngp3">-</span></td>
-                    <td><span id="ppkngk3">-</span></td>
+                    <td><span id="ppkngp3">0</span></td>
+                    <td><span id="ppkngk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INDONESIA</td>
-                    <td><span id="bingp3">-</span></td>
-                    <td><span id="bingk3">-</span></td>
+                    <td><span id="bingp3">0</span></td>
+                    <td><span id="bingk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. ARAB</td>
-                    <td><span id="bargp3">-</span></td>
-                    <td><span id="bargk3">-</span></td>
+                    <td><span id="bargp3">0</span></td>
+                    <td><span id="bargk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">MATEMATIKA</td>
-                    <td><span id="mtkgp3">-</span></td>
-                    <td><span id="mtkgk3">-</span></td>
+                    <td><span id="mtkgp3">0</span></td>
+                    <td><span id="mtkgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPA</td>
-                    <td><span id="ipagp3">-</span></td>
-                    <td><span id="ipagk3">-</span></td>
+                    <td><span id="ipagp3">0</span></td>
+                    <td><span id="ipagk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPS</td>
-                    <td><span id="ipsgp3">-</span></td>
-                    <td><span id="ipsgk3">-</span></td>
+                    <td><span id="ipsgp3">0</span></td>
+                    <td><span id="ipsgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INGGRIS</td>
-                    <td><span id="biggp3">-</span></td>
-                    <td><span id="biggk3">-</span></td>
+                    <td><span id="biggp3">0</span></td>
+                    <td><span id="biggk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SENI BUDAYA</td>
-                    <td><span id="sbkgp3">-</span></td>
-                    <td><span id="sbkgk3">-</span></td>
+                    <td><span id="sbkgp3">0</span></td>
+                    <td><span id="sbkgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PJOK</td>
-                    <td><span id="pjokgp3">-</span></td>
-                    <td><span id="pjokgk3">-</span></td>
+                    <td><span id="pjokgp3">0</span></td>
+                    <td><span id="pjokgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">INFORMATIKA</td>
-                    <td><span id="tikgp3">-</span></td>
-                    <td><span id="tikgk3">-</span></td>
+                    <td><span id="tikgp3">0</span></td>
+                    <td><span id="tikgk3">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">ASWAJA</td>
-                    <td><span id="aswjgp3">-</span></td>
-                    <td><span id="aswjgk3">-</span></td>
+                    <td><span id="aswjgp3">0</span></td>
+                    <td><span id="aswjgk3">0</span></td>
                   </tr>
               </tbody>
             </table>
@@ -810,78 +807,78 @@ table td span {
               <tbody>
                 <tr>
                     <td style="font-size: 11px;">AL-QURAN HADITS</td>
-                    <td><span id="qhgp4">-</span></td>
-                    <td><span id="qhgk4">-</span></td>
+                    <td><span id="qhgp4">0</span></td>
+                    <td><span id="qhgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-                    <td><span id="aagp4">-</span></td>
-                    <td><span id="aagk4">-</span></td>
+                    <td><span id="aagp4">0</span></td>
+                    <td><span id="aagk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">FIKIH</td>
-                    <td><span id="fikgp4">-</span></td>
-                    <td><span id="fikgk4">-</span></td>
+                    <td><span id="fikgp4">0</span></td>
+                    <td><span id="fikgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SKI</td>
-                    <td><span id="skigp4">-</span></td>
-                    <td><span id="skigk4">-</span></td>
+                    <td><span id="skigp4">0</span></td>
+                    <td><span id="skigk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PPKn</td>
-                    <td><span id="ppkngp4">-</span></td>
-                    <td><span id="ppkngk4">-</span></td>
+                    <td><span id="ppkngp4">0</span></td>
+                    <td><span id="ppkngk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INDONESIA</td>
-                    <td><span id="bingp4">-</span></td>
-                    <td><span id="bingk4">-</span></td>
+                    <td><span id="bingp4">0</span></td>
+                    <td><span id="bingk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. ARAB</td>
-                    <td><span id="bargp4">-</span></td>
-                    <td><span id="bargk4">-</span></td>
+                    <td><span id="bargp4">0</span></td>
+                    <td><span id="bargk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">MATEMATIKA</td>
-                    <td><span id="mtkgp4">-</span></td>
-                    <td><span id="mtkgk4">-</span></td>
+                    <td><span id="mtkgp4">0</span></td>
+                    <td><span id="mtkgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPA</td>
-                    <td><span id="ipagp4">-</span></td>
-                    <td><span id="ipagk4">-</span></td>
+                    <td><span id="ipagp4">0</span></td>
+                    <td><span id="ipagk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPS</td>
-                    <td><span id="ipsgp4">-</span></td>
-                    <td><span id="ipsgk4">-</span></td>
+                    <td><span id="ipsgp4">0</span></td>
+                    <td><span id="ipsgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INGGRIS</td>
-                    <td><span id="biggp4">-</span></td>
-                    <td><span id="biggk4">-</span></td>
+                    <td><span id="biggp4">0</span></td>
+                    <td><span id="biggk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SENI BUDAYA</td>
-                    <td><span id="sbkgp4">-</span></td>
-                    <td><span id="sbkgk4">-</span></td>
+                    <td><span id="sbkgp4">0</span></td>
+                    <td><span id="sbkgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PJOK</td>
-                    <td><span id="pjokgp4">-</span></td>
-                    <td><span id="pjokgk4">-</span></td>
+                    <td><span id="pjokgp4">0</span></td>
+                    <td><span id="pjokgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">INFORMATIKA</td>
-                    <td><span id="tikgp4">-</span></td>
-                    <td><span id="tikgk4">-</span></td>
+                    <td><span id="tikgp4">0</span></td>
+                    <td><span id="tikgk4">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">ASWAJA</td>
-                    <td><span id="aswjgp4">-</span></td>
-                    <td><span id="aswjgk4">-</span></td>
+                    <td><span id="aswjgp4">0</span></td>
+                    <td><span id="aswjgk4">0</span></td>
                   </tr>
               </tbody>
             </table>
@@ -911,78 +908,78 @@ table td span {
               <tbody>
                 <tr>
                     <td style="font-size: 11px;">AL-QURAN HADITS</td>
-                    <td><span id="qhgp5">-</span></td>
-                    <td><span id="qhgk5">-</span></td>
+                    <td><span id="qhgp5">0</span></td>
+                    <td><span id="qhgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-                    <td><span id="aagp5">-</span></td>
-                    <td><span id="aagk5">-</span></td>
+                    <td><span id="aagp5">0</span></td>
+                    <td><span id="aagk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">FIKIH</td>
-                    <td><span id="fikgp5">-</span></td>
-                    <td><span id="fikgk5">-</span></td>
+                    <td><span id="fikgp5">0</span></td>
+                    <td><span id="fikgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SKI</td>
-                    <td><span id="skigp5">-</span></td>
-                    <td><span id="skigk5">-</span></td>
+                    <td><span id="skigp5">0</span></td>
+                    <td><span id="skigk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PPKn</td>
-                    <td><span id="ppkngp5">-</span></td>
-                    <td><span id="ppkngk5">-</span></td>
+                    <td><span id="ppkngp5">0</span></td>
+                    <td><span id="ppkngk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INDONESIA</td>
-                    <td><span id="bingp5">-</span></td>
-                    <td><span id="bingk5">-</span></td>
+                    <td><span id="bingp5">0</span></td>
+                    <td><span id="bingk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. ARAB</td>
-                    <td><span id="bargp5">-</span></td>
-                    <td><span id="bargk5">-</span></td>
+                    <td><span id="bargp5">0</span></td>
+                    <td><span id="bargk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">MATEMATIKA</td>
-                    <td><span id="mtkgp5">-</span></td>
-                    <td><span id="mtkgk5">-</span></td>
+                    <td><span id="mtkgp5">0</span></td>
+                    <td><span id="mtkgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPA</td>
-                    <td><span id="ipagp5">-</span></td>
-                    <td><span id="ipagk5">-</span></td>
+                    <td><span id="ipagp5">0</span></td>
+                    <td><span id="ipagk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPS</td>
-                    <td><span id="ipsgp5">-</span></td>
-                    <td><span id="ipsgk5">-</span></td>
+                    <td><span id="ipsgp5">0</span></td>
+                    <td><span id="ipsgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INGGRIS</td>
-                    <td><span id="biggp5">-</span></td>
-                    <td><span id="biggk5">-</span></td>
+                    <td><span id="biggp5">0</span></td>
+                    <td><span id="biggk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SENI BUDAYA</td>
-                    <td><span id="sbkgp5">-</span></td>
-                    <td><span id="sbkgk5">-</span></td>
+                    <td><span id="sbkgp5">0</span></td>
+                    <td><span id="sbkgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PJOK</td>
-                    <td><span id="pjokgp5">-</span></td>
-                    <td><span id="pjokgk5">-</span></td>
+                    <td><span id="pjokgp5">0</span></td>
+                    <td><span id="pjokgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">INFORMATIKA</td>
-                    <td><span id="tikgp5">-</span></td>
-                    <td><span id="tikgk5">-</span></td>
+                    <td><span id="tikgp5">0</span></td>
+                    <td><span id="tikgk5">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">ASWAJA</td>
-                    <td><span id="aswjgp5">-</span></td>
-                    <td><span id="aswjgk5">-</span></td>
+                    <td><span id="aswjgp5">0</span></td>
+                    <td><span id="aswjgk5">0</span></td>
                   </tr>
               </tbody>
             </table>
@@ -1008,63 +1005,63 @@ table td span {
               <tbody>
                 <tr>
                     <td style="font-size: 11px;">AL-QURAN HADITS</td>
-                    <td><span id="qham1">-</span></td>
+                    <td><span id="qham1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">AKIDAH AKHLAK</td>
-                    <td><span id="aam1">-</span></td>
+                    <td><span id="aam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">FIKIH</td>
-                    <td><span id="fikam1">-</span></td>
+                    <td><span id="fikam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SKI</td>
-                    <td><span id="skiam1">-</span></td>
+                    <td><span id="skiam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PPKn</td>
-                    <td><span id="ppknam1">-</span></td>
+                    <td><span id="ppknam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INDONESIA</td>
-                    <td><span id="binam1">-</span></td>
+                    <td><span id="binam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. ARAB</td>
-                    <td><span id="baram1">-</span></td>
+                    <td><span id="baram1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">MATEMATIKA</td>
-                    <td><span id="mtkam1">-</span></td>
+                    <td><span id="mtkam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPA</td>
-                    <td><span id="ipaam1">-</span></td>
+                    <td><span id="ipaam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">IPS</td>
-                    <td><span id="ipsam1">-</span></td>
+                    <td><span id="ipsam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">BHS. INGGRIS</td>
-                    <td><span id="bigam1">-</span></td>
+                    <td><span id="bigam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">SENI BUDAYA</td>
-                    <td><span id="sbkam1">-</span></td>
+                    <td><span id="sbkam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">PJOK</td>
-                    <td><span id="pjokam1">-</span></td>
+                    <td><span id="pjokam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">INFORMATIKA</td>
-                    <td><span id="tikam1">-</span></td>
+                    <td><span id="tikam1">0</span></td>
                   </tr>
                   <tr>
                     <td style="font-size: 11px;">ASWAJA</td>
-                    <td><span id="aswjam1">-</span></td>
+                    <td><span id="aswjam1">0</span></td>
                   </tr>                  
               </tbody>
             </table>
@@ -1108,224 +1105,7 @@ table td span {
   </a>
 </div>
 <script>
-// Get the user ID from URL (passed via query parameter)
-const urlParams = new URLSearchParams(window.location.search);
-const userId = urlParams.get("userId");
-
-if (userId) {
-  console.log("User ID:", userId);
-
-  // Fetch data using the exec URL and the user ID
-  const apiUrl = `https://script.google.com/macros/s/AKfycbxsuTmOToxMq_bfu4iItAYeYV_M2BdFN9M0dRCcFhMBqaRuazrzraLAW9O55AQi0ncI5A/exec?action=FetchData&userId=${userId}`;
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      if (data && Array.isArray(data)) {
-      // ID dan Nama
-      document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';         // ID
-      document.getElementById("NISN").textContent = data[1] || '-';       
-      document.getElementById("Name").textContent = data[2] || '-';     
-      document.getElementById("Kelas").textContent = data[3] || '-';       
-
-        // Semester 1
-        document.getElementById("qhgp1").textContent = data[4] || '-'; 
-        document.getElementById("aagp1").textContent = data[5] || '-'; 
-        document.getElementById("fikgp1").textContent = data[6] || '-'; 
-        document.getElementById("skigp1").textContent = data[7] || '-'; 
-        document.getElementById("ppkngp1").textContent = data[8] || '-'; 
-        document.getElementById("bingp1").textContent = data[9] || '-'; 
-        document.getElementById("bargp1").textContent = data[10] || '-'; 
-        document.getElementById("mtkgp1").textContent = data[11] || '-'; 
-        document.getElementById("ipagp1").textContent = data[12] || '-'; 
-        document.getElementById("ipsgp1").textContent = data[13] || '-'; 
-        document.getElementById("biggp1").textContent = data[14] || '-'; 
-        document.getElementById("sbkgp1").textContent = data[15] || '-'; 
-        document.getElementById("pjokgp1").textContent = data[16] || '-'; 
-        document.getElementById("tikgp1").textContent = data[17] || '-'; 
-        document.getElementById("aswjgp1").textContent = data[18] || '-'; 
-
-        document.getElementById("qhgk1").textContent = data[19] || '-'; 
-        document.getElementById("aagk1").textContent = data[20] || '-'; 
-        document.getElementById("fikgk1").textContent = data[21] || '-'; 
-        document.getElementById("skigk1").textContent = data[22] || '-'; 
-        document.getElementById("ppkngk1").textContent = data[23] || '-'; 
-        document.getElementById("bingk1").textContent = data[24] || '-'; 
-        document.getElementById("bargk1").textContent = data[25] || '-'; 
-        document.getElementById("mtkgk1").textContent = data[26] || '-'; 
-        document.getElementById("ipagk1").textContent = data[27] || '-'; 
-        document.getElementById("ipsgk1").textContent = data[28] || '-'; 
-        document.getElementById("biggk1").textContent = data[29] || '-'; 
-        document.getElementById("sbkgk1").textContent = data[30] || '-'; 
-        document.getElementById("pjokgk1").textContent = data[31] || '-'; 
-        document.getElementById("tikgk1").textContent = data[32] || '-'; 
-        document.getElementById("aswjgk1").textContent = data[33] || '-'; 
-
-        // Semester 2
-        document.getElementById("qhgp2").textContent = data[34] || '-'; 
-        document.getElementById("aagp2").textContent = data[35] || '-'; 
-        document.getElementById("fikgp2").textContent = data[36] || '-'; 
-        document.getElementById("skigp2").textContent = data[37] || '-'; 
-        document.getElementById("ppkngp2").textContent = data[38] || '-'; 
-        document.getElementById("bingp2").textContent = data[39] || '-'; 
-        document.getElementById("bargp2").textContent = data[40] || '-'; 
-        document.getElementById("mtkgp2").textContent = data[41] || '-'; 
-        document.getElementById("ipagp2").textContent = data[42] || '-'; 
-        document.getElementById("ipsgp2").textContent = data[43] || '-'; 
-        document.getElementById("biggp2").textContent = data[44] || '-'; 
-        document.getElementById("sbkgp2").textContent = data[45] || '-'; 
-        document.getElementById("pjokgp2").textContent = data[46] || '-'; 
-        document.getElementById("tikgp2").textContent = data[47] || '-'; 
-        document.getElementById("aswjgp2").textContent = data[48] || '-'; 
-
-        document.getElementById("qhgk2").textContent = data[49] || '-'; 
-        document.getElementById("aagk2").textContent = data[50] || '-'; 
-        document.getElementById("fikgk2").textContent = data[51] || '-'; 
-        document.getElementById("skigk2").textContent = data[52] || '-'; 
-        document.getElementById("ppkngk2").textContent = data[53] || '-'; 
-        document.getElementById("bingk2").textContent = data[54] || '-'; 
-        document.getElementById("bargk2").textContent = data[55] || '-'; 
-        document.getElementById("mtkgk2").textContent = data[56] || '-'; 
-        document.getElementById("ipagk2").textContent = data[57] || '-'; 
-        document.getElementById("ipsgk2").textContent = data[58] || '-'; 
-        document.getElementById("biggk2").textContent = data[59] || '-'; 
-        document.getElementById("sbkgk2").textContent = data[60] || '-'; 
-        document.getElementById("pjokgk2").textContent = data[61] || '-'; 
-        document.getElementById("tikgk2").textContent = data[62] || '-'; 
-        document.getElementById("aswjgk2").textContent = data[63] || '-';
-
-        // Semester 3
-        document.getElementById("qhgp3").textContent = data[64] || '-'; 
-        document.getElementById("aagp3").textContent = data[65] || '-'; 
-        document.getElementById("fikgp3").textContent = data[66] || '-'; 
-        document.getElementById("skigp3").textContent = data[67] || '-'; 
-        document.getElementById("ppkngp3").textContent = data[68] || '-'; 
-        document.getElementById("bingp3").textContent = data[69] || '-'; 
-        document.getElementById("bargp3").textContent = data[70] || '-'; 
-        document.getElementById("mtkgp3").textContent = data[71] || '-'; 
-        document.getElementById("ipagp3").textContent = data[72] || '-'; 
-        document.getElementById("ipsgp3").textContent = data[73] || '-'; 
-        document.getElementById("biggp3").textContent = data[74] || '-'; 
-        document.getElementById("sbkgp3").textContent = data[75] || '-'; 
-        document.getElementById("pjokgp3").textContent = data[76] || '-'; 
-        document.getElementById("tikgp3").textContent = data[77] || '-'; 
-        document.getElementById("aswjgp3").textContent = data[78] || '-'; 
-
-        document.getElementById("qhgk3").textContent = data[79] || '-'; 
-        document.getElementById("aagk3").textContent = data[80] || '-'; 
-        document.getElementById("fikgk3").textContent = data[81] || '-'; 
-        document.getElementById("skigk3").textContent = data[82] || '-'; 
-        document.getElementById("ppkngk3").textContent = data[83] || '-'; 
-        document.getElementById("bingk3").textContent = data[84] || '-'; 
-        document.getElementById("bargk3").textContent = data[85] || '-'; 
-        document.getElementById("mtkgk3").textContent = data[86] || '-'; 
-        document.getElementById("ipagk3").textContent = data[87] || '-'; 
-        document.getElementById("ipsgk3").textContent = data[88] || '-'; 
-        document.getElementById("biggk3").textContent = data[89] || '-'; 
-        document.getElementById("sbkgk3").textContent = data[90] || '-'; 
-        document.getElementById("pjokgk3").textContent = data[91] || '-'; 
-        document.getElementById("tikgk3").textContent = data[92] || '-'; 
-        document.getElementById("aswjgk3").textContent = data[93] || '-'; 
-
-        // Semester 4
-        document.getElementById("qhgp4").textContent = data[94] || '-'; 
-        document.getElementById("aagp4").textContent = data[95] || '-'; 
-        document.getElementById("fikgp4").textContent = data[96] || '-'; 
-        document.getElementById("skigp4").textContent = data[97] || '-'; 
-        document.getElementById("ppkngp4").textContent = data[98] || '-'; 
-        document.getElementById("bingp4").textContent = data[99] || '-'; 
-        document.getElementById("bargp4").textContent = data[100] || '-'; 
-        document.getElementById("mtkgp4").textContent = data[101] || '-'; 
-        document.getElementById("ipagp4").textContent = data[102] || '-'; 
-        document.getElementById("ipsgp4").textContent = data[103] || '-'; 
-        document.getElementById("biggp4").textContent = data[104] || '-'; 
-        document.getElementById("sbkgp4").textContent = data[105] || '-'; 
-        document.getElementById("pjokgp4").textContent = data[106] || '-'; 
-        document.getElementById("tikgp4").textContent = data[107] || '-'; 
-        document.getElementById("aswjgp4").textContent = data[108] || '-'; 
-
-        document.getElementById("qhgk4").textContent = data[109] || '-'; 
-        document.getElementById("aagk4").textContent = data[110] || '-'; 
-        document.getElementById("fikgk4").textContent = data[111] || '-'; 
-        document.getElementById("skigk4").textContent = data[112] || '-'; 
-        document.getElementById("ppkngk4").textContent = data[113] || '-'; 
-        document.getElementById("bingk4").textContent = data[114] || '-'; 
-        document.getElementById("bargk4").textContent = data[115] || '-'; 
-        document.getElementById("mtkgk4").textContent = data[116] || '-'; 
-        document.getElementById("ipagk4").textContent = data[117] || '-'; 
-        document.getElementById("ipsgk4").textContent = data[118] || '-'; 
-        document.getElementById("biggk4").textContent = data[119] || '-'; 
-        document.getElementById("sbkgk4").textContent = data[120] || '-'; 
-        document.getElementById("pjokgk4").textContent = data[121] || '-'; 
-        document.getElementById("tikgk4").textContent = data[122] || '-'; 
-        document.getElementById("aswjgk4").textContent = data[123] || '-'; 
-
-        // Semester 5
-        document.getElementById("qhgp5").textContent = data[124] || '-'; 
-        document.getElementById("aagp5").textContent = data[125] || '-'; 
-        document.getElementById("fikgp5").textContent = data[126] || '-'; 
-        document.getElementById("skigp5").textContent = data[127] || '-'; 
-        document.getElementById("ppkngp5").textContent = data[128] || '-'; 
-        document.getElementById("bingp5").textContent = data[129] || '-'; 
-        document.getElementById("bargp5").textContent = data[130] || '-'; 
-        document.getElementById("mtkgp5").textContent = data[131] || '-'; 
-        document.getElementById("ipagp5").textContent = data[132] || '-'; 
-        document.getElementById("ipsgp5").textContent = data[133] || '-'; 
-        document.getElementById("biggp5").textContent = data[134] || '-'; 
-        document.getElementById("sbkgp5").textContent = data[135] || '-'; 
-        document.getElementById("pjokgp5").textContent = data[136] || '-'; 
-        document.getElementById("tikgp5").textContent = data[137] || '-'; 
-        document.getElementById("aswjgp5").textContent = data[138] || '-'; 
-
-        document.getElementById("qhgk5").textContent = data[139] || '-'; 
-        document.getElementById("aagk5").textContent = data[140] || '-'; 
-        document.getElementById("fikgk5").textContent = data[141] || '-'; 
-        document.getElementById("skigk5").textContent = data[142] || '-'; 
-        document.getElementById("ppkngk5").textContent = data[143] || '-'; 
-        document.getElementById("bingk5").textContent = data[144] || '-'; 
-        document.getElementById("bargk5").textContent = data[145] || '-'; 
-        document.getElementById("mtkgk5").textContent = data[146] || '-'; 
-        document.getElementById("ipagk5").textContent = data[147] || '-'; 
-        document.getElementById("ipsgk5").textContent = data[148] || '-'; 
-        document.getElementById("biggk5").textContent = data[149] || '-'; 
-        document.getElementById("sbkgk5").textContent = data[150] || '-'; 
-        document.getElementById("pjokgk5").textContent = data[151] || '-'; 
-        document.getElementById("tikgk5").textContent = data[152] || '-'; 
-        document.getElementById("aswjgk5").textContent = data[153] || '-';
-
-        // am
-        document.getElementById("qham1").textContent = data[154] || '-'; 
-        document.getElementById("aam1").textContent = data[155] || '-'; 
-        document.getElementById("fikam1").textContent = data[156] || '-'; 
-        document.getElementById("skiam1").textContent = data[157] || '-'; 
-        document.getElementById("ppknam1").textContent = data[158] || '-'; 
-        document.getElementById("binam1").textContent = data[159] || '-'; 
-        document.getElementById("baram1").textContent = data[160] || '-'; 
-        document.getElementById("mtkam1").textContent = data[161] || '-'; 
-        document.getElementById("ipaam1").textContent = data[162] || '-'; 
-        document.getElementById("ipsam1").textContent = data[163] || '-'; 
-        document.getElementById("bigam1").textContent = data[164] || '-'; 
-        document.getElementById("sbkam1").textContent = data[165] || '-'; 
-        document.getElementById("pjokam1").textContent = data[166] || '-'; 
-        document.getElementById("tikam1").textContent = data[167] || '-'; 
-        document.getElementById("aswjam1").textContent = data[168] || '-'; 
-        // Prestasi
-        document.getElementById("prestasi").textContent = data[169] || '-'; 
-    } else {
-        alert('Data tidak tersedia!');
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching student data:', error);
-      alert('Terjadi kesalahan saat mengambil data!');
-    });
-
-} else {
-  console.log("ID tidak ada.");
-  alert("ID tidak ada!");
-}
-
-function toggleSidebar() {
+    function toggleSidebar() {
       const sidebar = document.getElementById('sidebarMenu');
       const mainContent = document.getElementById('mainContent');
       sidebar.classList.toggle('active');
@@ -1380,7 +1160,6 @@ function closeSidebar() {
   // Example: Add an event listener to close the sidebar (e.g., clicking the "Keluar" link)
   keluarLink.addEventListener("click", closeSidebar);
 });
-
 }
 function showSemester(semesterId) {
   // Ambil semua elemen dengan class 'semester-content'
@@ -1399,6 +1178,289 @@ function showSemester(semesterId) {
     console.error(`Semester dengan ID "${semesterId}" tidak ditemukan.`);
   }
 }
+// Fungsi untuk memeriksa nilai dan mengubah warna teks
+function checkAndChangeColor() {
+    // Array dari elemen dengan ID yang berhubungan dengan nilai
+    const nilaiIds = [
+  "qhgp1", "aagp1", "fikgp1", "skigp1", "ppkngp1",
+  "bingp1", "bargp1", "mtkgp1", "ipagp1", "ipsgp1",
+  "biggp1", "sbkgp1", "pjokgp1", "tikgp1", "aswjgp1",
+  "qhgp2", "aagp2", "fikgp2", "skigp2", "ppkngp2",
+  "bingp2", "bargp2", "mtkgp2", "ipagp2", "ipsgp2",
+  "biggp2", "sbkgp2", "pjokgp2", "tikgp2", "aswjgp2",
+  "qhgp3", "aagp3", "fikgp3", "skigp3", "ppkngp3",
+  "bingp3", "bargp3", "mtkgp3", "ipagp3", "ipsgp3",
+  "biggp3", "sbkgp3", "pjokgp3", "tikgp3", "aswjgp3",
+  "qhgp4", "aagp4", "fikgp4", "skigp4", "ppkngp4",
+  "bingp4", "bargp4", "mtkgp4", "ipagp4", "ipsgp4",
+  "biggp4", "sbkgp4", "pjokgp4", "tikgp4", "aswjgp4",
+  "qhgp5", "aagp5", "fikgp5", "skigp5", "ppkngp5",
+  "bingp5", "bargp5", "mtkgp5", "ipagp5", "ipsgp5",
+  "biggp5", "sbkgp5", "pjokgp5", "tikgp5", "aswjgp5",
+  "qhgk1", "aagk1", "fikgk1", "skigk1", "ppkngk1",
+  "bingk1", "bargk1", "mtkgk1", "ipagk1", "ipsgk1",
+  "biggk1", "sbkgk1", "pjokgk1", "tikgk1", "aswjgk1",
+  "qhgk2", "aagk2", "fikgk2", "skigk2", "ppkngk2",
+  "bingk2", "bargk2", "mtkgk2", "ipagk2", "ipsgk2",
+  "biggk2", "sbkgk2", "pjokgk2", "tikgk2", "aswjgk2",
+  "qhgk3", "aagk3", "fikgk3", "skigk3", "ppkngk3",
+  "bingk3", "bargk3", "mtkgk3", "ipagk3", "ipsgk3",
+  "biggk3", "sbkgk3", "pjokgk3", "tikgk3", "aswjgk3",
+  "qhgk4", "aagk4", "fikgk4", "skigk4", "ppkngk4",
+  "bingk4", "bargk4", "mtkgk4", "ipagk4", "ipsgk4",
+  "biggk4", "sbkgk4", "pjokgk4", "tikgk4", "aswjgk4",
+  "qhgk5", "aagk5", "fikgk5", "skigk5", "ppkngk5",
+  "bingk5", "bargk5", "mtkgk5", "ipagk5", "ipsgk5",
+  "biggk5", "sbkgk5", "pjokgk5", "tikgk5", "aswjgk5",
+  "qham1", "aam1", "fikam1", "skiam1", "ppknam1",
+  "binam1", "baram1", "mtkam1", "ipaam1", "ipsam1",
+  "bigam1", "sbkam1", "pjokam1", "tikam1", "aswjam1"
+];
+
+    nilaiIds.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            const nilai = parseFloat(element.innerText);
+
+            // Mengecek apakah nilai kurang dari atau sama dengan 65 dan mengubah kelas warna teks
+            if (isNaN(nilai) || nilai <= 65) {
+                element.classList.add('red-text');
+                element.classList.remove('blue-text');
+            } else {
+                element.classList.add('blue-text');
+                element.classList.remove('red-text');
+            }
+        }
+    });
+}
+// Get the user ID from URL (passed via query parameter)
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get("userId");
+
+if (userId) {
+  console.log("User ID:", userId);
+
+  // Fetch data using the exec URL and the user ID
+  const apiUrl = `https://script.google.com/macros/s/AKfycbxsuTmOToxMq_bfu4iItAYeYV_M2BdFN9M0dRCcFhMBqaRuazrzraLAW9O55AQi0ncI5A/exec?action=FetchData&userId=${userId}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data && Array.isArray(data)) {
+        const formatNumber = (value) => {
+          if (isNaN(value) || value === null) {
+            return '-';
+          }
+          const formattedValue = Math.round(value);
+          if (formattedValue === 0) {
+            return formattedValue;
+          }
+          return formattedValue;
+        };
+      // ID dan Nama
+      document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';         // ID
+      document.getElementById("NISN").textContent = data[1] || '-';       
+      document.getElementById("Name").textContent = data[2] || '-';     
+      document.getElementById("Kelas").textContent = data[3] || '-';       
+
+        // Semester 1
+        document.getElementById("qhgp1").textContent = formatNumber(data[4]); 
+        document.getElementById("aagp1").textContent = formatNumber(data[5]); 
+        document.getElementById("fikgp1").textContent = formatNumber(data[6]); 
+        document.getElementById("skigp1").textContent = formatNumber(data[7]); 
+        document.getElementById("ppkngp1").textContent = formatNumber(data[8]); 
+        document.getElementById("bingp1").textContent = formatNumber(data[9]); 
+        document.getElementById("bargp1").textContent = formatNumber(data[10]); 
+        document.getElementById("mtkgp1").textContent = formatNumber(data[11]); 
+        document.getElementById("ipagp1").textContent = formatNumber(data[12]); 
+        document.getElementById("ipsgp1").textContent = formatNumber(data[13]); 
+        document.getElementById("biggp1").textContent = formatNumber(data[14]); 
+        document.getElementById("sbkgp1").textContent = formatNumber(data[15]); 
+        document.getElementById("pjokgp1").textContent = formatNumber(data[16]); 
+        document.getElementById("tikgp1").textContent = formatNumber(data[17]); 
+        document.getElementById("aswjgp1").textContent = formatNumber(data[18]); 
+
+        document.getElementById("qhgk1").textContent = formatNumber(data[19]); 
+        document.getElementById("aagk1").textContent = formatNumber(data[20]); 
+        document.getElementById("fikgk1").textContent = formatNumber(data[21]); 
+        document.getElementById("skigk1").textContent = formatNumber(data[22]); 
+        document.getElementById("ppkngk1").textContent = formatNumber(data[23]); 
+        document.getElementById("bingk1").textContent = formatNumber(data[24]); 
+        document.getElementById("bargk1").textContent = formatNumber(data[25]); 
+        document.getElementById("mtkgk1").textContent = formatNumber(data[26]); 
+        document.getElementById("ipagk1").textContent = formatNumber(data[27]); 
+        document.getElementById("ipsgk1").textContent = formatNumber(data[28]); 
+        document.getElementById("biggk1").textContent = formatNumber(data[29]); 
+        document.getElementById("sbkgk1").textContent = formatNumber(data[30]); 
+        document.getElementById("pjokgk1").textContent = formatNumber(data[31]); 
+        document.getElementById("tikgk1").textContent = formatNumber(data[32]); 
+        document.getElementById("aswjgk1").textContent = formatNumber(data[33]); 
+
+        // Semester 2
+        document.getElementById("qhgp2").textContent = formatNumber(data[34]); 
+        document.getElementById("aagp2").textContent = formatNumber(data[35]); 
+        document.getElementById("fikgp2").textContent = formatNumber(data[36]); 
+        document.getElementById("skigp2").textContent = formatNumber(data[37]); 
+        document.getElementById("ppkngp2").textContent = formatNumber(data[38]); 
+        document.getElementById("bingp2").textContent = formatNumber(data[39]); 
+        document.getElementById("bargp2").textContent = formatNumber(data[40]); 
+        document.getElementById("mtkgp2").textContent = formatNumber(data[41]); 
+        document.getElementById("ipagp2").textContent = formatNumber(data[42]); 
+        document.getElementById("ipsgp2").textContent = formatNumber(data[43]); 
+        document.getElementById("biggp2").textContent = formatNumber(data[44]); 
+        document.getElementById("sbkgp2").textContent = formatNumber(data[45]); 
+        document.getElementById("pjokgp2").textContent = formatNumber(data[46]); 
+        document.getElementById("tikgp2").textContent = formatNumber(data[47]); 
+        document.getElementById("aswjgp2").textContent = formatNumber(data[48]); 
+
+        document.getElementById("qhgk2").textContent = formatNumber(data[49]); 
+        document.getElementById("aagk2").textContent = formatNumber(data[50]); 
+        document.getElementById("fikgk2").textContent = formatNumber(data[51]); 
+        document.getElementById("skigk2").textContent = formatNumber(data[52]); 
+        document.getElementById("ppkngk2").textContent = formatNumber(data[53]); 
+        document.getElementById("bingk2").textContent = formatNumber(data[54]); 
+        document.getElementById("bargk2").textContent = formatNumber(data[55]); 
+        document.getElementById("mtkgk2").textContent = formatNumber(data[56]); 
+        document.getElementById("ipagk2").textContent = formatNumber(data[57]); 
+        document.getElementById("ipsgk2").textContent = formatNumber(data[58]); 
+        document.getElementById("biggk2").textContent = formatNumber(data[59]); 
+        document.getElementById("sbkgk2").textContent = formatNumber(data[60]); 
+        document.getElementById("pjokgk2").textContent = formatNumber(data[61]); 
+        document.getElementById("tikgk2").textContent = formatNumber(data[62]); 
+        document.getElementById("aswjgk2").textContent = formatNumber(data[63]); 
+
+        // Semester 3
+        document.getElementById("qhgp3").textContent = formatNumber(data[64]); 
+        document.getElementById("aagp3").textContent = formatNumber(data[65]); 
+        document.getElementById("fikgp3").textContent = formatNumber(data[66]); 
+        document.getElementById("skigp3").textContent = formatNumber(data[67]); 
+        document.getElementById("ppkngp3").textContent = formatNumber(data[68]); 
+        document.getElementById("bingp3").textContent = formatNumber(data[69]); 
+        document.getElementById("bargp3").textContent = formatNumber(data[70]); 
+        document.getElementById("mtkgp3").textContent = formatNumber(data[71]); 
+        document.getElementById("ipagp3").textContent = formatNumber(data[72]); 
+        document.getElementById("ipsgp3").textContent = formatNumber(data[73]); 
+        document.getElementById("biggp3").textContent = formatNumber(data[74]); 
+        document.getElementById("sbkgp3").textContent = formatNumber(data[75]); 
+        document.getElementById("pjokgp3").textContent = formatNumber(data[76]); 
+        document.getElementById("tikgp3").textContent = formatNumber(data[77]); 
+        document.getElementById("aswjgp3").textContent = formatNumber(data[78]); 
+
+        document.getElementById("qhgk3").textContent = formatNumber(data[79]); 
+        document.getElementById("aagk3").textContent = formatNumber(data[80]); 
+        document.getElementById("fikgk3").textContent = formatNumber(data[81]); 
+        document.getElementById("skigk3").textContent = formatNumber(data[82]); 
+        document.getElementById("ppkngk3").textContent = formatNumber(data[83]); 
+        document.getElementById("bingk3").textContent = formatNumber(data[84]); 
+        document.getElementById("bargk3").textContent = formatNumber(data[85]); 
+        document.getElementById("mtkgk3").textContent = formatNumber(data[86]); 
+        document.getElementById("ipagk3").textContent = formatNumber(data[87]); 
+        document.getElementById("ipsgk3").textContent = formatNumber(data[88]); 
+        document.getElementById("biggk3").textContent = formatNumber(data[89]); 
+        document.getElementById("sbkgk3").textContent = formatNumber(data[90]); 
+        document.getElementById("pjokgk3").textContent = formatNumber(data[91]); 
+        document.getElementById("tikgk3").textContent = formatNumber(data[92]); 
+        document.getElementById("aswjgk3").textContent = formatNumber(data[93]);
+
+        // Semester 4
+        document.getElementById("qhgp4").textContent = formatNumber(data[94]); 
+        document.getElementById("aagp4").textContent = formatNumber(data[95]); 
+        document.getElementById("fikgp4").textContent = formatNumber(data[96]); 
+        document.getElementById("skigp4").textContent = formatNumber(data[97]); 
+        document.getElementById("ppkngp4").textContent = formatNumber(data[98]); 
+        document.getElementById("bingp4").textContent = formatNumber(data[99]); 
+        document.getElementById("bargp4").textContent = formatNumber(data[100]); 
+        document.getElementById("mtkgp4").textContent = formatNumber(data[101]); 
+        document.getElementById("ipagp4").textContent = formatNumber(data[102]); 
+        document.getElementById("ipsgp4").textContent = formatNumber(data[103]); 
+        document.getElementById("biggp4").textContent = formatNumber(data[104]); 
+        document.getElementById("sbkgp4").textContent = formatNumber(data[105]); 
+        document.getElementById("pjokgp4").textContent = formatNumber(data[106]); 
+        document.getElementById("tikgp4").textContent = formatNumber(data[107]); 
+        document.getElementById("aswjgp4").textContent = formatNumber(data[108]); 
+
+        document.getElementById("qhgk4").textContent = formatNumber(data[109]); 
+        document.getElementById("aagk4").textContent = formatNumber(data[110]); 
+        document.getElementById("fikgk4").textContent = formatNumber(data[111]); 
+        document.getElementById("skigk4").textContent = formatNumber(data[112]); 
+        document.getElementById("ppkngk4").textContent = formatNumber(data[113]); 
+        document.getElementById("bingk4").textContent = formatNumber(data[114]); 
+        document.getElementById("bargk4").textContent = formatNumber(data[115]); 
+        document.getElementById("mtkgk4").textContent = formatNumber(data[116]); 
+        document.getElementById("ipagk4").textContent = formatNumber(data[117]); 
+        document.getElementById("ipsgk4").textContent = formatNumber(data[118]); 
+        document.getElementById("biggk4").textContent = formatNumber(data[119]); 
+        document.getElementById("sbkgk4").textContent = formatNumber(data[120]); 
+        document.getElementById("pjokgk4").textContent = formatNumber(data[121]); 
+        document.getElementById("tikgk4").textContent = formatNumber(data[122]); 
+        document.getElementById("aswjgk4").textContent = formatNumber(data[123]);
+
+        // Semester 5
+        document.getElementById("qhgp5").textContent = formatNumber(data[124]); 
+        document.getElementById("aagp5").textContent = formatNumber(data[125]); 
+        document.getElementById("fikgp5").textContent = formatNumber(data[126]); 
+        document.getElementById("skigp5").textContent = formatNumber(data[127]); 
+        document.getElementById("ppkngp5").textContent = formatNumber(data[128]); 
+        document.getElementById("bingp5").textContent = formatNumber(data[129]); 
+        document.getElementById("bargp5").textContent = formatNumber(data[130]); 
+        document.getElementById("mtkgp5").textContent = formatNumber(data[131]); 
+        document.getElementById("ipagp5").textContent = formatNumber(data[132]); 
+        document.getElementById("ipsgp5").textContent = formatNumber(data[133]); 
+        document.getElementById("biggp5").textContent = formatNumber(data[134]); 
+        document.getElementById("sbkgp5").textContent = formatNumber(data[135]); 
+        document.getElementById("pjokgp5").textContent = formatNumber(data[136]); 
+        document.getElementById("tikgp5").textContent = formatNumber(data[137]); 
+        document.getElementById("aswjgp5").textContent = formatNumber(data[138]); 
+
+        document.getElementById("qhgk5").textContent = formatNumber(data[139]); 
+        document.getElementById("aagk5").textContent = formatNumber(data[140]); 
+        document.getElementById("fikgk5").textContent = formatNumber(data[141]); 
+        document.getElementById("skigk5").textContent = formatNumber(data[142]); 
+        document.getElementById("ppkngk5").textContent = formatNumber(data[143]); 
+        document.getElementById("bingk5").textContent = formatNumber(data[144]); 
+        document.getElementById("bargk5").textContent = formatNumber(data[145]); 
+        document.getElementById("mtkgk5").textContent = formatNumber(data[146]); 
+        document.getElementById("ipagk5").textContent = formatNumber(data[147]); 
+        document.getElementById("ipsgk5").textContent = formatNumber(data[148]); 
+        document.getElementById("biggk5").textContent = formatNumber(data[149]); 
+        document.getElementById("sbkgk5").textContent = formatNumber(data[150]); 
+        document.getElementById("pjokgk5").textContent = formatNumber(data[151]); 
+        document.getElementById("tikgk5").textContent = formatNumber(data[152]); 
+        document.getElementById("aswjgk5").textContent = formatNumber(data[153]);
+
+        // am
+        document.getElementById("qham1").textContent = formatNumber(data[154]); 
+        document.getElementById("aam1").textContent = formatNumber(data[155]); 
+        document.getElementById("fikam1").textContent = formatNumber(data[156]); 
+        document.getElementById("skiam1").textContent = formatNumber(data[157]); 
+        document.getElementById("ppknam1").textContent = formatNumber(data[158]); 
+        document.getElementById("binam1").textContent = formatNumber(data[159]); 
+        document.getElementById("baram1").textContent = formatNumber(data[160]); 
+        document.getElementById("mtkam1").textContent = formatNumber(data[161]); 
+        document.getElementById("ipaam1").textContent = formatNumber(data[162]); 
+        document.getElementById("ipsam1").textContent = formatNumber(data[163]); 
+        document.getElementById("bigam1").textContent = formatNumber(data[164]); 
+        document.getElementById("sbkam1").textContent = formatNumber(data[165]); 
+        document.getElementById("pjokam1").textContent = formatNumber(data[166]); 
+        document.getElementById("tikam1").textContent = formatNumber(data[167]); 
+        document.getElementById("aswjam1").textContent = formatNumber(data[168]);
+
+        // Prestasi
+        document.getElementById("prestasi").textContent = data[169] || '-'; 
+        checkAndChangeColor();
+    } else {
+        alert('Data tidak tersedia!');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching student data:', error);
+      alert('Terjadi kesalahan saat mengambil data!');
+    });
+
+} else {
+  console.log("ID tidak ada.");
+}
+
 </script>
 
 </body>
