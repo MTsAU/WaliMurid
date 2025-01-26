@@ -646,7 +646,7 @@ if (userId) {
   return addHari ? `${formattedValue} Hari` : formattedValue;
 };
       // Update elements with formatted data
-      document.getElementById("Id").textContent = data[0] || '-';
+      document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';
       document.getElementById("Name").textContent = data[1] || '-';
       document.getElementById("JuliA").textContent = formatNumber(data[2], true);
       document.getElementById("JuliS").textContent = formatNumber(data[3], true);
