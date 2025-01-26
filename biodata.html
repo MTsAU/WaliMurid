@@ -532,7 +532,7 @@ if (userId) {
     .then(data => {
       if (data && Array.isArray(data)) {
         // ID dan Nama
-        document.getElementById("Id").textContent = data[0] || '-';
+        document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';
         document.getElementById("Name").textContent = data[1] || '-';
         document.getElementById("Tempat_Lahir").textContent = data[2] || '-';
 
