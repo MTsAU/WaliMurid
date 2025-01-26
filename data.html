@@ -407,7 +407,7 @@ fetch(apiUrl)
     console.log(data);
     if (data && Array.isArray(data)) {
       // ID dan Nama
-      document.getElementById("Id").textContent = data[0] || '-';         // ID
+      document.getElementById("Id").textContent = data[0] ? '121235110097' + data[0] : '-';         // ID
       document.getElementById("Name").textContent = data[1] || '-';       // Nama
       document.getElementById("Kelas").textContent = data[2] || '-';      // Kelas
 
