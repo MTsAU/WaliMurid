@@ -162,10 +162,10 @@
     display: none;
   }
 
-  .student-image {
+.student-image {
   flex: 1;
   width: 100%;
-  height: 100vh; /* Mengatur tinggi kontainer agar memenuhi layar */
+  height: 100vh; /* Pastikan kontainer mengambil tinggi layar penuh */
   border: 2px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
@@ -173,15 +173,10 @@
 }
 
 .student-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Memastikan gambar menutupi seluruh layar */
-  object-position: center; /* Memusatkan gambar */
-  transition: transform 0.3s ease;
-}
-
-.student-image img:hover {
-  transform: scale(1.05); /* Efek zoom saat hover */
+  width: 100%;  /* Membuat gambar memenuhi lebar kontainer */
+  height: 100%; /* Membuat gambar memenuhi tinggi kontainer */
+  object-fit: contain; /* Memastikan gambar sepenuhnya terlihat */
+  object-position: center; /* Memusatkan gambar jika ada ruang kosong */
 }
 
 @media (max-width: 768px) {
@@ -190,7 +185,7 @@
   }
   
   .student-image img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 }
