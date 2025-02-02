@@ -269,18 +269,7 @@ main.active {
       dashboardLink.classList.add("active"); // Aktifkan kembali gaya aktif Dashboard
     });
   });
-  window.onload = function() {
-  const img = document.querySelector('.student-image img');
-  const imgRatio = img.naturalWidth / img.naturalHeight;
-  const screenRatio = window.innerWidth / window.innerHeight;
-
-  if (imgRatio < screenRatio) {
-    img.style.objectFit = 'contain';
-  } else {
-    img.style.objectFit = 'cover';
-  }
-};
-
+ 
   </script>
 </body>
 </html>
