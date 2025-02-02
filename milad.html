@@ -145,51 +145,70 @@ main {
 main.active {
   margin-left: 100px;
 }
+/* Modal Fullscreen Image */
+.fullscreen-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
 
-/* Container */
-.container {
-  max-width: 1200px;
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
+  .fullscreen-modal img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
 
-/* Bagian Foto Siswa */
-.student-image {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Menyesuaikan gambar dengan tinggi layar penuh */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .fullscreen-modal.active {
+    display: flex; /* Show the modal */
+  }
+  .container {
+    max-width: 1200px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
 
-.student-image img {
-  width: 100%;  /* Membuat gambar memenuhi lebar kontainer */
-  height: 100%; /* Membuat gambar memenuhi tinggi kontainer */
-  object-fit: cover; /* Menutupi seluruh kontainer tanpa terpotong */
-  object-position: center; /* Memusatkan gambar */
-}
-
-@media (max-width: 768px) {
   .student-image {
-    height: 100vh;  /* Menggunakan tinggi layar penuh pada perangkat mobile */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .student-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
   }
-}
- </style>
+
+  @media (max-width: 768px) {
+    .student-image {
+      height: 100vh;
+    }
+    .student-image img {
+      object-fit: cover;
+      object-position: center;
+    }
+  } </style>
 </head>
 <body>
   <!-- Header -->
@@ -215,9 +234,10 @@ main.active {
         <div class="student-image">
           <img src="https://raw.githubusercontent.com/beddiantoko/id/refs/heads/main/milad95..png" 
                alt="Student Photo" 
-               onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png';" />
+               onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png';" 
+               onclick="openFullscreen(this)" />
         </div>
-      </div>      
+      </div>
       <div class="footer">
         <p>Segera lunasi pembayaran putra anda, karena berkaitan dengan dicetaknya <strong>Surat Ijin Libur Ramadhan</strong>  <a href="https://wa.me/628568963686?text=Assalamualaikum...%20saya%20memerlukan%20bantuan" target="_blank"></a></p>
         <p>&copy; 2025 MTsAU. Semua hak dilindungi.</p>
@@ -229,7 +249,9 @@ main.active {
         <i class="fab fa-whatsapp"></i> <!-- Font Awesome WhatsApp Icon -->
       </a>
     </div>
-
+    <div class="fullscreen-modal" id="fullscreenModal" onclick="closeFullscreen()">
+      <img id="fullscreenImage" src="" alt="Fullscreen Image" />
+    </div>
   <script>
   function toggleSidebar() {
       const sidebar = document.getElementById('sidebarMenu');
@@ -269,7 +291,20 @@ main.active {
       dashboardLink.classList.add("active"); // Aktifkan kembali gaya aktif Dashboard
     });
   });
- 
+
+// Function to open the image in fullscreen
+function openFullscreen(imgElement) {
+    const fullscreenModal = document.getElementById('fullscreenModal');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+    fullscreenImage.src = imgElement.src;  // Set the image source to the clicked image
+    fullscreenModal.classList.add('active'); // Show the modal
+  }
+
+  // Function to close the fullscreen image
+  function closeFullscreen() {
+    const fullscreenModal = document.getElementById('fullscreenModal');
+    fullscreenModal.classList.remove('active'); // Hide the modal
+  }
   </script>
 </body>
 </html>
