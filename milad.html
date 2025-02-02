@@ -88,17 +88,6 @@
     margin-right: 8px;
   }
 
-  /* Main Content */
-  main {
-    margin-top: 30px;
-    padding: 20px;
-    transition: margin-left 0.3s;
-  }
-
-  main.active {
-    margin-left: 100px;
-  }
-
   /* Menu Icon in Header */
   .menu-icon {
     font-size: 1.35rem;
@@ -107,22 +96,6 @@
     display: flex;
     align-items: center;
   }
-
-  /* Container */
-  .container {
-    max-width: 1200px;
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
 
   /* Footer */
   .footer {
@@ -162,38 +135,61 @@
     display: none;
   }
 
-  .student-image {
-  flex: 1;
-  width: 100%;
-  height: 100vh; /* Menyesuaikan tinggi kontainer dengan tinggi layar */
-  background-image: url('https://raw.githubusercontent.com/beddiantoko/id/refs/heads/main/milad95..png');
-  background-size: contain;  /* Gambar akan menyesuaikan ukuran kontainer tanpa terpotong */
-  background-repeat: no-repeat; /* Menghindari gambar diulang */
-  background-position: center;  /* Memusatkan gambar */
-  border: 2px solid #ccc;
+/* Main Content */
+main {
+  margin-top: 30px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+main.active {
+  margin-left: 100px;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
   border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Bagian Foto Siswa */
+.student-image {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Menyesuaikan gambar dengan tinggi layar penuh */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .student-image img {
   width: 100%;  /* Membuat gambar memenuhi lebar kontainer */
   height: 100%; /* Membuat gambar memenuhi tinggi kontainer */
-  object-fit: contain; /* Memastikan gambar sepenuhnya terlihat */
-  object-position: center; /* Memusatkan gambar jika ada ruang kosong */
+  object-fit: cover; /* Menutupi seluruh kontainer tanpa terpotong */
+  object-position: center; /* Memusatkan gambar */
 }
 
 @media (max-width: 768px) {
   .student-image {
-    height: 100vh;  /* Tinggi layar penuh */
+    height: 100vh;  /* Menggunakan tinggi layar penuh pada perangkat mobile */
   }
-  
+
   .student-image img {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
   }
 }
-
-  </style>
+ </style>
 </head>
 <body>
   <!-- Header -->
