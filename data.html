@@ -334,13 +334,14 @@ main.active {
     
       <!-- Bagian Detail Siswa -->
       <div class="student-details" style="flex-grow: 1; font-family: Arial, sans-serif;">
+        <div class="loading-container" id="loadingContainer">
         <h2 id="Name" style="margin-bottom: 10px;">Loading</h2>
           <div class="loader" id="loader">
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
           </div>
-        </div>              
+        </div>
         <p>NIS : <span id="Id">-</span></p>
         <p>Kelas : <span id="Kelas">-</span></p>
   <p>Status: <span id="Status">-</span></p>
@@ -403,8 +404,7 @@ main.active {
   <p class="hidden">KWisuda: <span id="KWisuda">-</span></p>
   <p class="hidden">KTT: <span id="KTT">-</span></p>
 </div>
-  </div>
-
+</div>
   <div class="button-container">
     <a onclick="window.location.href='biodata.html?userId=' + localStorage.getItem('userId')" class="button">
       <span>DATA SISWA</span>
