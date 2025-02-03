@@ -219,7 +219,47 @@ main.active {
 .hidden {
   display: none;
 }
+/* Container untuk menempatkan teks dan loader secara horizontal */
+.loading-container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Jarak antara teks dan animasi */
+  font-family: Arial, sans-serif;
+}
 
+/* Loader (wadah titik-titik) */
+.loader {
+  display: flex;
+  gap: 9px;
+}
+
+/* Titik-titik animasi */
+.dot {
+  width: 5px;
+  height: 5px;
+  background: #0075ff;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite ease-in-out;
+}
+
+/* Menunda animasi titik ke-2 dan ke-3 */
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Keyframes untuk efek bouncing */
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
 /* Media Queries */
 @media (max-width: 768px) {
   .student-info {
@@ -294,7 +334,13 @@ main.active {
     
       <!-- Bagian Detail Siswa -->
       <div class="student-details" style="flex-grow: 1; font-family: Arial, sans-serif;">
-        <h2 id="Name" style="margin-bottom: 10px;">Loading...</h2>
+        <h2 id="Name" style="margin-bottom: 10px;">Loading</h2>
+          <div class="loader" id="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>              
         <p>NIS : <span id="Id">-</span></p>
         <p>Kelas : <span id="Kelas">-</span></p>
   <p>Status: <span id="Status">-</span></p>
@@ -396,6 +442,11 @@ main.active {
 </div>
 </main>
 <script>
+  // Simulasi proses loading selama 3 detik
+        setTimeout(function () {
+          // Hanya sembunyikan loader, teks "Loading..." tetap tampil
+          document.getElementById('loader').style.display = 'none';
+        }, 3000);
   // Get the user ID from localStorage
   const userId = localStorage.getItem("userId");
   if (!userId) {
